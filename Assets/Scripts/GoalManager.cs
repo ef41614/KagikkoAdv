@@ -26,9 +26,12 @@ public class GoalManager : MonoBehaviour {
 	GameObject GoalTreatureOpen;
 
 	GameObject GoalUchan;
+	GameObject Goalpchan;
 	public KeyController keySC;
 	public GameObject KeyPrefab;
 	public string HoldingKeyPlayer = null;
+	GameObject Canvas;
+
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -57,6 +60,10 @@ public class GoalManager : MonoBehaviour {
 
 		GoalUchan = GameObject.Find ("GoalUchan");
 		GoalUchan.SetActive (false);
+		Goalpchan = GameObject.Find ("Goalpchan");
+		Goalpchan.SetActive (false);
+
+		Canvas = GameObject.Find ("Canvas");
 
 	}
 
@@ -74,6 +81,7 @@ public class GoalManager : MonoBehaviour {
 		FadeGoalSC.goFadeIn = false;
 		GoalTreasure.SetActive (true);
 		GoalCamera.enabled = true;
+		Canvas.SetActive (false);
 
 		// パンチング
 		var sequence = DOTween.Sequence();
@@ -103,8 +111,12 @@ public class GoalManager : MonoBehaviour {
 //		keySC = KeyPrefab.GetComponent<KeyController> ();
 //		keySC = key.GetComponent<KeyController> ();
 		Debug.Log ("HoldingKeyPlayer:" + HoldingKeyPlayer);
+
 		if(HoldingKeyPlayer == "unitychan"){
-		sequence.InsertCallback(1f, () =>(GoalUchan.SetActive (true)));
+			sequence.InsertCallback(1f, () =>(GoalUchan.SetActive (true)));
+		}
+		if (HoldingKeyPlayer == "pchan") {
+			sequence.InsertCallback(1f, () =>(Goalpchan.SetActive (true)));
 		}
 	}
 

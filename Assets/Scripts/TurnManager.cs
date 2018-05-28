@@ -12,8 +12,6 @@ public class TurnManager : MonoBehaviour {
 	public DiceButtonController DiceC;
 	GameObject imageManager;
 	ImageManager ImageMscript;
-	GameObject fadeScript;
-	FadeScript FadeSC;
 
 	public bool canMove1P = true; 
 	public bool canMove2P = false; 
@@ -30,8 +28,6 @@ public class TurnManager : MonoBehaviour {
 		DiceC = DiceB.GetComponent<DiceButtonController>(); 
 		imageManager = GameObject.Find ("imageManager");
 		ImageMscript = imageManager.GetComponent<ImageManager> ();
-		fadeScript = GameObject.Find ("blackpanel");
-		FadeSC = fadeScript.GetComponent<FadeScript> ();
 	}
 
 	//####################################  Update  ###################################

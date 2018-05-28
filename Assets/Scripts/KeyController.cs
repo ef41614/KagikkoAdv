@@ -10,6 +10,9 @@ public class KeyController : MonoBehaviour {
 	Renderer rend;
 	Color color;
 	float alpha;
+	public GameObject KeyPrefab;
+	GameObject CanvasGoal;
+	GoalManager GoalM;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -20,6 +23,8 @@ public class KeyController : MonoBehaviour {
 		transform.position = GMScript.appearPosition;
 		rend = GetComponentInChildren<Renderer> ();
 		alpha = 0;
+		CanvasGoal = GameObject.Find ("CanvasGoal");
+		GoalM = CanvasGoal.GetComponent<GoalManager> ();
 	}
 
 	//####################################  Update  ###################################
@@ -41,9 +46,18 @@ public class KeyController : MonoBehaviour {
 			this.transform.localScale = new Vector3(Size, Size, Size);
 			transform.localPosition = new Vector3( 0.0f, 1.8f, 0.0f);
 			rend.material.color = new Color(0, 0, 0, 150);
+
+			GetParentName ();
 //			transform.Translate (0, 0, 0);
 //			Destroy (this.gameObject);
 		}
+	}
+
+	public void GetParentName(){
+		//親オブジェクトを取得
+		parentObject = transform.root.gameObject;
+		Debug.Log ("Parent:" + parentObject.name);
+		GoalM.HoldingKeyPlayer = parentObject.name;
 	}
 	//#################################################################################
 

@@ -107,3 +107,7 @@ https://github.com/ef41614/KagikkoAdv.git
 KagikkoAdv 2-01回目のコミット
 
 一度GitHubからのダウンロードを元に再構成。宝箱接触時のメッセージ表示追加。
+---
+KagikkoAdv 2-02回目のコミット
+
+第2カメラ設置。ゴール演出追加。Unityちゃんがゴールした時、宝箱の隣に立つようにした。

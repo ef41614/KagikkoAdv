@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour {
 	public bool messageOrder = false;
 	public string sentence = "";
 	public float waitTime =0;
+	GameObject graypanel;
+	FadeGoalScript FadeGoalSC;
+	GameObject blackpanel;
+	FadeScript FadeSC;
+	GameObject CanvasGoal;
+	GoalManager GoalM;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -29,6 +35,10 @@ public class GameManager : MonoBehaviour {
 
 		Mewindow = GameObject.Find ("MeWindow");
 		Mewindow.gameObject.SetActive (false);
+//		graypanel = GameObject.Find ("graypanel");
+//		FadeGoalSC = graypanel.GetComponent<FadeGoalScript> ();
+		CanvasGoal = GameObject.Find ("CanvasGoal");
+		GoalM = CanvasGoal.GetComponent<GoalManager> ();
 
 	}
 
@@ -83,7 +93,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GetTreasure(){
-		audioSource.PlayOneShot (getTreasureSE);
+//		FadeGoalSC.goFadeOut = true;
+//		FadeGoalSC.goFadeIn = false;
+		GoalM.GoalDirection();
+//		audioSource.PlayOneShot (getTreasureSE);
+
 	}
 
 

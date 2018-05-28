@@ -9,6 +9,8 @@ public class TreasureController : MonoBehaviour {
 	public GameManager GMScript;
 	GameObject Mewindow;
 	public Text targetText; 
+	public float difference = 10;
+	GameObject MainCamera; 
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -17,6 +19,7 @@ public class TreasureController : MonoBehaviour {
 		GMScript = gameManager.GetComponent<GameManager> ();
 		GMScript.getPositionInfo();
 		transform.position = GMScript.appearPosition;
+		MainCamera = GameObject.Find ("MainCamera");
 
 	}
 
@@ -30,6 +33,7 @@ public class TreasureController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Key") {
+//			inFrontOfCamera ();
 			GMScript.GetTreasure ();
 			GMScript.CreateKey ();
 			Destroy (this.gameObject);
@@ -56,6 +60,10 @@ public class TreasureController : MonoBehaviour {
 //			StartCoroutine("DelayMethod");
 		}
 	}
+
+//	public void inFrontOfCamera(){
+//		this.transform.position = new Vector3(MainCamera.transform.position.x, MainCamera.transform.position.y, MainCamera.transform.position.z-difference);
+//	}
 
 	private IEnumerator DelayMethod(){
 		yield return new WaitForSeconds(3.5f);

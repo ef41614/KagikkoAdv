@@ -77,6 +77,8 @@ public class GoalManager : MonoBehaviour {
 
 	//####################################  other  ####################################
 	public void GoalDirection(){
+		GameObject key = GameObject.Find("KeyPrefab(Clone)");
+		Destroy (key);
 		FadeGoalSC.goFadeOut = true;
 		FadeGoalSC.goFadeIn = false;
 		GoalTreasure.SetActive (true);

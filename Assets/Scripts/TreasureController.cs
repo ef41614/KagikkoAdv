@@ -36,11 +36,11 @@ public class TreasureController : MonoBehaviour {
 //			inFrontOfCamera ();
 			GMScript.GetTreasure ();
 			GMScript.CreateKey ();
-			Destroy (this.gameObject);
 			GMScript.sentence = "宝箱が開いたよ！";
 			GMScript.waitTime = 4.0f;
 			GMScript.ActiveMewindow ();
 			GMScript.DisplayMessage ();
+			Destroy (this.gameObject);
 		}
 //	}
 

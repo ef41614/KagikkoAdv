@@ -81,11 +81,16 @@ public class GameManager : MonoBehaviour {
 	// -------------------------------------------------
 
 	public void CreateKey(){
-		GameObject key = (GameObject)Instantiate (KeyPrefab);	
+		Debug.Log ("CreateKey します");
+		if (GameObject.Find ("KeyPrefab(Clone)") == null) {
+			GameObject key = (GameObject)Instantiate (KeyPrefab);	
+		}
 	}
 		
 	public void CreateTreasure(){
-		GameObject treasure = (GameObject)Instantiate (TreasurePrefab);
+		if (GameObject.Find ("TreasurePrefab(Clone)") == null) {
+			GameObject treasure = (GameObject)Instantiate (TreasurePrefab);
+		}
 	}
 
 	public void GetKey(){
@@ -93,11 +98,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GetTreasure(){
+		Debug.Log ("GetTreasure です");
 //		FadeGoalSC.goFadeOut = true;
 //		FadeGoalSC.goFadeIn = false;
 		GoalM.GoalDirection();
 //		audioSource.PlayOneShot (getTreasureSE);
-
+		Debug.Log ("GetTreasure 終了です");
 	}
 
 

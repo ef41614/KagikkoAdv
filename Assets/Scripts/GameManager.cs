@@ -130,6 +130,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void RestartBGM(){
+		AudioSource AudioSourceComponent = GameObject.Find("FieldBGM").GetComponent<AudioSource>();
+
+		// 再生
+		AudioSourceComponent.Play();
 	}
 
 

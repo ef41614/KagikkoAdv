@@ -18,7 +18,7 @@ public class GoalManager : MonoBehaviour {
 
 	GameObject graypanel;
 	FadeGoalScript FadeGoalSC;
-	GameObject GoalTreasure;
+	public GameObject GoalTreasure;
 	GameObject ConfettiParticleSystem;
 	GameObject GoUpLight;
 	GameObject GoUpLight2;
@@ -26,9 +26,9 @@ public class GoalManager : MonoBehaviour {
 	GameObject GoAroundLight;
 	GameObject GoalTreatureOpen;
 
-	GameObject GoalUchan;
-	GameObject Goalpchan;
-	GameObject CanvasGoalButton;
+	public GameObject GoalUchan;
+	public GameObject Goalpchan;
+	public GameObject CanvasGoalButton;
 	GameObject GoTitleButton;
 	public KeyController keySC;
 	public GameObject KeyPrefab;
@@ -44,34 +44,7 @@ public class GoalManager : MonoBehaviour {
 	void Start () {
 		audioSource = this.gameObject.GetComponent<AudioSource> ();
 
-//		GoalCamera = GameObject.Find ("GoalCamera");
-//		GoalCamera.SetActive (false);
-		GoalCamera.enabled = false;
-		graypanel = GameObject.Find ("graypanel");
-		FadeGoalSC = graypanel.GetComponent<FadeGoalScript> ();
-		GoalTreasure = GameObject.Find ("GoalTreasure");
-		GoalTreasure.SetActive (false);
-		ConfettiParticleSystem = GameObject.Find ("ConfettiParticleSystem");
-		ConfettiParticleSystem.SetActive (false);
-		GoUpLight = GameObject.Find ("GoUpLight");
-		GoUpLight.SetActive (false);
-		GoUpLight2 = GameObject.Find ("GoUpLight2");
-		GoUpLight2.SetActive (false);
-		GoUpLightSmall = GameObject.Find ("GoUpLightSmall");
-		GoUpLightSmall.SetActive (false);
-		GoAroundLight = GameObject.Find ("GoAroundLight");
-		GoAroundLight.SetActive (false);
-		GoalTreatureOpen = GameObject.Find ("GoalTreatureOpen");
-		GoalTreatureOpen.SetActive (false);
-
-		GoalUchan = GameObject.Find ("GoalUchan");
-		GoalUchan.SetActive (false);
-		Goalpchan = GameObject.Find ("Goalpchan");
-		Goalpchan.SetActive (false);
-		CanvasGoalButton = GameObject.Find ("CanvasGoalButton");
-		CanvasGoalButton.SetActive (false);
-//		GoTitleButton = GameObject.Find ("GoTitleButton");
-//		GoTitleButton.SetActive (false);
+		GoalSetOff ();
 
 		Canvas = GameObject.Find ("Canvas");
 
@@ -89,6 +62,41 @@ public class GoalManager : MonoBehaviour {
 	}
 
 	//####################################  other  ####################################
+
+	public void GoalSetOff(){
+		GoalCamera.enabled = false;
+		graypanel = GameObject.Find ("graypanel");
+		FadeGoalSC = graypanel.GetComponent<FadeGoalScript> ();
+//★		GoalTreasure = GameObject.Find ("GoalTreasure");
+		if (GoalTreasure != null) {
+			GoalTreasure.SetActive (false);
+		}
+		ConfettiParticleSystem = GameObject.Find ("ConfettiParticleSystem");
+		ConfettiParticleSystem.SetActive (false);
+		GoUpLight = GameObject.Find ("GoUpLight");
+		GoUpLight.SetActive (false);
+		GoUpLight2 = GameObject.Find ("GoUpLight2");
+		GoUpLight2.SetActive (false);
+		GoUpLightSmall = GameObject.Find ("GoUpLightSmall");
+		GoUpLightSmall.SetActive (false);
+		GoAroundLight = GameObject.Find ("GoAroundLight");
+		GoAroundLight.SetActive (false);
+		GoalTreatureOpen = GameObject.Find ("GoalTreatureOpen");
+		GoalTreatureOpen.SetActive (false);
+
+//		GoalUchan = GameObject.Find ("GoalUchan");
+		if (GoalUchan != null) {
+			GoalUchan.SetActive (false);
+		}
+//		Goalpchan = GameObject.Find ("Goalpchan");
+		if (Goalpchan != null) {
+			Goalpchan.SetActive (false);
+		}
+//		CanvasGoalButton = GameObject.Find ("CanvasGoalButton");
+		CanvasGoalButton.SetActive (false);
+	}
+
+
 	public void GoalDirection(){
 		GMScript.HaltBGM ();
 
@@ -138,6 +146,14 @@ public class GoalManager : MonoBehaviour {
 
 		sequence.InsertCallback(9f, () =>(CanvasGoalButton.SetActive (true)));
 //		sequence.InsertCallback(5f, () =>(GoTitleButton.SetActive (true)));
+	}
+
+	public void RestartGame(){
+		GoalSetOff ();
+		CanvasGoalButton.SetActive (false);
+		Canvas.SetActive (true);
+		GMScript.CreateKey ();
+		GMScript.RestartBGM ();
 	}
 
 	public void GoBackTitle(){

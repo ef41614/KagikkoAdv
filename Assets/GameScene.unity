@@ -46625,7 +46625,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 886342168}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1989640188}
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1194796946}
+        m_MethodName: set_clip
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 2ced00f3c2d3146448b3ac08ebff7ba0,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &886342168
@@ -66868,7 +66891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getKeySE: {fileID: 8300000, guid: af9ee30105d9a1d4f820a52b23a7680a, type: 3}
-  getTreasureSE: {fileID: 8300000, guid: 7a9ae746d8a9d174fa02343edd7d9b63, type: 3}
+  getTreasureSE: {fileID: 8300000, guid: 97f22224195ae8844a1347fc23e64dcb, type: 3}
   fieldBGM: {fileID: 8300000, guid: f6a3ce80e9fa87f4d9540ef01433d2f2, type: 3}
   FieldBGM: {fileID: 0}
   TreasurePrefab: {fileID: 1760995786118550, guid: 4756e795fdce3bf4897391e03feb4e5c,
@@ -66995,7 +67018,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7a9ae746d8a9d174fa02343edd7d9b63, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 97f22224195ae8844a1347fc23e64dcb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -71652,7 +71675,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1335206198}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.15, y: -10.64, z: 1.7099991}
+  m_LocalPosition: {x: 0.15, y: -10.35, z: 1.7099991}
   m_LocalScale: {x: 0.9897432, y: 0.98974353, z: 0.98974365}
   m_Children: []
   m_Father: {fileID: 41301941}
@@ -71772,7 +71795,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -769381081
+  randomSeed: 1664379717
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -71820,7 +71843,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -102832,7 +102855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoalCamera: {fileID: 1652568074}
-  getTreasureSE: {fileID: 8300000, guid: 7a9ae746d8a9d174fa02343edd7d9b63, type: 3}
+  getTreasureSE: {fileID: 8300000, guid: 97f22224195ae8844a1347fc23e64dcb, type: 3}
   KachaSE: {fileID: 8300000, guid: 2cea6ffdb251baa46a4810189ca23566, type: 3}
   gacha_gachaSE: {fileID: 8300000, guid: 7f6ed35f1b178e8499fbfc2916d289e8, type: 3}
   rectTran: {fileID: 0}
@@ -102847,8 +102870,9 @@ AudioSource:
   m_GameObject: {fileID: 1989640183}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7a9ae746d8a9d174fa02343edd7d9b63, type: 3}
+  OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 97f22224195ae8844a1347fc23e64dcb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -102927,7 +102951,8 @@ AudioSource:
   m_GameObject: {fileID: 1989640183}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 2cea6ffdb251baa46a4810189ca23566, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -103007,7 +103032,8 @@ AudioSource:
   m_GameObject: {fileID: 1989640183}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 7f6ed35f1b178e8499fbfc2916d289e8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

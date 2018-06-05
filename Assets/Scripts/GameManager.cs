@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour {
 
 	public AudioClip getKeySE;
 	public AudioClip getTreasureSE;
+	public AudioClip fieldBGM;
+	public AudioSource FieldBGM;
 	private AudioSource audioSource;
 
 	public GameObject TreasurePrefab;
@@ -49,8 +53,8 @@ public class GameManager : MonoBehaviour {
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
-		titleM = GameObject.Find ("titleManager");
-		titleMSC = titleM.GetComponent<TitleManager> ().gameObject;
+//		titleM = GameObject.Find ("titleManager");
+//		titleMSC = titleM.GetComponent<TitleManager> ().gameObject;
 //		titleMSC.StartMainScene ();
 //		StartMainScene ();
 		audioSource = this.gameObject.GetComponent<AudioSource> ();
@@ -112,6 +116,22 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// -------------------------------------------------
+
+	public void HaltBGM(){
+		AudioSource AudioSourceComponent = GameObject.Find("FieldBGM").GetComponent<AudioSource>();
+
+		// 一時停止
+		AudioSourceComponent.Pause();
+
+//		audioSource = fieldBGM;
+//		audioSource.Pause ();
+//		this.AudioSource.Pause();
+//		FieldBGM.Pause();
+	}
+
+	public void RestartBGM(){
+	}
+
 
 	public void CreateKey(){
 		Debug.Log ("CreateKey します");

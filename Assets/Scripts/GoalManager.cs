@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 
@@ -27,10 +28,15 @@ public class GoalManager : MonoBehaviour {
 
 	GameObject GoalUchan;
 	GameObject Goalpchan;
+	GameObject CanvasGoalButton;
+	GameObject GoTitleButton;
 	public KeyController keySC;
 	public GameObject KeyPrefab;
 	public string HoldingKeyPlayer = null;
 	GameObject Canvas;
+
+	GameManager GMScript;
+	GameObject GameMgr;
 
 
 	//☆################☆################  Start  ################☆################☆
@@ -62,8 +68,15 @@ public class GoalManager : MonoBehaviour {
 		GoalUchan.SetActive (false);
 		Goalpchan = GameObject.Find ("Goalpchan");
 		Goalpchan.SetActive (false);
+		CanvasGoalButton = GameObject.Find ("CanvasGoalButton");
+		CanvasGoalButton.SetActive (false);
+//		GoTitleButton = GameObject.Find ("GoTitleButton");
+//		GoTitleButton.SetActive (false);
 
 		Canvas = GameObject.Find ("Canvas");
+
+		GameMgr = GameObject.Find ("GameManager");
+		GMScript = GameMgr.GetComponent<GameManager> ();
 
 	}
 
@@ -77,6 +90,8 @@ public class GoalManager : MonoBehaviour {
 
 	//####################################  other  ####################################
 	public void GoalDirection(){
+		GMScript.HaltBGM ();
+
 		GameObject key = GameObject.Find("KeyPrefab(Clone)");
 		Destroy (key);
 		FadeGoalSC.goFadeOut = true;
@@ -120,6 +135,14 @@ public class GoalManager : MonoBehaviour {
 		if (HoldingKeyPlayer == "pchan") {
 			sequence.InsertCallback(1f, () =>(Goalpchan.SetActive (true)));
 		}
+
+		sequence.InsertCallback(9f, () =>(CanvasGoalButton.SetActive (true)));
+//		sequence.InsertCallback(5f, () =>(GoTitleButton.SetActive (true)));
+	}
+
+	public void GoBackTitle(){
+		Debug.Log ("TitleScene に戻ります");
+		SceneManager.LoadScene ("TitleScene");
 	}
 
 	//#################################################################################

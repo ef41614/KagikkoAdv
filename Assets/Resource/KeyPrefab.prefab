@@ -143,6 +143,8 @@ MonoBehaviour:
   GMScript: {fileID: 0}
   parentObject: {fileID: 0}
   KeyPrefab: {fileID: 0}
+  force: 0
+  torque: 0
 --- !u!135 &135951669564290194
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -16,6 +16,10 @@ public class KeyController : MonoBehaviour {
 	Rigidbody rb;
 	Vector3 key_pos; 
 
+	public float force=1000;
+	public float torque=1000;
+	private FixedJoint myjoint;
+
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
@@ -41,21 +45,35 @@ public class KeyController : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Player") {
+
+			transform.position = new Vector3 (transform.position.x, 2.8f, transform.position.z);
+
+//			myjoint = gameObject.AddComponent<FixedJoint>();
+//			myjoint.connectedBody = other.rigidbody;
+
+//			myjoint.breakForce = force;
+//			myjoint.breakTorque = torque;
+//			print("breakForce=\n" + gameObject.GetComponent<FixedJoint>().breakForce);
+//			print("breakTorque=\n" + gameObject.GetComponent<FixedJoint>().breakTorque);
+
 			parentObject = other.gameObject;
 			GMScript.GetKey ();
 			GMScript.CreateTreasure ();
+			rb.velocity = Vector3.zero;
 			// ゲットしたプレーヤーの子オブジェクトになる
 			this.gameObject.transform.parent = parentObject.transform;
+			GetParentName ();
 //			transform.position = new Vector3( 0.0f, 1.0f, 0.0f);
 			float Size = 0.05f;
 			this.transform.localScale = new Vector3(Size, Size, Size);
 			transform.localPosition = new Vector3( 0.0f, 1.8f, 0.0f);
 			rend.material.color = new Color(0, 0, 0, 150);
+
 			rb.velocity = Vector3.zero;
 			rb.constraints = RigidbodyConstraints.FreezeRotation;
 			rb.useGravity = false;
 
-			GetParentName ();
+			rb.constraints = RigidbodyConstraints.FreezePosition;
 //			transform.Translate (0, 0, 0);
 //			Destroy (this.gameObject);
 		}
@@ -72,6 +90,8 @@ public class KeyController : MonoBehaviour {
 	public void DropKey(){
 		// プレーヤーとの親子関係解消（フリーになる）
 		transform.parent = null;
+		rb.constraints = RigidbodyConstraints.None;
+		rb.constraints = RigidbodyConstraints.FreezeRotation;
 		float Size = 0.2f;
 		this.transform.localScale = new Vector3(Size, Size, Size);
 //		transform.localPosition = new Vector3( 0.0f, 1.8f, 0.0f);

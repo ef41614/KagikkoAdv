@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class PlayMusic : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class PlayMusic : MonoBehaviour {
 	private AudioSource musicSource;				//Reference to the AudioSource which plays music
 	private float resetTime = .01f;					//Very short time used to fade in near instantly without a click
 
+	[SerializeField]
+	RectTransform rectTran;
 
 	void Awake () 
 	{
@@ -70,5 +73,18 @@ public class PlayMusic : MonoBehaviour {
 	{
 		//call the TransitionTo function of the audioMixerSnapshot volumeDown;
 		volumeDown.TransitionTo (fadeTime);
+
+		musicSource.Stop();
+
+		// AudioSourceの取得
+		AudioSource AudioSourceComponent = GameObject.Find("titleManager").GetComponent<AudioSource>();
+//		AudioSource AudioSourceComponent = GameObject.Find("Menu UI").GetComponent<AudioSource>();
+
+		// 停止
+		AudioSourceComponent.Stop();
+
+		var sequence = DOTween.Sequence();
+		sequence.InsertCallback(1.0f, () =>(volumeUp.TransitionTo (fadeTime)));
+
 	}
 }

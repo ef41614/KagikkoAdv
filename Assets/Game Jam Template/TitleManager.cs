@@ -9,10 +9,20 @@ public class TitleManager : MonoBehaviour {
 //	public static int GameMode  = 0; // 0:Normal、 1:Rovky
 //	public static int AudioPlay = 0; // 0:off、 1:on
 
+	public GameObject menu_UI;
+	public GameObject menuPanel;
+	public GameObject menuButtons;
 	public GameObject loading;
 	public GameObject titleLogo;
 	public GameObject Buttons;
 	public GameObject image1black;
+	public GameObject startButton;
+	public GameObject quit;
+	public GameObject optionsButton;
+
+	public AudioClip pushDecisionSE;
+	public AudioClip pushCancelButtonSE;
+	AudioSource audioSource;
 
 	[SerializeField]
 	RectTransform rectTran;
@@ -24,6 +34,8 @@ public class TitleManager : MonoBehaviour {
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
 		DontDestroyOnLoad(this);
+		loading.SetActive(false);
+		audioSource = this.gameObject.GetComponent<AudioSource> ();
 	}
 
 	//####################################  Update  ###################################
@@ -32,19 +44,39 @@ public class TitleManager : MonoBehaviour {
 	}
 
 	//####################################  other  ####################################
-	//#################################################################################
 
 	//スタートボタンを押した
 	public void PushStartButton () {
 		loading.SetActive(true);
 		titleLogo.SetActive(false);
 		Buttons.SetActive(false);
+//		startButton.SetActive(false);
+//		quit.SetActive (false);
 
 		var sequence = DOTween.Sequence();
 		sequence.InsertCallback(0.5f, () =>(SceneManager.LoadScene ("GameScene")));
+		sequence.InsertCallback(1.5f, () =>(StartMainScene()));
+//		sequence.InsertCallback(0.4f, () =>(optionsButton.SetActive(true)));
 //		SceneManager.LoadScene ("GameScene");	//ゲーム開始
 	}
 
+	public void PushDecisionSE(){
+		audioSource.PlayOneShot (pushDecisionSE);
+	}
+
+	public void PushCancelButtonSE(){
+		audioSource.PlayOneShot (pushCancelButtonSE);
+	}
+
+	public void StartMainScene(){
+		menuPanel.SetActive (true);
+		loading.SetActive (false);
+		titleLogo.SetActive (false);
+		menuButtons.SetActive (true);
+		startButton.SetActive(false);
+		quit.SetActive (false);
+		optionsButton.SetActive (true);
+	}
 
 	public void PushNormalButton () {
 //		GameMode = 0;
@@ -67,6 +99,6 @@ public class TitleManager : MonoBehaviour {
 
 
 
-
+	//#################################################################################
 }
 // End

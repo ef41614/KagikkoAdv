@@ -27,9 +27,32 @@ public class GameManager : MonoBehaviour {
 	GameObject CanvasGoal;
 	GoalManager GoalM;
 
+	public GameObject titleM;
+	public GameObject titleMSC;
+
+	public GameObject menu_UI;
+	public GameObject menuPanel;
+	public GameObject menuButtons;
+	public GameObject loading;
+	public GameObject titleLogo;
+	public GameObject Buttons;
+	public GameObject image1black;
+	public GameObject startButton;
+	public GameObject quit;
+	public GameObject optionsButton;
+
+
+	void Awake(){
+
+	}
+
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
+		titleM = GameObject.Find ("titleManager");
+		titleMSC = titleM.GetComponent<TitleManager> ().gameObject;
+//		titleMSC.StartMainScene ();
+//		StartMainScene ();
 		audioSource = this.gameObject.GetComponent<AudioSource> ();
 		CreateKey ();
 
@@ -55,6 +78,16 @@ public class GameManager : MonoBehaviour {
 	}
 
 	//####################################  other  ####################################
+
+	public void StartMainScene(){
+		menuPanel.SetActive (true);
+		loading.SetActive (false);
+		titleLogo.SetActive (false);
+		menuButtons.SetActive (true);
+		startButton.SetActive(false);
+		quit.SetActive (false);
+		optionsButton.SetActive (true);
+	}
 
 
 	// -----メッセージウィンドウ---------------------

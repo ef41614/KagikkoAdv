@@ -8,6 +8,8 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject optionsTint;							//Store a reference to the Game Object OptionsTint 
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;                           //Store a reference to the Game Object PausePanel 
+	public GameObject CreditPanel;
+	public GameObject HowToPlayPanel;
 
     private GameObject activePanel;                         
     private MenuObject activePanelMenuObject;
@@ -78,4 +80,27 @@ public class ShowPanels : MonoBehaviour {
 		optionsTint.SetActive(false);
 
 	}
+
+	public void ShowCreditPanel(){
+		CreditPanel.SetActive (true);
+		optionsTint.SetActive (true);
+		SetSelection (CreditPanel);
+	}
+
+	public void HideCreditPanel(){
+		CreditPanel.SetActive (false);
+		optionsTint.SetActive (false);
+	}
+
+	public void ShowHowToPlayPanel(){
+		HowToPlayPanel.SetActive (true);
+		optionsTint.SetActive (true);
+		SetSelection (HowToPlayPanel);
+	}
+
+	public void HideHowToPlayPanel(){
+		HowToPlayPanel.SetActive (false);
+		optionsTint.SetActive (false);
+	}
+
 }

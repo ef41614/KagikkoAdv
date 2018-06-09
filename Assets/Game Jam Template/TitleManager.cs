@@ -19,6 +19,7 @@ public class TitleManager : MonoBehaviour {
 	public GameObject startButton;
 	public GameObject quit;
 	public GameObject optionsButton;
+	public GameObject CreditButton;
 
 	public AudioClip pushDecisionSE;
 	public AudioClip pushCancelButtonSE;
@@ -76,6 +77,7 @@ public class TitleManager : MonoBehaviour {
 		startButton.SetActive(false);
 		quit.SetActive (false);
 		optionsButton.SetActive (true);
+		CreditButton.SetActive (false);
 	}
 
 	public void PushNormalButton () {

@@ -10,12 +10,11 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject pausePanel;                           //Store a reference to the Game Object PausePanel 
 	public GameObject CreditPanel;
 	public GameObject HowToPlayPanel;
+	public GameObject Handle;
 
     private GameObject activePanel;                         
     private MenuObject activePanelMenuObject;
     private EventSystem eventSystem;
-
-
 
     private void SetSelection(GameObject panelToSetSelected)
     {
@@ -102,5 +101,6 @@ public class ShowPanels : MonoBehaviour {
 		HowToPlayPanel.SetActive (false);
 		optionsTint.SetActive (false);
 	}
+
 
 }

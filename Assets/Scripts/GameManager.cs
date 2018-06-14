@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject quit;
 	public GameObject optionsButton;
 
+//	public GameObject CreditPanel;
+//	public GameObject HowToPlayPanel;
+
 
 	void Awake(){
 
@@ -91,6 +94,9 @@ public class GameManager : MonoBehaviour {
 		startButton.SetActive(false);
 		quit.SetActive (false);
 		optionsButton.SetActive (true);
+
+//		CreditPanel.SetActive (false);
+//		HowToPlayPanel.SetActive (false);
 	}
 
 

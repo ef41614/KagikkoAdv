@@ -19,7 +19,7 @@ public class Handling : MonoBehaviour {
 	//####################################  Update  ###################################
 
 	void Update () {
-		Debug.Log ("Handling_transform.position.y : "+transform.position.y);
+//		Debug.Log ("Handling_transform.position.y : "+transform.position.y);
 
 	}
 

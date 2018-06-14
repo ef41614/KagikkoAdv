@@ -20,6 +20,7 @@ public class TitleManager : MonoBehaviour {
 	public GameObject quit;
 	public GameObject optionsButton;
 	public GameObject CreditButton;
+	public GameObject HowToPlayButton;
 
 	public AudioClip pushDecisionSE;
 	public AudioClip pushCancelButtonSE;
@@ -53,6 +54,8 @@ public class TitleManager : MonoBehaviour {
 		Buttons.SetActive(false);
 //		startButton.SetActive(false);
 //		quit.SetActive (false);
+		CreditButton.SetActive(false);
+		HowToPlayButton.SetActive (false);
 
 		var sequence = DOTween.Sequence();
 		sequence.InsertCallback(0.5f, () =>(SceneManager.LoadScene ("GameScene")));

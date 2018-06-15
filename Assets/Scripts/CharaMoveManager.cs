@@ -51,6 +51,8 @@ public class CharaMoveManager : MonoBehaviour {
 	TurnManager TurnMscript;
 	GameObject blackpanel;
 	FadeScript FadeSC;
+	public GameObject CamerasControllerBox;
+	CamerasController CamerasControllerSC;
 
 	public int UDiceTicket = 1;
 	public int PDiceTicket = 1;
@@ -98,6 +100,8 @@ public class CharaMoveManager : MonoBehaviour {
 		TurnMscript = turnmanager.GetComponent<TurnManager>(); 
 		blackpanel = GameObject.Find ("blackpanel");
 		FadeSC = blackpanel.GetComponent<FadeScript> ();
+
+		CamerasControllerSC = CamerasControllerBox.GetComponent<CamerasController> ();
 
 		ArrivedNextPoint = true;
 
@@ -243,6 +247,8 @@ public class CharaMoveManager : MonoBehaviour {
 //		GuideC.initializePosition ();
 		FadeSC.goFadeOut = false;
 		FadeSC.goFadeIn = true;
+		CamerasControllerSC.inactiveMapCamera ();
+		CamerasControllerSC.inactiveCharaCamera ();
 	}
 
 	public void checkNextMove(){

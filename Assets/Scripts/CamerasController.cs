@@ -47,27 +47,45 @@ public class CamerasController : MonoBehaviour {
 	public void ChangeCharaCamera(){
 		// カメラを切り替える
 		// ↓現在のactive状態から反転 
-		MainCamera.SetActive (!MainCamera.activeInHierarchy);
+//		MainCamera.SetActive (!MainCamera.activeInHierarchy);
 		if(TurnMscript.canMove1P == true){
 			UchanThirdPersonCamera.SetActive (!UchanThirdPersonCamera.activeInHierarchy);
-			UchanMapCamera.SetActive (false);
+			inactiveMapCamera ();
 		}
 		if(TurnMscript.canMove2P == true){
 			PchanThirdPersonCamera.SetActive (!PchanThirdPersonCamera.activeInHierarchy);
-			PchanMapCamera.SetActive (false);
+			inactiveMapCamera ();
 		}
 	}
 
 	public void ChangeMapCamera(){
 		// カメラを切り替える
-		MainCamera.SetActive (!MainCamera.activeInHierarchy);
+//		MainCamera.SetActive (!MainCamera.activeInHierarchy);
 		if(TurnMscript.canMove1P == true){
 			UchanMapCamera.SetActive (!UchanMapCamera.activeInHierarchy);
-			UchanThirdPersonCamera.SetActive (false);
+			inactiveCharaCamera ();
 		}
 		if(TurnMscript.canMove2P == true){
 			PchanMapCamera.SetActive (!PchanMapCamera.activeInHierarchy);
+			inactiveCharaCamera ();
+		}
+	}
+
+	public void inactiveCharaCamera(){
+		if (UchanThirdPersonCamera) {
+			UchanThirdPersonCamera.SetActive (false);
+		}
+		if (PchanThirdPersonCamera) {
 			PchanThirdPersonCamera.SetActive (false);
+		}
+	}
+
+	public void inactiveMapCamera(){
+		if (UchanMapCamera) {
+			UchanMapCamera.SetActive (false);
+		}
+		if (PchanMapCamera) {
+			PchanMapCamera.SetActive (false);
 		}
 	}
 

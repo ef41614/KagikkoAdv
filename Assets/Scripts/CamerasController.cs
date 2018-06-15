@@ -23,6 +23,11 @@ public class CamerasController : MonoBehaviour {
 	private GameObject PchanMapCamera; 
 
 	public bool CharaViewActive = false;
+	bool turningRight = false;
+	bool turningLeft = false;
+
+	public GameObject Uchan;
+	public GameObject Pchan;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -40,8 +45,14 @@ public class CamerasController : MonoBehaviour {
 	//####################################  Update  ###################################
 
 	void Update () {
-//		Debug.Log ("TurnMscript.canMove1P : "+TurnMscript.canMove1P);
-//		Debug.Log ("TurnMscript.canMove2P : "+TurnMscript.canMove2P);
+
+		if (turningRight == true) {
+			turnRigltCamera ();
+		}
+
+		if (turningLeft == true) {
+			turnLeftCamera ();
+		}
 	}
 
 	//####################################  other  ####################################
@@ -58,6 +69,8 @@ public class CamerasController : MonoBehaviour {
 			PchanThirdPersonCamera.SetActive (!PchanThirdPersonCamera.activeInHierarchy);
 			inactiveMapCamera ();
 		}
+//		UchanThirdPersonCamera.transform.eulerAngles = new Vector3 (0, 0, 0);
+//		PchanThirdPersonCamera.transform.Rotate(new Vector3(0, 0, 0));
 	}
 
 	public void ChangeMapCamera(){
@@ -93,6 +106,41 @@ public class CamerasController : MonoBehaviour {
 		}
 		if (PchanMapCamera) {
 			PchanMapCamera.SetActive (false);
+		}
+	}
+
+	public void pushDownTurnRightButton(){
+		turningRight = true;
+	}
+
+	public void pushUpTurnRightButton(){
+		turningRight = false;
+	}
+
+	public void pushDownTurnLeftButton(){
+		turningLeft = true;
+	}
+
+	public void pushUpTurnLeftButton(){
+		turningLeft = false;
+	}
+
+	public void turnRigltCamera(){
+		if (UchanThirdPersonCamera.activeSelf)  {
+//			UchanThirdPersonCamera.transform.Rotate(new Vector3(0, 5, 0));
+			Uchan.transform.Rotate(new Vector3(0, 5, 0));
+		}
+		if (PchanThirdPersonCamera.activeSelf) {
+			Pchan.transform.Rotate(new Vector3(0, 5, 0));
+		}
+	}
+
+	public void turnLeftCamera(){
+		if (UchanThirdPersonCamera.activeSelf)  {
+			Uchan.transform.Rotate(new Vector3(0, -5, 0));
+		}
+		if (PchanThirdPersonCamera.activeSelf) {
+			Pchan.transform.Rotate(new Vector3(0, -5, 0));
 		}
 	}
 

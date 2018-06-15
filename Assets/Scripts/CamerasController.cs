@@ -17,6 +17,11 @@ public class CamerasController : MonoBehaviour {
 	[SerializeField]
 	private GameObject PchanThirdPersonCamera; 
 
+	[SerializeField]
+	private GameObject UchanMapCamera;   
+	[SerializeField]
+	private GameObject PchanMapCamera; 
+
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
@@ -24,30 +29,45 @@ public class CamerasController : MonoBehaviour {
 		TurnMscript = turnmanager.GetComponent<TurnManager>(); 
 
 		UchanThirdPersonCamera.SetActive (false);
+		UchanMapCamera.SetActive (false);
 		PchanThirdPersonCamera.SetActive (false);
+		PchanMapCamera.SetActive (false);
 	}
 
 
 	//####################################  Update  ###################################
 
 	void Update () {
-		Debug.Log ("TurnMscript.canMove1P : "+TurnMscript.canMove1P);
-		Debug.Log ("TurnMscript.canMove2P : "+TurnMscript.canMove2P);
+//		Debug.Log ("TurnMscript.canMove1P : "+TurnMscript.canMove1P);
+//		Debug.Log ("TurnMscript.canMove2P : "+TurnMscript.canMove2P);
 	}
 
 	//####################################  other  ####################################
 
-	public void ChangeCamera(){
+	public void ChangeCharaCamera(){
 		// カメラを切り替える
 		// ↓現在のactive状態から反転 
 		MainCamera.SetActive (!MainCamera.activeInHierarchy);
 		if(TurnMscript.canMove1P == true){
 			UchanThirdPersonCamera.SetActive (!UchanThirdPersonCamera.activeInHierarchy);
-//			PchanThirdPersonCamera.SetActive (!PchanThirdPersonCamera.activeInHierarchy);
+			UchanMapCamera.SetActive (false);
 		}
 		if(TurnMscript.canMove2P == true){
-//			UchanThirdPersonCamera.SetActive (!UchanThirdPersonCamera.activeInHierarchy);
 			PchanThirdPersonCamera.SetActive (!PchanThirdPersonCamera.activeInHierarchy);
+			PchanMapCamera.SetActive (false);
+		}
+	}
+
+	public void ChangeMapCamera(){
+		// カメラを切り替える
+		MainCamera.SetActive (!MainCamera.activeInHierarchy);
+		if(TurnMscript.canMove1P == true){
+			UchanMapCamera.SetActive (!UchanMapCamera.activeInHierarchy);
+			UchanThirdPersonCamera.SetActive (false);
+		}
+		if(TurnMscript.canMove2P == true){
+			PchanMapCamera.SetActive (!PchanMapCamera.activeInHierarchy);
+			PchanThirdPersonCamera.SetActive (false);
 		}
 	}
 

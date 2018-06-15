@@ -51774,7 +51774,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237293812}
+      - m_Target: {fileID: 1734309923}
         m_MethodName: ChangeCharaCamera
         m_Mode: 1
         m_Arguments:
@@ -85260,7 +85260,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237293812}
+      - m_Target: {fileID: 1734309923}
         m_MethodName: ChangeMapCamera
         m_Mode: 1
         m_Arguments:

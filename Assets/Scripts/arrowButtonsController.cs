@@ -9,6 +9,12 @@ public class arrowButtonsController : MonoBehaviour {
 	UnityChanController Uscript;
 	public bool canMove = false;
 
+	public GameObject UchanCamera;
+	public GameObject PchanCamera;
+
+	public GameObject CamerasControllerBox;
+	CamerasController CamerasControllerSC;
+
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
@@ -25,10 +31,21 @@ public class arrowButtonsController : MonoBehaviour {
 
 		// 勧めるマスが0より大きい時、移動矢印ボタンを有効（再表示）にする
 		if(canMove == true){
-			ArrowB.SetActive (true);
+			if ((UchanCamera.activeSelf) || (PchanCamera.activeSelf)) {
+				ArrowB.SetActive (false);	
+			} else {
+				ArrowB.SetActive (true);
+			}
 		} else {
-			ArrowB.SetActive (false);	
+				ArrowB.SetActive (false);	
 		}
+
+		//もしキャラ視点カメラがアクティブなら、移動矢印ボタンを無効（非表示）にする
+//		if ((UchanCamera==false) && (PchanCamera==false)) {
+//			ArrowB.SetActive (true);
+//		} else {
+//			ArrowB.SetActive (false);	
+//		}
 
 	}
 

@@ -22,6 +22,8 @@ public class CamerasController : MonoBehaviour {
 	[SerializeField]
 	private GameObject PchanMapCamera; 
 
+	public bool CharaViewActive = false;
+
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
@@ -68,6 +70,11 @@ public class CamerasController : MonoBehaviour {
 		if(TurnMscript.canMove2P == true){
 			PchanMapCamera.SetActive (!PchanMapCamera.activeInHierarchy);
 			inactiveCharaCamera ();
+		}
+		if ((UchanThirdPersonCamera) || (PchanThirdPersonCamera)) {
+			CharaViewActive = true;
+		} else {
+			CharaViewActive = false;
 		}
 	}
 

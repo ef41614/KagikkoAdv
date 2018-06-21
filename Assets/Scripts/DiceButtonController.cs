@@ -10,6 +10,8 @@ public class DiceButtonController : MonoBehaviour {
 	GameObject unitychan; 
 	UnityChanController Uscript; 
 	public bool canRoll = true;
+	public GameObject charamovemanager;
+	CharaMoveManager CharaMoveMscript;
 	private GameObject stepTx;  //残り歩数
 	GameObject turnmanager;
 	TurnManager TurnMscript;
@@ -21,6 +23,7 @@ public class DiceButtonController : MonoBehaviour {
 	FadeScript FadeSC;
 	GameObject ArrowB;
 	private float timeleft;
+
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -39,6 +42,7 @@ public class DiceButtonController : MonoBehaviour {
 		fadeScript = GameObject.Find ("blackpanel");
 		FadeSC = fadeScript.GetComponent<FadeScript> ();
 		ArrowB = GameObject.Find ("arrowButtons");
+		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 	}
 
 	//####################################  Update  ###################################
@@ -46,9 +50,9 @@ public class DiceButtonController : MonoBehaviour {
 	void Update () {
 
 		//スペースが押されたらサイコロをふる
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			DiceRoll ();
-		}
+//		if (Input.GetKeyDown (KeyCode.Space)) {
+//			DiceRoll ();
+//		}
 
 		// 進めるマスが0 && サイコロふる準備ができたら、サイコロボタンを有効（再表示）にする
 		if (canRoll == true) {
@@ -85,12 +89,15 @@ public class DiceButtonController : MonoBehaviour {
 			int num = Random.Range (2, 7);
 			DiceResult = num;
 			if(TurnMscript.canMove1P == true){
-				Uscript.RemainingSteps = DiceResult;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (Uscript.RemainingSteps-1) + "マス";
+//				Uscript.RemainingSteps = DiceResult;
+				CharaMoveMscript.RemainingStepsInfo = DiceResult;
+				this.stepTx.GetComponent<Text> ().text = "あと " + (Uscript.RemainingSteps) + "マス";
 				Uscript.UDiceTicket--;
-			}else if(TurnMscript.canMove2P == true){
-				Pscript.RemainingSteps = DiceResult;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (Pscript.RemainingSteps-1) + "マス";
+			}
+			if(TurnMscript.canMove2P == true){
+//				Pscript.RemainingSteps = DiceResult;
+				CharaMoveMscript.RemainingStepsInfo = DiceResult;
+				this.stepTx.GetComponent<Text> ().text = "あと " + (Pscript.RemainingSteps) + "マス";
 				Pscript.PDiceTicket--;
 			}
 			Debug.Log("サイコロ投げた！");

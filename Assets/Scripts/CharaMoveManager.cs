@@ -140,7 +140,8 @@ public class CharaMoveManager : MonoBehaviour {
 			RunningInfo = Uscript.UIsRunning;
 			TicketInfo = Uscript.UDiceTicket;
 			rbInfo = unitychan.GetComponent<Rigidbody> ();
-			RemainingStepsInfo = Uscript.RemainingSteps;
+//			RemainingStepsInfo = Uscript.RemainingSteps;
+			Uscript.RemainingSteps = RemainingStepsInfo;
 			Player_pos = unitychan.GetComponent<Transform>().position; 
 			activeChara = unitychan;
 			Uscript.Player_pos = Player_pos;
@@ -155,7 +156,8 @@ public class CharaMoveManager : MonoBehaviour {
 			RunningInfo = Pscript.PIsRunning;
 			TicketInfo = Pscript.PDiceTicket;
 			rbInfo = pchan.GetComponent<Rigidbody> ();
-			RemainingStepsInfo = Pscript.RemainingSteps;
+//			RemainingStepsInfo = Pscript.RemainingSteps;
+			Pscript.RemainingSteps = RemainingStepsInfo;
 			Player_pos = pchan.GetComponent<Transform>().position; 
 			activeChara = pchan;
 			Pscript.Player_pos = Player_pos;
@@ -322,6 +324,7 @@ public class CharaMoveManager : MonoBehaviour {
 
 						activeChara.transform.DOLocalMove (NextPos, RunTime);
 						activeChara.transform.rotation = Quaternion.AngleAxis (turn, new Vector3 (0, 1, 0));
+						RemainingStepsInfo -= 1;
 						this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo - 1) + "マス";
 						GuideC.ToUnderGround ();	
 						GuideC.adjustNextGuidePos ();
@@ -358,46 +361,6 @@ public class CharaMoveManager : MonoBehaviour {
 			Debug.Log ("ｚ--修正完了");
 		}
 	}
-
-	//------- 旧  Uちゃん Update () ----------------
-	/**
-	public void charaUpdate(){
-			if(canMoveInfo ==true){
-			if (ArrivedNextPoint == true) {
-				// 走行中状態がOFF（＝停止状態）の時
-				myAnimator.SetBool ("isRunning", false);  
-				activeCharaScript.myAnimator.SetBool ("isRunning", false);  
-
-				RunningInfo = false;
-
-				if (RemainingStepsInfo > 0) {
-					checkNextMove ();
-					ArrowC.canMove = true;
-
-				} else if (RemainingStepsInfo <= 0) {
-					if (PDiceTicket <= 0) {
-						if (rbInfo.IsSleeping ()) {
-							DiceC.canRoll = true;
-							ArrowC.canMove = false;
-						}
-					}
-				}
-
-			} else {
-				myAnimator.SetBool ("isRunning", true);
-				RunningInfo = true;
-				ArrivedNextPoint = false;
-
-			}
-		}
-		else {
-			// 走行中状態がOFF（＝停止状態）の時
-			myAnimator.SetBool ("isRunning", false);  
-			RunningInfo = false;
-		}
-	}
-	**/
-	//----------------------------------------------
 
 	//#################################################################################
 

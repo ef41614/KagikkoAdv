@@ -36,9 +36,6 @@ public class UnityChanController : MonoBehaviour {
 
 	public int UDiceTicket = 1;
 	float timeleft =0;
-	GameObject _child;
-	public KeyController keySC;
-	public GameObject Key;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -70,30 +67,11 @@ public class UnityChanController : MonoBehaviour {
 
 	void Update () {
 
-		RaycastHit hit;
-
-		// If Ray hit something
-		if (Physics.SphereCast (transform.position, 1, transform.forward, out hit, 30)) {
-			// Rayの可視化
-//			Debug.DrawRay(transform.position, hit.point, Color.yellow);
-
-			if (hit.collider.tag == "Player") {
-//				Debug.DrawLine (transform.position, hit.point, Color.blue);
-//			} else if (hit.collider.tag == "guideM") {
-//			} else if (hit.collider.tag == "guideChild") {
-			} else if (hit.collider.tag == "obstacle") {
-				// Draw Red Line
-//				Debug.DrawLine (transform.position, hit.point, Color.red);
-			} else{
-			}
-		}
-
 		timeleft -= Time.deltaTime;
 		if (timeleft <= 0.0) {
 			timeleft = 1.0f;
 
-//			Debug.Log("UDiceTicket :"+UDiceTicket);
-//			Debug.Log("Player_pos :"+Player_pos);
+			//			Debug.Log("UDiceTicket :"+UDiceTicket);
 		}
 
 
@@ -135,13 +113,13 @@ public class UnityChanController : MonoBehaviour {
 		stp -= 1;
 		return stp;
 	}
-		
+
 	public void OnTriggerEnter(Collider other){
 		if (TurnMscript.canMove1P == true) {
 			if (other.gameObject.tag == "guideM"){
 				ArrivedNextPoint = true;
-				RemainingSteps = reduceSteps (RemainingSteps);
-				Debug.Log ("UちゃんguideMに接触：ステップ＿"+RemainingSteps);
+//				RemainingSteps = reduceSteps (RemainingSteps);
+				Debug.Log ("UちゃんguideMに接触：ステップ＿");
 			}
 		}
 	}
@@ -150,42 +128,12 @@ public class UnityChanController : MonoBehaviour {
 		if (TurnMscript.canMove1P == true) {
 			if (other.gameObject.tag == "guideM") {
 				ArrivedNextPoint = false;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingSteps - 1) + "マス";
-				Debug.Log ("UちゃんguideMから離脱_RemainingSteps");
-			}
-		}
-	}
-		
 
-	public void OnCollisionStay	(Collision other){
-		if (TurnMscript.canMove1P == true) {
-			if (other.gameObject.tag == "obstacle") {
-			//---動けなくなった時の救済措置---
-			GameObject[] directions = GameObject.FindGameObjectsWithTag("guideChild");
-			if (directions == null) {
-				if (Player_pos.x >= 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x-3, this.transform.position.y, this.transform.position.z);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：U左に行ったよ");
-				} else if (Player_pos.x < 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x-3, this.transform.position.y, this.transform.position.z);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：U右に行ったよ");
-				}
-				if (Player_pos.z >= 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z-3);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：U後ろに行ったよ");
-				} else if (Player_pos.z < 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z+3);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：U前に行ったよ");
-				}
-			}
-			//-----------------------------------
+				Debug.Log ("UちゃんguideMから離脱");
 			}
 		}
 	}
+
 
 	public void OnCollisionEnter(Collision other){
 		if (TurnMscript.canMove1P == true) {
@@ -198,38 +146,17 @@ public class UnityChanController : MonoBehaviour {
 				}
 			}
 
-
-		} else if (TurnMscript.canMove1P == false) {
-			if (other.gameObject.tag == "obstacle") {
-				Debug.Log ("体当たりで障害物にぶつかったよ");
-				rb.constraints = RigidbodyConstraints.FreezePosition;
-				rb.constraints = RigidbodyConstraints.FreezeRotation;
-
-			}
 		}
 	}
 
-	//相手に体当たりされ、吹っ飛ばされた時の処理
-	public void Move(Vector3 direction, float distance){
-		//_child = transform.FindChild ("KeyPrefab*").gameObject;
-		//子オブジェクトにカギが存在するかどうかを判定する
-		if (GameObject.Find ("KeyPrefab(Clone)").transform.IsChildOf (transform)) {
-			Key = this.transform.Find("KeyPrefab(Clone)").gameObject;
-			keySC = Key.GetComponent<KeyController> ();
-			keySC.DropKey ();
-//			Key.transform.parent = null;
+		//相手に体当たりされ、吹っ飛ばされた時の処理
+		public void Move(Vector3 direction, float distance){
+			Vector3 moveVector = direction.normalized * distance;
+			transform.DOMove(transform.position + moveVector, 0.5f);
 		}
-		Vector3 moveVector = direction.normalized * distance;
-		Debug.Log("1P direction"+direction);
-		Debug.Log("1P distance"+distance);
-		Debug.Log("1P moveVector"+moveVector);
-//		transform.DOMove(transform.position + moveVector, 0.5f);
-		rb.AddForce(moveVector*200);
-		Debug.Log("1P吹っ飛んだ！");
+		//---------------------------------------------------
+
+		//#################################################################################
+
 	}
-	//---------------------------------------------------
-
-	//#################################################################################
-
-}
-// End
+	// End

@@ -36,9 +36,6 @@ public class PchanController : MonoBehaviour {
 
 	public int PDiceTicket = 1;
 	float timeleft =0;
-	GameObject _child;
-	public KeyController keySC;
-	public GameObject Key;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -72,7 +69,7 @@ public class PchanController : MonoBehaviour {
 		timeleft -= Time.deltaTime;
 		if (timeleft <= 0.0) {
 			timeleft = 1.0f;
-//			Debug.Log("PDiceTicket :"+PDiceTicket);
+			//			Debug.Log("PDiceTicket :"+PDiceTicket);
 		}
 
 		if (TurnMscript.canMove2P == true) {
@@ -118,7 +115,7 @@ public class PchanController : MonoBehaviour {
 		if (TurnMscript.canMove2P == true) {
 			if (other.gameObject.tag == "guideM") {
 				ArrivedNextPoint = true;
-				RemainingSteps = reduceSteps (RemainingSteps);
+//				RemainingSteps = reduceSteps (RemainingSteps);
 				Debug.Log ("PちゃんguideMに接触：ステップ＿" + RemainingSteps);
 			}
 		}
@@ -143,28 +140,15 @@ public class PchanController : MonoBehaviour {
 					uc.Move (transform.forward, Random.Range (1, 4) * 3.0f);
 					Debug.Log("Pちゃんの体当たりだ！");
 				}
+
 			}
 		}
 	}
-		
 
 	//相手に体当たりされ、吹っ飛ばされた時の処理
 	public void Move(Vector3 direction, float distance){
 		Vector3 moveVector = direction.normalized * distance;
-		Debug.Log("2P direction"+direction);
-		Debug.Log("2P distance"+distance);
-		Debug.Log("2P moveVector"+moveVector);
-//		transform.DOMove(transform.position + moveVector, 0.5f);
-		rb.AddForce(moveVector*200);
-		Debug.Log("2P吹っ飛んだ！");
-
-		//_child = transform.FindChild ("KeyPrefab*").gameObject;
-		//子オブジェクトにカギが存在するかどうかを判定する
-		if (GameObject.Find ("KeyPrefab(Clone)").transform.IsChildOf (transform)) {
-			Key = this.transform.Find("KeyPrefab(Clone)").gameObject;
-			keySC = Key.GetComponent<KeyController> ();
-			keySC.DropKey ();
-		}
+		transform.DOMove(transform.position + moveVector, 0.5f);
 	}
 	//---------------------------------------------------
 

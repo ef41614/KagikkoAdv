@@ -328,6 +328,7 @@ public class CharaMoveManager : MonoBehaviour {
 						this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo) + "マス";
 						GuideC.ToUnderGround ();	
 						GuideC.adjustNextGuidePos ();
+//						ArrowC.activateArrowButton ();
 					}
 				} else {
 
@@ -360,6 +361,10 @@ public class CharaMoveManager : MonoBehaviour {
 			Player_pos.z --;
 			Debug.Log ("ｚ--修正完了");
 		}
+	}
+		
+	public void StartRunning(){
+		RunningInfo = true;		
 	}
 
 	//#################################################################################

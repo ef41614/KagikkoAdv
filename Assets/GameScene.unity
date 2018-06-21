@@ -25711,7 +25711,6 @@ GameObject:
   - component: {fileID: 553466843}
   - component: {fileID: 553466842}
   - component: {fileID: 553466841}
-  - component: {fileID: 553466844}
   m_Layer: 5
   m_Name: ButtonF
   m_TagString: Untagged
@@ -25775,7 +25774,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 553466842}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1756371098}
+        m_MethodName: deactivateArrowButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 704749202}
+        m_MethodName: MoveForward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 704749202}
+        m_MethodName: StartRunning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &553466842
@@ -25811,36 +25843,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 553466839}
---- !u!114 &553466844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 553466839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 704749202}
-          m_MethodName: MoveForward
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &553660569
 GameObject:
   m_ObjectHideFlags: 0
@@ -45901,7 +45903,6 @@ GameObject:
   - component: {fileID: 794805311}
   - component: {fileID: 794805310}
   - component: {fileID: 794805309}
-  - component: {fileID: 794805312}
   m_Layer: 5
   m_Name: ButtonB
   m_TagString: Untagged
@@ -45965,7 +45966,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 794805310}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 704749202}
+        m_MethodName: MoveBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1756371098}
+        m_MethodName: deactivateArrowButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &794805310
@@ -46001,36 +46024,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 794805307}
---- !u!114 &794805312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 794805307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 704749202}
-          m_MethodName: MoveBack
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1001 &798317785
 Prefab:
   m_ObjectHideFlags: 0
@@ -60581,7 +60574,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 2, z: 0.1}
+  m_Size: {x: 0.1, y: 5, z: 0.1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1030458198
 Prefab:
@@ -74949,14 +74942,13 @@ MonoBehaviour:
   RemainingSteps: 0
   Player_pos: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
+  myAnimator: {fileID: 0}
   UIsRunning: 0
   rectTran: {fileID: 0}
   DiceC: {fileID: 0}
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   UDiceTicket: 1
-  keySC: {fileID: 0}
-  Key: {fileID: 0}
 --- !u!143 &1259577290
 CharacterController:
   m_ObjectHideFlags: 0
@@ -77443,6 +77435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DiceC: {fileID: 0}
+  GuideM: {fileID: 1029454290}
   canMove1P: 1
   canMove2P: 0
 --- !u!4 &1313303065
@@ -101306,6 +101299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canRoll: 1
+  charamovemanager: {fileID: 704749201}
 --- !u!1001 &1745164605
 Prefab:
   m_ObjectHideFlags: 0
@@ -102141,6 +102135,11 @@ MonoBehaviour:
   UchanCamera: {fileID: 791990880}
   PchanCamera: {fileID: 1930691185}
   ViewButtons: {fileID: 1391940229}
+  ButtonF: {fileID: 553466841}
+  ButtonB: {fileID: 794805309}
+  ButtonL: {fileID: 2117940697}
+  ButtonR: {fileID: 2129038832}
+  ActiveArrowButton: 1
 --- !u!1001 &1756822078
 Prefab:
   m_ObjectHideFlags: 0
@@ -106172,8 +106171,6 @@ MonoBehaviour:
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   PDiceTicket: 1
-  keySC: {fileID: 0}
-  Key: {fileID: 0}
 --- !u!54 &1836846338
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -112887,8 +112884,6 @@ MonoBehaviour:
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   PDiceTicket: 1
-  keySC: {fileID: 0}
-  Key: {fileID: 0}
 --- !u!114 &2010356754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116720,14 +116715,13 @@ MonoBehaviour:
   RemainingSteps: 0
   Player_pos: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
+  myAnimator: {fileID: 0}
   UIsRunning: 0
   rectTran: {fileID: 0}
   DiceC: {fileID: 0}
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   UDiceTicket: 1
-  keySC: {fileID: 0}
-  Key: {fileID: 0}
 --- !u!23 &2097214275
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -118168,7 +118162,6 @@ GameObject:
   - component: {fileID: 2117940699}
   - component: {fileID: 2117940698}
   - component: {fileID: 2117940697}
-  - component: {fileID: 2117940700}
   m_Layer: 5
   m_Name: ButtonL
   m_TagString: Untagged
@@ -118232,7 +118225,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2117940698}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 704749202}
+        m_MethodName: MoveLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1756371098}
+        m_MethodName: deactivateArrowButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2117940698
@@ -118268,36 +118283,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2117940695}
---- !u!114 &2117940700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2117940695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 704749202}
-          m_MethodName: MoveLeft
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1001 &2117969298
 Prefab:
   m_ObjectHideFlags: 0
@@ -118949,7 +118934,6 @@ GameObject:
   - component: {fileID: 2129038834}
   - component: {fileID: 2129038833}
   - component: {fileID: 2129038832}
-  - component: {fileID: 2129038835}
   m_Layer: 5
   m_Name: ButtonR
   m_TagString: Untagged
@@ -119013,7 +118997,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2129038833}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 704749202}
+        m_MethodName: MoveRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1756371098}
+        m_MethodName: deactivateArrowButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2129038833
@@ -119049,36 +119055,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2129038830}
---- !u!114 &2129038835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2129038830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 704749202}
-          m_MethodName: MoveRight
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &2129530154
 GameObject:
   m_ObjectHideFlags: 0

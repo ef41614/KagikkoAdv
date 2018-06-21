@@ -23,6 +23,9 @@ public class DiceButtonController : MonoBehaviour {
 	FadeScript FadeSC;
 	GameObject ArrowB;
 	private float timeleft;
+	public AudioClip DiceRollSE;
+	private AudioSource audioSource;
+
 
 
 	//☆################☆################  Start  ################☆################☆
@@ -43,6 +46,7 @@ public class DiceButtonController : MonoBehaviour {
 		FadeSC = fadeScript.GetComponent<FadeScript> ();
 		ArrowB = GameObject.Find ("arrowButtons");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
+		audioSource = this.gameObject.GetComponent<AudioSource> ();
 	}
 
 	//####################################  Update  ###################################
@@ -102,6 +106,7 @@ public class DiceButtonController : MonoBehaviour {
 			}
 			Debug.Log("サイコロ投げた！");
 			Debug.Log("サイコロが止まった！ あと"+DiceResult+"マス動けます");
+			audioSource.PlayOneShot (DiceRollSE);
 			DiceB.transform.Translate (0,0,10);
 			DiceB.transform.Rotate(new Vector3(0, 270, 0));
 			GuideC.ToUnderGround ();	

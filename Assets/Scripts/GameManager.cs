@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 
 	public AudioClip getKeySE;
 	public AudioClip getTreasureSE;
+	public AudioClip CrashPlayerSE_small;
+	public AudioClip CrashPlayerSE_big;
 	public AudioClip fieldBGM;
 	public AudioSource FieldBGM;
 	private AudioSource audioSource;
@@ -169,6 +171,13 @@ public class GameManager : MonoBehaviour {
 		Debug.Log ("GetTreasure 終了です");
 	}
 
+	public void CrashOtherPlayer_weak(){
+		audioSource.PlayOneShot (CrashPlayerSE_small);
+	}
+
+	public void CrashOtherPlayer_strong(){
+		audioSource.PlayOneShot (CrashPlayerSE_big);
+	}
 
 	public void getPositionInfo(){
 		do {

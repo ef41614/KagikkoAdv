@@ -37,6 +37,9 @@ public class PchanController : MonoBehaviour {
 	public int PDiceTicket = 1;
 	float timeleft =0;
 
+	public GameObject gameManager;
+	GameManager GMScript;
+
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
 		m_charCtrl = GetComponent<CharacterController>();
@@ -61,6 +64,7 @@ public class PchanController : MonoBehaviour {
 
 		ArrivedNextPoint = true;
 		Debug.Log("開始 PDiceTicket :"+PDiceTicket);
+		GMScript = gameManager.GetComponent<GameManager> ();
 	}
 
 	//####################################  Update  ###################################
@@ -137,8 +141,14 @@ public class PchanController : MonoBehaviour {
 				UnityChanController uc = other.gameObject.GetComponent<UnityChanController> ();
 				PchanController pc = other.gameObject.GetComponent<PchanController> ();
 				if (uc) {
-					uc.Move (transform.forward, Random.Range (1, 5) * 3.0f);
+					int rnd = Random.Range (1, 5);
+					uc.Move (transform.forward, rnd* 3.0f);
 					Debug.Log("Pちゃんの体当たりだ！");
+					if (rnd <= 2) {
+						GMScript.CrashOtherPlayer_weak ();
+					} else if (rnd > 2) {
+						GMScript.CrashOtherPlayer_strong ();
+					}
 				}
 
 			}

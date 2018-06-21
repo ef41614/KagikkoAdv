@@ -37,6 +37,9 @@ public class UnityChanController : MonoBehaviour {
 	public int UDiceTicket = 1;
 	float timeleft =0;
 
+	public GameObject gameManager;
+	GameManager GMScript;
+
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
 		m_charCtrl = GetComponent<CharacterController>();
@@ -61,6 +64,7 @@ public class UnityChanController : MonoBehaviour {
 
 		ArrivedNextPoint = true;
 		Debug.Log("開始 UDiceTicket :"+UDiceTicket);
+		GMScript = gameManager.GetComponent<GameManager> ();
 	}
 
 	//####################################  Update  ###################################
@@ -141,8 +145,15 @@ public class UnityChanController : MonoBehaviour {
 				UnityChanController uc = other.gameObject.GetComponent<UnityChanController> ();
 				PchanController pc = other.gameObject.GetComponent<PchanController> ();
 				if (pc) {
-					pc.Move (transform.forward, Random.Range (1, 5) * 3.0f);
+					int rnd = Random.Range (1, 5);
+//					pc.Move (transform.forward, Random.Range (1, 5) * 3.0f);
+					pc.Move (transform.forward, rnd * 3.0f);
 					Debug.Log ("Uちゃんの体当たりだ！");
+					if (rnd <= 2) {
+						GMScript.CrashOtherPlayer_weak ();
+					} else if (rnd > 2) {
+						GMScript.CrashOtherPlayer_strong ();
+					}
 				}
 			}
 

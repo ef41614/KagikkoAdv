@@ -325,7 +325,7 @@ public class CharaMoveManager : MonoBehaviour {
 						activeChara.transform.DOLocalMove (NextPos, RunTime);
 						activeChara.transform.rotation = Quaternion.AngleAxis (turn, new Vector3 (0, 1, 0));
 						RemainingStepsInfo -= 1;
-						this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo - 1) + "マス";
+						this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo) + "マス";
 						GuideC.ToUnderGround ();	
 						GuideC.adjustNextGuidePos ();
 					}
@@ -340,7 +340,7 @@ public class CharaMoveManager : MonoBehaviour {
 
 
 	void FixPosition(){
-		this.stepTx.GetComponent<Text> ().text = "あと " + RemainingStepsInfo + "マス";
+//		this.stepTx.GetComponent<Text> ().text = "あと " + RemainingStepsInfo + "マス";
 		Debug.Log ("修正中");
 		Player_pos.x = Mathf.RoundToInt ( ((Player_pos.x)/3)*3);
 		Debug.Log ("Player_pos.x % 3 は"+ Player_pos.x % 3);

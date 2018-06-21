@@ -86,18 +86,18 @@ public class DiceButtonController : MonoBehaviour {
 	public void DiceRoll() {
 		this.DiceB = GameObject.Find ("DiceRollButton");
 		if (DiceB != null) {
-			int num = Random.Range (2, 7);
+			int num = Random.Range (1, 6);
 			DiceResult = num;
 			if(TurnMscript.canMove1P == true){
 //				Uscript.RemainingSteps = DiceResult;
 				CharaMoveMscript.RemainingStepsInfo = DiceResult;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (Uscript.RemainingSteps) + "マス";
+				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
 				Uscript.UDiceTicket--;
 			}
 			if(TurnMscript.canMove2P == true){
 //				Pscript.RemainingSteps = DiceResult;
 				CharaMoveMscript.RemainingStepsInfo = DiceResult;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (Pscript.RemainingSteps) + "マス";
+				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
 				Pscript.PDiceTicket--;
 			}
 			Debug.Log("サイコロ投げた！");

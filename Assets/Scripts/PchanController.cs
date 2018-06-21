@@ -125,7 +125,7 @@ public class PchanController : MonoBehaviour {
 		if (TurnMscript.canMove2P == true) {
 			if (other.gameObject.tag == "guideM") {
 				ArrivedNextPoint = false;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingSteps - 1) + "マス";
+//				this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingSteps - 1) + "マス";
 				Debug.Log ("PちゃんguideMから離脱_RemainingSteps");
 			}
 		}
@@ -137,7 +137,7 @@ public class PchanController : MonoBehaviour {
 				UnityChanController uc = other.gameObject.GetComponent<UnityChanController> ();
 				PchanController pc = other.gameObject.GetComponent<PchanController> ();
 				if (uc) {
-					uc.Move (transform.forward, Random.Range (1, 4) * 3.0f);
+					uc.Move (transform.forward, Random.Range (1, 5) * 3.0f);
 					Debug.Log("Pちゃんの体当たりだ！");
 				}
 

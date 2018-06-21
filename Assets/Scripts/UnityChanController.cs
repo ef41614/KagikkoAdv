@@ -15,7 +15,7 @@ public class UnityChanController : MonoBehaviour {
 	public Vector3 Player_pos; 
 
 	public Rigidbody rb;
-	private Animator myAnimator;
+	public Animator myAnimator;
 	private GameObject stepTx;  //残り歩数
 
 	public bool UIsRunning = false;
@@ -141,7 +141,7 @@ public class UnityChanController : MonoBehaviour {
 				UnityChanController uc = other.gameObject.GetComponent<UnityChanController> ();
 				PchanController pc = other.gameObject.GetComponent<PchanController> ();
 				if (pc) {
-					pc.Move (transform.forward, Random.Range (1, 4) * 3.0f);
+					pc.Move (transform.forward, Random.Range (1, 5) * 3.0f);
 					Debug.Log ("Uちゃんの体当たりだ！");
 				}
 			}

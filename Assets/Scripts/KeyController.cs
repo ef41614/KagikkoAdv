@@ -20,6 +20,9 @@ public class KeyController : MonoBehaviour {
 	public float torque=1000;
 	private FixedJoint myjoint;
 
+	public GameObject KeyImage;
+	public KeyParticle KeyParticleSC;
+
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
@@ -33,6 +36,8 @@ public class KeyController : MonoBehaviour {
 		GoalM = CanvasGoal.GetComponent<GoalManager> ();
 		rb = GetComponent<Rigidbody>();
 		key_pos = GetComponent<Transform>().position;
+
+		KeyParticleSC = KeyImage.GetComponent<KeyParticle> ();
 	}
 
 	//####################################  Update  ###################################
@@ -61,6 +66,7 @@ public class KeyController : MonoBehaviour {
 			GMScript.CreateTreasure ();
 			rb.velocity = Vector3.zero;
 			// ゲットしたプレーヤーの子オブジェクトになる
+			KeyParticleSC.GetKeyParticle();
 			this.gameObject.transform.parent = parentObject.transform;
 			GetParentName ();
 //			transform.position = new Vector3( 0.0f, 1.0f, 0.0f);

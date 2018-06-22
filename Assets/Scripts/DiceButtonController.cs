@@ -95,15 +95,16 @@ public class DiceButtonController : MonoBehaviour {
 			if(TurnMscript.canMove1P == true){
 //				Uscript.RemainingSteps = DiceResult;
 				CharaMoveMscript.RemainingStepsInfo = DiceResult;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
+//				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
 				Uscript.UDiceTicket--;
 			}
 			if(TurnMscript.canMove2P == true){
 //				Pscript.RemainingSteps = DiceResult;
 				CharaMoveMscript.RemainingStepsInfo = DiceResult;
-				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
+//				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
 				Pscript.PDiceTicket--;
 			}
+			CharaMoveMscript.stepsLeft ();
 			Debug.Log("サイコロ投げた！");
 			Debug.Log("サイコロが止まった！ あと"+DiceResult+"マス動けます");
 			audioSource.PlayOneShot (DiceRollSE);

@@ -74,6 +74,8 @@ public class CharaMoveManager : MonoBehaviour {
 	Vector3 BottomPos;
 	Vector3 TopPos;
 
+	public GameObject LangManager;
+	LangManager LangMScript;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -119,6 +121,8 @@ public class CharaMoveManager : MonoBehaviour {
 		BottomPos.z += 3;
 		TopPos = wall_Top.transform.position;
 		TopPos.z -= 3.5f;
+
+		stepsLeft ();
 	}
 
 	//####################################  Update  ###################################
@@ -326,7 +330,9 @@ public class CharaMoveManager : MonoBehaviour {
 						activeChara.transform.DOLocalMove (NextPos, RunTime);
 						activeChara.transform.rotation = Quaternion.AngleAxis (turn, new Vector3 (0, 1, 0));
 						RemainingStepsInfo -= 1;
-						this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo) + "マス";
+
+						stepsLeft ();
+
 						GuideC.ToUnderGround ();	
 						GuideC.adjustNextGuidePos ();
 //						ArrowC.activateArrowButton ();
@@ -335,6 +341,18 @@ public class CharaMoveManager : MonoBehaviour {
 
 				}
 			}
+		}
+	}
+
+	public void stepsLeft(){
+		LangManager = GameObject.Find ("LangManager");
+		LangMScript = LangManager.GetComponent<LangManager> ();
+
+		if (LangMScript.LangMode == 1) {
+			this.stepTx.GetComponent<Text> ().text =  (RemainingStepsInfo) + " steps left";
+		}
+		if (LangMScript.LangMode == 2) {
+			this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo) + "マス";
 		}
 	}
 

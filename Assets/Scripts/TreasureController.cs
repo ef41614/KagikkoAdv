@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class TreasureController : MonoBehaviour {
 
@@ -11,6 +13,9 @@ public class TreasureController : MonoBehaviour {
 	public Text targetText; 
 	public float difference = 10;
 	GameObject MainCamera; 
+
+	public GameObject LangManager;
+	LangManager LangMScript;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -36,7 +41,15 @@ public class TreasureController : MonoBehaviour {
 //			inFrontOfCamera ();
 			GMScript.GetTreasure ();
 			GMScript.CreateKey ();
-			GMScript.sentence = "たからばこが あいたよ！";
+//			GMScript.sentence = "たからばこが あいたよ！";
+			LangManager = GameObject.Find ("LangManager");
+			LangMScript = LangManager.GetComponent<LangManager> ();
+			if (LangMScript.LangMode == 1) {
+				GMScript.sentence = "Treasure Chest opened ！";
+				}
+				if (LangMScript.LangMode == 2) {
+				GMScript.sentence = "たからばこが あいたよ！";
+			}
 			GMScript.waitTime = 4.0f;
 			GMScript.ActiveMewindow ();
 			GMScript.DisplayMessage ();
@@ -47,9 +60,17 @@ public class TreasureController : MonoBehaviour {
 //	void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
 			GMScript.messageOrder = true;
-			GMScript.sentence = "カギがないと あかないよ！";
+//			GMScript.sentence = "カギがないと あかないよ！";
+			LangManager = GameObject.Find ("LangManager");
+			LangMScript = LangManager.GetComponent<LangManager> ();
+			if (LangMScript.LangMode == 1) {
+				GMScript.sentence = "You can't open without the key！";
+			}
+			if (LangMScript.LangMode == 2) {
+				GMScript.sentence = "カギがないと あかないよ！";
+			}
 			GMScript.ArriveTreasure ();
-			GMScript.waitTime = 2.0f;
+			GMScript.waitTime = 3.0f;
 			GMScript.ActiveMewindow ();
 			GMScript.DisplayMessage ();
 

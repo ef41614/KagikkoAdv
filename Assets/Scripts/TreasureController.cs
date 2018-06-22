@@ -36,7 +36,7 @@ public class TreasureController : MonoBehaviour {
 //			inFrontOfCamera ();
 			GMScript.GetTreasure ();
 			GMScript.CreateKey ();
-			GMScript.sentence = "宝箱が開いたよ！";
+			GMScript.sentence = "たからばこが あいたよ！";
 			GMScript.waitTime = 4.0f;
 			GMScript.ActiveMewindow ();
 			GMScript.DisplayMessage ();
@@ -47,7 +47,8 @@ public class TreasureController : MonoBehaviour {
 //	void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
 			GMScript.messageOrder = true;
-			GMScript.sentence = "カギがないと開かないよ！";
+			GMScript.sentence = "カギがないと あかないよ！";
+			GMScript.ArriveTreasure ();
 			GMScript.waitTime = 2.0f;
 			GMScript.ActiveMewindow ();
 			GMScript.DisplayMessage ();

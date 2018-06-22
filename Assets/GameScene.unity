@@ -73564,7 +73564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getKeySE: {fileID: 8300000, guid: af9ee30105d9a1d4f820a52b23a7680a, type: 3}
-  getTreasureSE: {fileID: 8300000, guid: 97f22224195ae8844a1347fc23e64dcb, type: 3}
+  ArriveTreasureSE: {fileID: 8300000, guid: 7f6ed35f1b178e8499fbfc2916d289e8, type: 3}
   CrashPlayerSE_small: {fileID: 8300000, guid: 535291ef2b1695f4ca687e4838cb3a97, type: 3}
   CrashPlayerSE_big: {fileID: 8300000, guid: 09321ffadf03cb84a951c75326ea6ae1, type: 3}
   fieldBGM: {fileID: 8300000, guid: f6a3ce80e9fa87f4d9540ef01433d2f2, type: 3}
@@ -75347,6 +75347,8 @@ MonoBehaviour:
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   UDiceTicket: 1
+  keySC: {fileID: 0}
+  Key: {fileID: 0}
   gameManager: {fileID: 1237293803}
 --- !u!143 &1259577290
 CharacterController:
@@ -106667,6 +106669,8 @@ MonoBehaviour:
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   PDiceTicket: 1
+  keySC: {fileID: 0}
+  Key: {fileID: 0}
   gameManager: {fileID: 1237293803}
 --- !u!54 &1836846338
 Rigidbody:
@@ -113381,6 +113385,8 @@ MonoBehaviour:
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   PDiceTicket: 1
+  keySC: {fileID: 0}
+  Key: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!114 &2010356754
 MonoBehaviour:
@@ -117220,6 +117226,8 @@ MonoBehaviour:
   ArrowC: {fileID: 0}
   ArrivedNextPoint: 0
   UDiceTicket: 1
+  keySC: {fileID: 0}
+  Key: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!23 &2097214275
 MeshRenderer:

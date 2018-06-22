@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour {
 
 	public AudioClip getKeySE;
-	public AudioClip getTreasureSE;
+	public AudioClip ArriveTreasureSE;
 	public AudioClip CrashPlayerSE_small;
 	public AudioClip CrashPlayerSE_big;
 	public AudioClip fieldBGM;
@@ -169,6 +169,10 @@ public class GameManager : MonoBehaviour {
 		GoalM.GoalDirection();
 //		audioSource.PlayOneShot (getTreasureSE);
 		Debug.Log ("GetTreasure 終了です");
+	}
+
+	public void ArriveTreasure(){
+		audioSource.PlayOneShot (ArriveTreasureSE);
 	}
 
 	public void CrashOtherPlayer_weak(){

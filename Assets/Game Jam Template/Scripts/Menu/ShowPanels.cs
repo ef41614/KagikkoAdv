@@ -11,6 +11,7 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject CreditPanel;
 	public GameObject HowToPlayPanel;
 	public GameObject Handle;
+	public GameObject LanguagesPanel;
 
     private GameObject activePanel;                         
     private MenuObject activePanelMenuObject;
@@ -102,5 +103,14 @@ public class ShowPanels : MonoBehaviour {
 		optionsTint.SetActive (false);
 	}
 
+	public void ShowLanguagesPanel(){
+		LanguagesPanel.SetActive (true);
+		optionsTint.SetActive (true);
+		SetSelection (LanguagesPanel);
+	}
 
+	public void HideLanguagesPanel(){
+		LanguagesPanel.SetActive (false);
+		optionsTint.SetActive (false);
+	}
 }

@@ -36,6 +36,9 @@ public class PchanController : MonoBehaviour {
 
 	public int PDiceTicket = 1;
 	float timeleft =0;
+	GameObject _child;
+	public KeyController keySC;
+	public GameObject Key;
 
 	public GameObject gameManager;
 	GameManager GMScript;
@@ -157,8 +160,16 @@ public class PchanController : MonoBehaviour {
 
 	//相手に体当たりされ、吹っ飛ばされた時の処理
 	public void Move(Vector3 direction, float distance){
+		//_child = transform.FindChild ("KeyPrefab*").gameObject;
+		//子オブジェクトにカギが存在するかどうかを判定する
+		if (GameObject.Find ("KeyPrefab(Clone)").transform.IsChildOf (transform)) {
+			Key = this.transform.Find("KeyPrefab(Clone)").gameObject;
+			keySC = Key.GetComponent<KeyController> ();
+			keySC.DropKey ();
+		}
 		Vector3 moveVector = direction.normalized * distance;
-		transform.DOMove(transform.position + moveVector, 0.5f);
+		rb.AddForce(moveVector*200);
+		Debug.Log("2P吹っ飛んだ！");
 	}
 	//---------------------------------------------------
 

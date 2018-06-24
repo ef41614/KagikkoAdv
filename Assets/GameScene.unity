@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 73c22f274789a9d4e973cf5eacd3bac2,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -41116,7 +41117,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -73671,7 +73672,7 @@ MonoBehaviour:
   FieldBGM: {fileID: 0}
   TreasurePrefab: {fileID: 1760995786118550, guid: 4756e795fdce3bf4897391e03feb4e5c,
     type: 2}
-  KeyPrefab: {fileID: 1316717314363532, guid: 4a20fdcad865fd149bfa6728a76acf9b, type: 2}
+  KeyPrefab: {fileID: 1396309212133680, guid: 2cf5c147229cad14ab41c442a25f9fb5, type: 2}
   appearPosition: {x: 0, y: 0, z: 0}
   targetText: {fileID: 0}
   messageOrder: 0
@@ -112398,7 +112399,7 @@ MonoBehaviour:
   Goalpchan: {fileID: 2010356750}
   CanvasGoalButton: {fileID: 812490745}
   keySC: {fileID: 0}
-  KeyPrefab: {fileID: 1316717314363532, guid: 4a20fdcad865fd149bfa6728a76acf9b, type: 2}
+  KeyPrefab: {fileID: 1396309212133680, guid: 2cf5c147229cad14ab41c442a25f9fb5, type: 2}
   HoldingKeyPlayer: 
 --- !u!82 &1989640189
 AudioSource:

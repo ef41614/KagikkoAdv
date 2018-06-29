@@ -21,8 +21,8 @@ public class LangGroupController : MonoBehaviour {
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
-		JPNSentence = transform.FindChild("JPN_Text").gameObject;
-		ENGSentence = transform.FindChild("ENG_Text").gameObject;
+		JPNSentence = transform.Find("JPN_Text").gameObject;
+		ENGSentence = transform.Find("ENG_Text").gameObject;
 	}
 
 

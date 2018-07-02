@@ -29,6 +29,7 @@ public class GoalManager : MonoBehaviour {
 	public GameObject GoalUchan;
 	public GameObject Goalpchan;
 	public GameObject CanvasGoalButton;
+	public GameObject CanvasGoalMessage;
 	GameObject GoTitleButton;
 	public KeyController keySC;
 	public GameObject KeyPrefab;
@@ -94,6 +95,7 @@ public class GoalManager : MonoBehaviour {
 		}
 //		CanvasGoalButton = GameObject.Find ("CanvasGoalButton");
 		CanvasGoalButton.SetActive (false);
+		CanvasGoalMessage.SetActive (false);
 	}
 
 
@@ -143,7 +145,7 @@ public class GoalManager : MonoBehaviour {
 		if (HoldingKeyPlayer == "pchan") {
 			sequence.InsertCallback(1f, () =>(Goalpchan.SetActive (true)));
 		}
-
+		sequence.InsertCallback(7f, () =>(CanvasGoalMessage.SetActive (true)));
 		sequence.InsertCallback(9f, () =>(CanvasGoalButton.SetActive (true)));
 //		sequence.InsertCallback(5f, () =>(GoTitleButton.SetActive (true)));
 	}
@@ -151,6 +153,7 @@ public class GoalManager : MonoBehaviour {
 	public void RestartGame(){
 		GoalSetOff ();
 		CanvasGoalButton.SetActive (false);
+		CanvasGoalMessage.SetActive (false);
 		Canvas.SetActive (true);
 		GMScript.CreateKey ();
 		GMScript.RestartBGM ();

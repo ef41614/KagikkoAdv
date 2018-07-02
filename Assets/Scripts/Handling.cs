@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Handling : MonoBehaviour {
 
-	public float MovingDistance = 600;
-	public float TopLine = 4061;
-	public float bottomLine = 462;
+	float MovingDistance = 228;
+	float TopLine = 1591;
+	float bottomLine = 230;
 
 	//☆################☆################  Start  ################☆################☆
 

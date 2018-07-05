@@ -103,7 +103,7 @@ public class KeyController : MonoBehaviour {
 //		transform.localPosition = new Vector3( 0.0f, 1.8f, 0.0f);
 		rend.material.color = new Color(0.8f, 0.36f, 0.09f, 255);
 		float x = 0;
-		float y = 0;
+		float y = 300;
 		float z = 0;
 //		rb.AddForce(moveVector*200);
 		rb.AddForce(x,y,z);

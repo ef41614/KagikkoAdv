@@ -5,7 +5,7 @@ using UnityEngine;
 public class Handling : MonoBehaviour {
 
 	float MovingDistance = 228;
-	float TopLine = 1591;
+	float TopLine = 1570;
 	float bottomLine = 230;
 
 	//☆################☆################  Start  ################☆################☆

@@ -108,7 +108,7 @@ public class DiceButtonController : MonoBehaviour {
 			Debug.Log("サイコロ投げた！");
 			Debug.Log("サイコロが止まった！ あと"+DiceResult+"マス動けます");
 			audioSource.PlayOneShot (DiceRollSE);
-			DiceB.transform.Translate (0,0,10);
+//			DiceB.transform.Translate (0,0,10);
 			DiceB.transform.Rotate(new Vector3(0, 270, 0));
 			GuideC.ToUnderGround ();	
 			GuideC.initializePosition ();

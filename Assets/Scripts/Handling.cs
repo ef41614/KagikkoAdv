@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Handling : MonoBehaviour {
 
-	float MovingDistance = 228;
-	float TopLine = 1570;
+	float MovingDistance = 238;
+	float TopLine = 1590;
 	float bottomLine = 230;
 
 	//☆################☆################  Start  ################☆################☆

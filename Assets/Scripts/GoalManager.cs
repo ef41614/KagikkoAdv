@@ -28,6 +28,7 @@ public class GoalManager : MonoBehaviour {
 
 	public GameObject GoalUchan;
 	public GameObject Goalpchan;
+//	public GameObject graypanel;
 	public GameObject CanvasGoalButton;
 	public GameObject CanvasGoalMessage;
 	GameObject GoTitleButton;
@@ -68,6 +69,9 @@ public class GoalManager : MonoBehaviour {
 		GoalCamera.enabled = false;
 		graypanel = GameObject.Find ("graypanel");
 		FadeGoalSC = graypanel.GetComponent<FadeGoalScript> ();
+		FadeGoalSC.goFadeOut = false;
+		FadeGoalSC.goFadeIn = true;
+//		graypanel.SetActive (false);
 //★		GoalTreasure = GameObject.Find ("GoalTreasure");
 		if (GoalTreasure != null) {
 			GoalTreasure.SetActive (false);
@@ -157,6 +161,8 @@ public class GoalManager : MonoBehaviour {
 		Canvas.SetActive (true);
 		GMScript.CreateKey ();
 		GMScript.RestartBGM ();
+		graypanel = GameObject.Find ("graypanel");
+//		graypanel.SetActive (false);
 	}
 
 	public void GoBackTitle(){

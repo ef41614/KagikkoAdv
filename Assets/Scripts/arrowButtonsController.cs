@@ -13,6 +13,8 @@ public class arrowButtonsController : MonoBehaviour {
 
 	public GameObject UchanCamera;
 	public GameObject PchanCamera;
+	public GameObject UchanMapCamera;
+	public GameObject PchanMapCamera;
 
 //	public GameObject CamerasControllerBox;
 //	CamerasController CamerasControllerSC;
@@ -22,6 +24,7 @@ public class arrowButtonsController : MonoBehaviour {
 	public Button ButtonB;
 	public Button ButtonL;
 	public Button ButtonR;
+	public GameObject SearchButtons;
 
 	public bool ActiveArrowButton = true;
 
@@ -57,9 +60,19 @@ public class arrowButtonsController : MonoBehaviour {
 
 
 		if ((UchanCamera.activeSelf) || (PchanCamera.activeSelf)) {
+			ArrowB.SetActive (false);
 			ViewButtons.SetActive (true);
 		} else {
+//			ArrowB.SetActive (true);
 			ViewButtons.SetActive (false);
+		}
+
+		if ((UchanMapCamera.activeSelf) || (PchanMapCamera.activeSelf)) {
+			ArrowB.SetActive (false);
+			SearchButtons.SetActive (true);
+		}else{
+//			ArrowB.SetActive (true);
+			SearchButtons.SetActive (false);
 		}
 
 		//もしキャラ視点カメラがアクティブなら、移動矢印ボタンを無効（非表示）にする

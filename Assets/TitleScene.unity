@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 37026393}
   - component: {fileID: 37026392}
   m_Layer: 5
-  m_Name: RawImage4 (1)
+  m_Name: page4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,7 +606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1350}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37026392
@@ -2563,7 +2563,7 @@ GameObject:
   - component: {fileID: 216074076}
   - component: {fileID: 216074075}
   m_Layer: 5
-  m_Name: RawImage7 (1)
+  m_Name: page7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2590,7 +2590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2700}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216074075
@@ -5004,8 +5004,8 @@ MonoBehaviour:
     LAND\u69D8\r\n\u25CFSYNTY STUDIOS\u69D8\r\n\u25CFSKYTHIANCAT\u69D8\r\n\u25CFPOLY
     UNIT\u69D8\r\n\r\n <color=#ffa500>[\u30A2\u30A4\u30C6\u30E0]</color>\r\n\u25CFROBOCG\u69D8\r\n\u25CF\u30A4\u30E9\u30B9\u30C8AC\u69D8\r\n
     \ \u30FB\u30BC\u30A4\u30EB\u30F3\u3055\u3093\r\n\u25CFFAIRY SHOP\u69D8\r\n\r\n
-    <color=#00ff00ff>\u5236\u4F5C\u5354\u529B\u30FB\u30A2\u30C9\u30D0\u30A4\u30B9</color>\r\n\u25CFTechAcademy\u69D8\r\n\u25CF\u5408\u540C\u4F1A\u793E\u30D7\u30ED\u751F\u69D8\r\n\u25CFjz5\u69D8\r\n\u25CFnknk\u69D8\r\n\r\n\r\n
-    <color=#00ff00ff>\u3053\u306E\u5834\u3092\u501F\u308A\u3066\u304A\u793C\u7533\u3057\u4E0A\u3052\u307E\u3059\u3002</color>"
+    <color=#00ff00ff>\u5236\u4F5C\u5354\u529B\u30FB\u30A2\u30C9\u30D0\u30A4\u30B9</color>\r\n\u25CFTechAcademy\u69D8\r\n\u25CF\u5408\u540C\u4F1A\u793E\u30D7\u30ED\u751F\u69D8\r\n\u25CFjz5\u69D8\r\n\u25CFnknk\u69D8\r\n\r\n\u5236\u4F5C
+    accho\r\n\r\n\r\n <color=#00ff00ff>\u3053\u306E\u5834\u3092\u501F\u308A\u3066\u304A\u793C\u7533\u3057\u4E0A\u3052\u307E\u3059\u3002</color>"
 --- !u!222 &386981137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6523,7 +6523,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &581504880
 GameObject:
@@ -8216,7 +8216,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &737505676
 AudioSource:
@@ -10441,6 +10441,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1424799294}
+        m_MethodName: ResetPositon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &924789044
@@ -10644,7 +10655,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &931097577
 GameObject:
@@ -11876,7 +11887,7 @@ GameObject:
   - component: {fileID: 1079549314}
   - component: {fileID: 1079549313}
   m_Layer: 5
-  m_Name: RawImage5 (1)
+  m_Name: page5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11906,7 +11917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1800}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079549313
@@ -12695,7 +12706,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1159943829
 MonoBehaviour:
@@ -12801,8 +12812,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1424799293}
-        m_MethodName: UpHandle
+      - m_Target: {fileID: 1424799294}
+        m_MethodName: ToBackPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13289,7 +13300,7 @@ RectTransform:
   - {fileID: 1436027338}
   - {fileID: 917811985}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22775084, y: 0.337}
   m_AnchorMax: {x: 0.7727509, y: 0.8407936}
@@ -15265,7 +15276,7 @@ GameObject:
   - component: {fileID: 1326314264}
   - component: {fileID: 1326314263}
   m_Layer: 5
-  m_Name: RawImage1 (1)
+  m_Name: page1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16397,6 +16408,7 @@ GameObject:
   - component: {fileID: 1424799292}
   - component: {fileID: 1424799291}
   - component: {fileID: 1424799293}
+  - component: {fileID: 1424799294}
   m_Layer: 5
   m_Name: SetumeiPanel
   m_TagString: Untagged
@@ -16468,11 +16480,30 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424799289}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 163b76b68f46bf34296d8de4e3273219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1424799294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424799289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc0bb10c9b56e54bb123c50f1ffce59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SetumeiPanel: {fileID: 1424799289}
+  page1: {fileID: 1326314261}
+  page2: {fileID: 1976223862}
+  page3: {fileID: 2130175714}
+  page4: {fileID: 37026390}
+  page5: {fileID: 1079549311}
+  page6: {fileID: 1699052137}
+  page7: {fileID: 216074073}
 --- !u!1 &1429666952
 GameObject:
   m_ObjectHideFlags: 0
@@ -19811,7 +19842,7 @@ GameObject:
   - component: {fileID: 1699052140}
   - component: {fileID: 1699052139}
   m_Layer: 5
-  m_Name: RawImage6 (1)
+  m_Name: page6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19837,7 +19868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2250}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1699052139
@@ -22457,8 +22488,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1424799293}
-        m_MethodName: DownHandle
+      - m_Target: {fileID: 1424799294}
+        m_MethodName: ToNextPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23687,7 +23718,7 @@ GameObject:
   - component: {fileID: 1976223865}
   - component: {fileID: 1976223864}
   m_Layer: 5
-  m_Name: RawImage2 (1)
+  m_Name: page2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23712,7 +23743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -450}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976223864
@@ -24699,7 +24730,7 @@ GameObject:
   - component: {fileID: 2130175717}
   - component: {fileID: 2130175716}
   m_Layer: 5
-  m_Name: RawImage3 (1)
+  m_Name: page3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24730,7 +24761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -900}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2130175716

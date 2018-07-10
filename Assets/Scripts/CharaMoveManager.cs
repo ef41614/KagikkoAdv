@@ -69,10 +69,10 @@ public class CharaMoveManager : MonoBehaviour {
 	GameObject wall_Bottom;
 	GameObject wall_Top;
 
-	Vector3 LeftPos;
-	Vector3 RightPos;
-	Vector3 BottomPos;
-	Vector3 TopPos;
+	public Vector3 LeftPos;
+	public Vector3 RightPos;
+	public Vector3 BottomPos;
+	public Vector3 TopPos;
 
 	public GameObject LangManager;
 	LangManager LangMScript;

@@ -44913,6 +44913,7 @@ GameObject:
   - component: {fileID: 764953246}
   - component: {fileID: 764953247}
   - component: {fileID: 764953248}
+  - component: {fileID: 764953249}
   m_Layer: 0
   m_Name: UchanMapCamera
   m_TagString: Untagged
@@ -45023,6 +45024,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &764953249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 764953242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59ebdf5cfed43940bf74767a4c1ee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &765627796
 GameObject:
   m_ObjectHideFlags: 0
@@ -46394,6 +46406,7 @@ GameObject:
   - component: {fileID: 791990881}
   - component: {fileID: 791990884}
   - component: {fileID: 791990883}
+  - component: {fileID: 791990882}
   m_Layer: 0
   m_Name: UchanCamera
   m_TagString: Untagged
@@ -46414,6 +46427,17 @@ Transform:
   m_Father: {fileID: 1259577293}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &791990882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 791990880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59ebdf5cfed43940bf74767a4c1ee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &791990883
 Behaviour:
   m_ObjectHideFlags: 0
@@ -51963,6 +51987,7 @@ GameObject:
   - component: {fileID: 921295294}
   - component: {fileID: 921295293}
   - component: {fileID: 921295297}
+  - component: {fileID: 921295298}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -52042,6 +52067,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c26bef085bd695479ac824a8035561b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &921295298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 921295292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59ebdf5cfed43940bf74767a4c1ee7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &921330257
@@ -59779,6 +59815,7 @@ GameObject:
   - component: {fileID: 999744523}
   - component: {fileID: 999744525}
   - component: {fileID: 999744526}
+  - component: {fileID: 999744527}
   m_Layer: 0
   m_Name: PchanMapCamera
   m_TagString: Untagged
@@ -59874,6 +59911,17 @@ MonoBehaviour:
   wall_Right: {fileID: 0}
   wall_Bottom: {fileID: 0}
   wall_Top: {fileID: 0}
+--- !u!114 &999744527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 999744521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59ebdf5cfed43940bf74767a4c1ee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &999986252
 GameObject:
   m_ObjectHideFlags: 0
@@ -99452,6 +99500,7 @@ GameObject:
   - component: {fileID: 1652568075}
   - component: {fileID: 1652568074}
   - component: {fileID: 1652568073}
+  - component: {fileID: 1652568072}
   m_Layer: 0
   m_Name: GoalCamera
   m_TagString: Untagged
@@ -99459,6 +99508,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1652568072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652568071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59ebdf5cfed43940bf74767a4c1ee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &1652568073
 Behaviour:
   m_ObjectHideFlags: 0
@@ -110976,6 +111036,7 @@ GameObject:
   - component: {fileID: 1930691189}
   - component: {fileID: 1930691188}
   - component: {fileID: 1930691187}
+  - component: {fileID: 1930691186}
   m_Layer: 0
   m_Name: PchanCamera
   m_TagString: Untagged
@@ -110983,6 +111044,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1930691186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1930691185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59ebdf5cfed43940bf74767a4c1ee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &1930691187
 Behaviour:
   m_ObjectHideFlags: 0

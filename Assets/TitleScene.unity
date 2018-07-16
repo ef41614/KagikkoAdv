@@ -942,8 +942,8 @@ RectTransform:
   m_Father: {fileID: 213622828}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1723,8 +1723,8 @@ RectTransform:
   m_Father: {fileID: 1659451162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4040,7 +4040,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 26}
+  m_AnchoredPosition: {x: 0, y: 41}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &308943612
@@ -4417,7 +4417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.629}
   m_AnchorMax: {x: 0.5, y: 0.629}
-  m_AnchoredPosition: {x: 0, y: 67}
+  m_AnchoredPosition: {x: 0, y: 77}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &333754598
@@ -5002,7 +5002,7 @@ MonoBehaviour:
     (MARCO SIINO)\u69D8\r\n\u25CFtasonco company\u69D8\r\n\u25CFKARBOOSX\u69D8\r\n\u25CFIMMORTAL
     FACTORY\u69D8\r\n\u25CFGAMEMAG CREATION STUDIO\u69D8\r\n\u25CFTERRA NOVA CREATIONS\u69D8\r\n\u25CFPOLYGON
     LAND\u69D8\r\n\u25CFSYNTY STUDIOS\u69D8\r\n\u25CFSKYTHIANCAT\u69D8\r\n\u25CFPOLY
-    UNIT\u69D8\r\n\r\n <color=#ffa500>[\u30A2\u30A4\u30C6\u30E0]</color>\r\n\u25CFROBOCG\u69D8\r\n\u25CF\u30A4\u30E9\u30B9\u30C8AC\u69D8\r\n
+    UNIT\u69D8\r\n\u25CFChia-Hsien, Chu\u69D8\n\r\n <color=#ffa500>[\u30A2\u30A4\u30C6\u30E0]</color>\r\n\u25CFROBOCG\u69D8\r\n\u25CF\u30A4\u30E9\u30B9\u30C8AC\u69D8\r\n
     \ \u30FB\u30BC\u30A4\u30EB\u30F3\u3055\u3093\r\n\u25CFFAIRY SHOP\u69D8\r\n\r\n
     <color=#00ff00ff>\u5236\u4F5C\u5354\u529B\u30FB\u30A2\u30C9\u30D0\u30A4\u30B9</color>\r\n\u25CFTechAcademy\u69D8\r\n\u25CF\u5408\u540C\u4F1A\u793E\u30D7\u30ED\u751F\u69D8\r\n\u25CFjz5\u69D8\r\n\u25CFnknk\u69D8\r\n\r\n\u5236\u4F5C
     accho\r\n\r\n\r\n <color=#00ff00ff>\u3053\u306E\u5834\u3092\u501F\u308A\u3066\u304A\u793C\u7533\u3057\u4E0A\u3052\u307E\u3059\u3002</color>"
@@ -5742,7 +5742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.42043415}
   m_AnchorMax: {x: 0.5, y: 0.42043415}
-  m_AnchoredPosition: {x: 0, y: 11}
+  m_AnchoredPosition: {x: 0, y: 36}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505956479
@@ -6784,7 +6784,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9244,7 +9244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &773451519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12416,7 +12416,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16011,7 +16011,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: To Website
 --- !u!222 &1365193247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16164,8 +16164,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1515410499}
-        m_MethodName: Quit
+      - m_Target: {fileID: 737505674}
+        m_MethodName: GoToWebsite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23259,7 +23259,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3084\u3081\u308B"
+  m_Text: "Web\u30DA\u30FC\u30B8\u3078"
 --- !u!222 &1959702166
 CanvasRenderer:
   m_ObjectHideFlags: 0

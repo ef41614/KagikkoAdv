@@ -26,6 +26,8 @@ public class TitleManager : MonoBehaviour {
 	public AudioClip pushCancelButtonSE;
 	AudioSource audioSource;
 
+	string url = "https://00kagikko.hatenablog.com/";
+
 	[SerializeField]
 	RectTransform rectTran;
 
@@ -101,6 +103,15 @@ public class TitleManager : MonoBehaviour {
 //		return GameMode;
 //	}
 
+	public void GoToWebsite(){
+		#if UNITY_EDITOR
+		Application.OpenURL(url);
+		#elif UNITY_WEBGL
+		Application.ExternalEval(string.Format("window.open('{0}','_blank')", url));
+		#else
+		Application.OpenURL(url);
+		#endif
+	}
 
 
 

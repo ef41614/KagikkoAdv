@@ -53,7 +53,7 @@ public class TitleManager : MonoBehaviour {
 	public void PushStartButton () {
 		loading.SetActive(true);
 		titleLogo.SetActive(false);
-		Buttons.SetActive(false);
+//		Buttons.SetActive(false);
 //		startButton.SetActive(false);
 //		quit.SetActive (false);
 		CreditButton.SetActive(false);

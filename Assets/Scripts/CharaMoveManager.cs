@@ -61,7 +61,7 @@ public class CharaMoveManager : MonoBehaviour {
 	bool canMoveInfo;
 	bool RunningInfo;
 	int TicketInfo = 0;
-	GameObject activeChara;
+	public GameObject activeChara;
 	GameObject activeCharaScript;
 
 	GameObject wall_Left;
@@ -76,6 +76,8 @@ public class CharaMoveManager : MonoBehaviour {
 
 	public GameObject LangManager;
 	LangManager LangMScript;
+	public bool OnBoard = false;
+	public float BoardSpeed = 8;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -238,6 +240,20 @@ public class CharaMoveManager : MonoBehaviour {
 			// 走行中状態がOFF（＝停止状態）の時
 //			this.myAnimator.SetBool ("isRunning", false);  
 			RunningInfo = false;
+		}
+
+		if (OnBoard == true) {
+//			rbInfo.MovePosition(transform.position + transform.forward * Time.deltaTime);
+//			Vector3 moveVector = transform.forward.normalized * 5000;
+			rbInfo.velocity = activeChara.transform.forward * BoardSpeed;
+			this.myAnimator.SetBool ("OnBoard", true);
+
+			activeChara.transform.position = (new Vector3 (
+				Mathf.Clamp (activeChara.transform.position.x, LeftPos.x, RightPos.x),
+				Mathf.Clamp (activeChara.transform.position.y, 0.20f, 0.21f),
+//				Mathf.Clamp (activeChara.transform.position.y, 0.5f, 0.51f),
+				Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
+			));
 		}
 	}
 

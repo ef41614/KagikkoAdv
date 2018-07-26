@@ -123,13 +123,23 @@ public class UnityChanController : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider other){
 		if (TurnMscript.canMove1P == true) {
+			if (other.gameObject.tag == "Board"){
+//				ArrivedNextPoint = true;
+//				RemainingSteps = reduceSteps (RemainingSteps);
+//				Debug.Log ("UちゃんBoardに接触：");
+//★				CharaMoveMscript.OnBoard = true;
+//				Vector3 moveVector = transform.forward.normalized * 500000;
+			}
 			if (other.gameObject.tag == "guideM"){
 				ArrivedNextPoint = true;
-//				RemainingSteps = reduceSteps (RemainingSteps);
+				//				RemainingSteps = reduceSteps (RemainingSteps);
 				Debug.Log ("UちゃんguideMに接触：ステップ＿");
 			}
+
 		}
+
 	}
+		
 
 	void OnTriggerExit(Collider other){
 		if (TurnMscript.canMove1P == true) {

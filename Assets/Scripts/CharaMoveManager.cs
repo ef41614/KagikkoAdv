@@ -247,11 +247,21 @@ public class CharaMoveManager : MonoBehaviour {
 //			Vector3 moveVector = transform.forward.normalized * 5000;
 			rbInfo.velocity = activeChara.transform.forward * BoardSpeed;
 			this.myAnimator.SetBool ("OnBoard", true);
+			RunningInfo = true;
+			Debug.Log ("ボードに乗っているよ");
 
 			activeChara.transform.position = (new Vector3 (
 				Mathf.Clamp (activeChara.transform.position.x, LeftPos.x, RightPos.x),
 				Mathf.Clamp (activeChara.transform.position.y, 0.20f, 0.21f),
 //				Mathf.Clamp (activeChara.transform.position.y, 0.5f, 0.51f),
+				Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
+			));
+		}
+		if (OnBoard == false) {
+			this.myAnimator.SetBool ("OnBoard", false);
+			activeChara.transform.position = (new Vector3 (
+				Mathf.Clamp (activeChara.transform.position.x, LeftPos.x, RightPos.x),
+				Mathf.Clamp (activeChara.transform.position.y, 0.0f, 0.05f),
 				Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
 			));
 		}

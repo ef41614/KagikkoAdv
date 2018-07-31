@@ -59,7 +59,7 @@ public class CharaMoveManager : MonoBehaviour {
 	public int PDiceTicket = 1;
 
 	bool canMoveInfo;
-	bool RunningInfo;
+	public bool RunningInfo;
 	int TicketInfo = 0;
 	public GameObject activeChara;
 	GameObject activeCharaScript;
@@ -221,12 +221,13 @@ public class CharaMoveManager : MonoBehaviour {
 //						if (rbInfo.IsSleeping ()) {
 							DiceC.canRoll = true;
 							ArrowC.canMove = false;
-//							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前");
+							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前");
 //						Invoke ("TurnMscript.ChangePlayer", 1.0f);
 //					TurnMscript.ChangePlayer ();
-						StartCoroutine("WaitAndTurnChange");
-//							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し後");
-//						}
+						if(OnBoard==false){
+							StartCoroutine("WaitAndTurnChange");
+							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し後");
+						}
 					}
 				}
 
@@ -241,21 +242,23 @@ public class CharaMoveManager : MonoBehaviour {
 //			this.myAnimator.SetBool ("isRunning", false);  
 			RunningInfo = false;
 		}
-
+			
 		if (OnBoard == true) {
+			if (TicketInfo < 1) {
 //			rbInfo.MovePosition(transform.position + transform.forward * Time.deltaTime);
 //			Vector3 moveVector = transform.forward.normalized * 5000;
-			rbInfo.velocity = activeChara.transform.forward * BoardSpeed;
-			this.myAnimator.SetBool ("OnBoard", true);
-			RunningInfo = true;
-			Debug.Log ("ボードに乗っているよ");
+				rbInfo.velocity = activeChara.transform.forward * BoardSpeed;
+				this.myAnimator.SetBool ("OnBoard", true);
+				RunningInfo = true;
+				Debug.Log ("ボードに乗っているよ");
 
-			activeChara.transform.position = (new Vector3 (
-				Mathf.Clamp (activeChara.transform.position.x, LeftPos.x, RightPos.x),
-				Mathf.Clamp (activeChara.transform.position.y, 0.20f, 0.21f),
+				activeChara.transform.position = (new Vector3 (
+					Mathf.Clamp (activeChara.transform.position.x, LeftPos.x, RightPos.x),
+					Mathf.Clamp (activeChara.transform.position.y, 0.20f, 0.21f),
 //				Mathf.Clamp (activeChara.transform.position.y, 0.5f, 0.51f),
-				Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
-			));
+					Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
+				));
+			}
 		}
 		if (OnBoard == false) {
 			this.myAnimator.SetBool ("OnBoard", false);
@@ -271,17 +274,21 @@ public class CharaMoveManager : MonoBehaviour {
 
 	IEnumerator WaitAndTurnChange(){
 		yield return new WaitForSeconds(0.8f);
-		FadeSC.goFadeOut = true;
-		FadeSC.goFadeIn = false;
+		Debug.Log ("WaitAndTurnChange 呼び出され中");
+		if (OnBoard == false) {
+			Debug.Log ("WaitAndTurnChange の中で OnBoard == false");
+			FadeSC.goFadeOut = true;
+			FadeSC.goFadeIn = false;
 //		GuideC.initializePosition ();
-		yield return new WaitForSeconds(0.8f);
+			yield return new WaitForSeconds (0.8f);
 //		GuideC.initializePosition ();
-		TurnMscript.ChangePlayer ();
+			TurnMscript.ChangePlayer ();
 //		GuideC.initializePosition ();
-		FadeSC.goFadeOut = false;
-		FadeSC.goFadeIn = true;
-		CamerasControllerSC.inactiveMapCamera ();
-		CamerasControllerSC.inactiveCharaCamera ();
+			FadeSC.goFadeOut = false;
+			FadeSC.goFadeIn = true;
+			CamerasControllerSC.inactiveMapCamera ();
+			CamerasControllerSC.inactiveCharaCamera ();
+		}
 	}
 
 	public void checkNextMove(){

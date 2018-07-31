@@ -14,6 +14,8 @@ public class TurnManager : MonoBehaviour {
 	ImageManager ImageMscript;
 	public GameObject GuideM;
 	guideController GuideC;
+	GameObject charamovemanager;
+	CharaMoveManager CharaMoveMscript;
 
 	public bool canMove1P = true; 
 	public bool canMove2P = false; 
@@ -31,6 +33,8 @@ public class TurnManager : MonoBehaviour {
 		imageManager = GameObject.Find ("imageManager");
 		ImageMscript = imageManager.GetComponent<ImageManager> ();
 		GuideC = GuideM.GetComponent<guideController> ();
+		charamovemanager = GameObject.Find ("charamovemanager");
+		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 	}
 
 	//####################################  Update  ###################################
@@ -45,26 +49,31 @@ public class TurnManager : MonoBehaviour {
 	//	Debug.Log("★ターン切り替えスクリプト呼び出され");
 		if((Uscript.RemainingSteps <=0)&&(canMove1P==true)&&(Uscript.UIsRunning==false)){
 			if ((Uscript.UDiceTicket <= 0)&&(Pscript.PDiceTicket >0)) {
-				canMove1P = false;
-				canMove2P = true;
-			Uscript.UDiceTicket = 1;
-			Pscript.PDiceTicket = 1;
-				ImageMscript.ChangeFaceImage ();
-				GuideC.ToUnderGround ();	
-				GuideC.initializePosition ();
+				if (CharaMoveMscript.OnBoard == false) {
+					canMove1P = false;
+					canMove2P = true;
+					ChangePlayerProcess ();
+				}
 			}
 		}else if((Pscript.RemainingSteps <=0)&&(canMove2P==true)&&(Pscript.PIsRunning==false)){
 			if ((Pscript.PDiceTicket <= 0) && (Uscript.UDiceTicket > 0)) {
-				canMove1P = true;
-				canMove2P = false;
-			Uscript.UDiceTicket = 1;
-			Pscript.PDiceTicket = 1;
-				ImageMscript.ChangeFaceImage ();
-				GuideC.ToUnderGround ();	
-				GuideC.initializePosition ();
+				if (CharaMoveMscript.OnBoard == false) {
+					canMove1P = true;
+					canMove2P = false;
+					ChangePlayerProcess ();
+				}
 			}
 		}
 	}
+
+	public void ChangePlayerProcess(){
+		Uscript.UDiceTicket = 1;
+		Pscript.PDiceTicket = 1;
+		ImageMscript.ChangeFaceImage ();
+		GuideC.ToUnderGround ();	
+		GuideC.initializePosition ();
+	}
+
 
 	//#################################################################################
 

@@ -53,7 +53,7 @@ public class BoardController : MonoBehaviour {
 	public bool RotationBoardFlg = false;
 	Quaternion angle = Quaternion.identity;
 
-	public int mode =0;
+	public int BoardMode =0;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -180,14 +180,14 @@ public class BoardController : MonoBehaviour {
 //			float Size = 0.05f;
 //			this.transform.localScale = new Vector3(Size, Size, Size);
 					//transform.localPosition = new Vector3 (0.0f, -0.4f, -1.146f);
-					transform.localPosition = new Vector3 (0.0f, -0.4f, 0.0f);
+					transform.localPosition = new Vector3 (0.0f, -0.5f, 0.0f);
 //			rend.material.color = new Color(0, 0, 0, 150);
 					//transform.rotation = Quaternion.identity;
 
 					//Vector3 localAngle = parentObject.localEulerAngles;
 					//transform.localEulerAngles = localAngle;
 
-					float angle = 1;
+//					float angle = 1;
 //					transform.Rotate (parentObject.transform.forward, angle);
 
 					rb.velocity = Vector3.zero;
@@ -246,11 +246,11 @@ public class BoardController : MonoBehaviour {
 	}
 
 	public void RotationBoard(){
-		if (mode == 0) {
+		if (BoardMode == 0) {
 		}
-		if (mode == 1) {
+		if (BoardMode == 1) {
 		}
-		if (mode == 2) {
+		if (BoardMode == 2) {
 //		transform.rotation = Quaternion.AngleAxis (90, new Vector3 (0, 1, 0));
 			gameObject.transform.rotation = Quaternion.Euler (0, 90, 0);
 		}

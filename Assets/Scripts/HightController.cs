@@ -38,8 +38,8 @@ public class HightController : MonoBehaviour {
 
 		if (other.gameObject.tag == "Player") {
 
-			if (BoardSC.mode == 0) {
-				BoardSC.mode = 1;
+			if (BoardSC.BoardMode == 0) {
+				BoardSC.BoardMode = 1;
 			}
 //			BoardSC.RotationBoard();
 			//			BoardSC.RotationBoardFlg = true;

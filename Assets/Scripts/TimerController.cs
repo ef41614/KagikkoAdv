@@ -33,7 +33,9 @@ public class TimerController : MonoBehaviour {
 		if (CharaMoveMscript.OnBoard) {
 			if (totalTime > 0) {
 				totalTime -= Time.deltaTime;
-				activateTimerText ();
+				if (CharaMoveMscript.RunningInfo) {
+					activateTimerText ();
+				}
 			}
 			if (totalTime <= 0) {
 				totalTime = 0.00f;

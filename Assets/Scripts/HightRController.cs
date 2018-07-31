@@ -42,12 +42,15 @@ public class HightRController : MonoBehaviour {
 //			gameObject.transform.rotation = Quaternion.Euler (-45, 0, 0);
 //			Board.gameObject.transform.rotation = Quaternion.Euler (90, 0, 0);
 //			Board.gameObject.transform.rotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
-			if (BoardSC.mode == 0) {
-				BoardSC.mode = 2;
+			if (BoardSC.BoardMode == 0) {
+				BoardSC.BoardMode = 2;
 				BoardSC.RotationBoard();
 //			BoardSC.RotationBoardFlg = true;
 				Debug.Log ("★R接触★Board");
 //			}
+			}
+			if (BoardSC.BoardMode == 2) {
+				BoardSC.BoardMode = 0;
 			}
 		}
 	}

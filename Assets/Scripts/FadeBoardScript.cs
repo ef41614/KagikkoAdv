@@ -8,7 +8,7 @@ public class FadeBoardScript : MonoBehaviour {
 
 	Renderer rend;
 	Color color;
-	float alpha;
+	public float alpha;
 	public bool goFadeIn = false;
 	public bool goFadeOut = false;
 
@@ -16,7 +16,7 @@ public class FadeBoardScript : MonoBehaviour {
 
 	void Start () {
 		rend = GetComponent<Renderer> ();
-		alpha = 0;
+		alpha = 1;
 
 	}
 
@@ -25,8 +25,10 @@ public class FadeBoardScript : MonoBehaviour {
 
 	void Update () {
 		if (goFadeOut == true) {
-			alpha = alpha + Time.deltaTime * 0.001f;
-			rend.material.color = new Color (255f, 65f, 28f, alpha);
+			if (alpha > 0.3) {
+				alpha = alpha - Time.deltaTime * 5f;
+				rend.material.color = new Color (255f/255f, 65f/255f, 28f/255f, alpha);
+			}
 		}
 	}
 

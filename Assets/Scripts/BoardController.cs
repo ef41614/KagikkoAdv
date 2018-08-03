@@ -235,6 +235,11 @@ public class BoardController : MonoBehaviour {
 //		FadeSC.goFadeOut = true;
 		FadeBoSC.goFadeOut = true;
 
+		CharaMoveMscript.RunningInfo = false;
+		CharaMoveMscript.ArrivedNextPoint = true;
+//		CharaMoveMscript.TicketInfo=0;
+		CharaMoveMscript.RemainingStepsInfo = 0;
+
 		var sequence = DOTween.Sequence();
 		sequence.InsertCallback(0.5f, () =>(DestroyBoard ()));
 		sequence.InsertCallback(0.6f, () =>(TimerSC.deactivateTimerText()));

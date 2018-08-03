@@ -110,6 +110,7 @@ public class DiceButtonController : MonoBehaviour {
 			audioSource.PlayOneShot (DiceRollSE);
 //			DiceB.transform.Translate (0,0,10);
 			DiceB.transform.Rotate(new Vector3(0, 270, 0));
+			Debug.Log("DiceButtonController からToUnderGround へ！！");//★＜現在抑止中＞
 			GuideC.ToUnderGround ();	
 			GuideC.initializePosition ();
 

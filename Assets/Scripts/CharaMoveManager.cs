@@ -60,7 +60,7 @@ public class CharaMoveManager : MonoBehaviour {
 
 	bool canMoveInfo;
 	public bool RunningInfo;
-	int TicketInfo = 0;
+	public int TicketInfo = 0;
 	public GameObject activeChara;
 	GameObject activeCharaScript;
 
@@ -280,14 +280,21 @@ public class CharaMoveManager : MonoBehaviour {
 			FadeSC.goFadeOut = true;
 			FadeSC.goFadeIn = false;
 //		GuideC.initializePosition ();
-			yield return new WaitForSeconds (0.8f);
+
+			var sequence = DOTween.Sequence();
+			sequence.InsertCallback(0.8f, () =>(TurnMscript.ChangePlayer ()));
+			sequence.InsertCallback(0.8f, () =>(FadeSC.goFadeOut = false));
+			sequence.InsertCallback(0.8f, () =>(FadeSC.goFadeIn = true));
+			sequence.InsertCallback(0.8f, () =>(CamerasControllerSC.inactiveMapCamera ()));
+			sequence.InsertCallback(0.8f, () =>(CamerasControllerSC.inactiveCharaCamera ()));
+			//yield return new WaitForSeconds (0.8f);
 //		GuideC.initializePosition ();
-			TurnMscript.ChangePlayer ();
+			//TurnMscript.ChangePlayer ();
 //		GuideC.initializePosition ();
-			FadeSC.goFadeOut = false;
-			FadeSC.goFadeIn = true;
-			CamerasControllerSC.inactiveMapCamera ();
-			CamerasControllerSC.inactiveCharaCamera ();
+			//FadeSC.goFadeOut = false;
+			//FadeSC.goFadeIn = true;
+			//CamerasControllerSC.inactiveMapCamera ();
+			//CamerasControllerSC.inactiveCharaCamera ();
 		}
 	}
 
@@ -362,13 +369,15 @@ public class CharaMoveManager : MonoBehaviour {
 
 						activeChara.transform.DOLocalMove (NextPos, RunTime);
 						activeChara.transform.rotation = Quaternion.AngleAxis (turn, new Vector3 (0, 1, 0));
-						RemainingStepsInfo -= 1;
 
-						stepsLeft ();
 
+						Debug.Log("CharaMoveManager からToUnderGround へ！！");
 						GuideC.ToUnderGround ();	
 						GuideC.adjustNextGuidePos ();
 //						ArrowC.activateArrowButton ();
+						RemainingStepsInfo -= 1;
+						Debug.Log("歩数「1」減らしたよ！！");
+						stepsLeft ();
 					}
 				} else {
 

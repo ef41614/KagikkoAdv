@@ -8,19 +8,36 @@ public class TimerController : MonoBehaviour {
 
 	public Text timerText;
 	public GameObject TimerBox;
-	public float totalTime;
-	float bonus;
-
+	public float totalTime = 5.0f;
+//	float bonus;
+	int TimeMode =0;
 	public GameObject Board;
 	public GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
 
+
+	void Awake(){
+		TimeMode = Random.Range(0, 100);
+	}
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
-		totalTime = Random.Range(5.0f, 10.0f);
-		bonus = Random.Range(0.0f, 3.0f);
-		totalTime = totalTime + bonus;
+		
+		if (0<=TimeMode && TimeMode <= 40) {
+			totalTime = 5.0f;
+		} else if (41<=TimeMode && TimeMode  <= 70) {
+			totalTime = 7.0f;
+		} else if (71<=TimeMode && TimeMode  <= 85) {
+			totalTime = 9.0f;
+		} else if (86<=TimeMode && TimeMode  <= 95) {
+			totalTime = 11.0f;
+		} else if (96<=TimeMode && TimeMode  <= 100) {
+			totalTime = 15.0f;
+		} else {
+			totalTime = 5.0f;
+		}
+//		bonus = Random.Range(0.0f, 3.0f);
+//		totalTime = totalTime + bonus;
 		totalTime = Mathf.Round(totalTime);
 
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();

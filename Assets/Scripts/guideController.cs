@@ -68,6 +68,7 @@ public class guideController : MonoBehaviour {
 			unitychan = GameObject.Find ("unitychan");
 			Uscript = unitychan.GetComponent<UnityChanController>();
 			CharaPos = Uscript.Player_pos;
+			Debug.Log("見つけろ！unitychan （initializePosition）");
 //			Debug.Log("Uscript.Player_pos :"+Uscript.Player_pos);
 //			CharaPos = GameObject.Find ("unitychan").transform;
 //			CharaPos = unitychan.GetComponent<Transform>();
@@ -80,7 +81,31 @@ public class guideController : MonoBehaviour {
 			Pscript = pchan.GetComponent<PchanController>(); 
 			CharaPos = Pscript.Player_pos;
 //			CharaPos = new Vector3( GameObject.Find ("pchan").transform);
+			Debug.Log("見つけろ！ｐchan （initializePosition）");
 			transform.DOLocalMove (CharaPos, 0.1f);
+		}
+	}
+
+
+	//	public void OnCollisionEnter(Collision other){
+	public void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Player") {
+			Debug.Log ("プレーヤーの誰かが guideMに接触：");
+			if (other.gameObject == CharaMoveMscript.activeChara) {
+				Debug.Log (CharaMoveMscript.activeChara.name+" guideMに接触：");
+				CharaMoveMscript.ArrivedNextPoint = true;
+			}
+		}
+	}
+
+
+	void OnTriggerExit(Collider other){
+		if (other.gameObject.tag == "Player") {
+			Debug.Log ("プレーヤーの誰かが guideMから離脱：");
+			if (other.gameObject == CharaMoveMscript.activeChara) {
+				Debug.Log (CharaMoveMscript.activeChara.name+" guideMから離脱：");
+				CharaMoveMscript.ArrivedNextPoint = false;
+			}
 		}
 	}
 

@@ -16,7 +16,6 @@ public class UnityChanController : MonoBehaviour {
 
 	public Rigidbody rb;
 	public Animator myAnimator;
-	private GameObject stepTx;  //残り歩数
 
 	public bool UIsRunning = false;
 	[SerializeField]
@@ -52,7 +51,6 @@ public class UnityChanController : MonoBehaviour {
 		Player_pos = GetComponent<Transform>().position; //最初の時点でのプレイヤーのポジションを取得
 		rb = GetComponent<Rigidbody>();
 		this.myAnimator = GetComponent<Animator>();
-		this.stepTx = GameObject.Find("stepText");
 		this.myAnimator.SetBool ("isRunning", false);
 
 		DiceB = GameObject.Find ("DiceBox");
@@ -88,18 +86,18 @@ public class UnityChanController : MonoBehaviour {
 				this.myAnimator.SetBool ("isRunning", false);  
 				UIsRunning = false;
 
-				if (RemainingSteps > 0) {
-					CharaMoveMscript.checkNextMove ();
-					ArrowC.canMove = true;
+//				if (RemainingSteps > 0) {
+//					CharaMoveMscript.checkNextMove ();
+//					ArrowC.canMove = true;
 
-				} else if (RemainingSteps <= 0) {
-					if (UDiceTicket <= 0) {
-						if (rb.IsSleeping ()) {
-							DiceC.canRoll = true;
-							ArrowC.canMove = false;
-						}
-					}
-				}
+//				} else if (RemainingSteps <= 0) {
+//					if (UDiceTicket <= 0) {
+//						if (rb.IsSleeping ()) {
+//							DiceC.canRoll = true;
+//							ArrowC.canMove = false;
+//						}
+//					}
+//				}
 
 			} else {
 				this.myAnimator.SetBool ("isRunning", true);
@@ -116,23 +114,16 @@ public class UnityChanController : MonoBehaviour {
 
 	//####################################  other  ####################################
 
-	public int reduceSteps(int stp){
-		stp -= 1;
-		return stp;
-	}
-
 	public void OnTriggerEnter(Collider other){
 		if (TurnMscript.canMove1P == true) {
 			if (other.gameObject.tag == "Board"){
 //				ArrivedNextPoint = true;
-//				RemainingSteps = reduceSteps (RemainingSteps);
 //				Debug.Log ("UちゃんBoardに接触：");
 //★				CharaMoveMscript.OnBoard = true;
 //				Vector3 moveVector = transform.forward.normalized * 500000;
 			}
 			if (other.gameObject.tag == "guideM"){
 				ArrivedNextPoint = true;
-				//				RemainingSteps = reduceSteps (RemainingSteps);
 				Debug.Log ("UちゃんguideMに接触：ステップ＿");
 			}
 

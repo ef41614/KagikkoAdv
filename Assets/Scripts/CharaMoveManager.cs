@@ -18,7 +18,7 @@ public class CharaMoveManager : MonoBehaviour {
 
 	public Rigidbody rbInfo;
 	public Animator myAnimator;
-	private GameObject stepTx;  //残り歩数
+	public GameObject stepTx;  //残り歩数
 
 //	public bool UIsRunning = false;
 	[SerializeField]
@@ -29,18 +29,18 @@ public class CharaMoveManager : MonoBehaviour {
 	private bool canGoF = true;
 	private bool canGoB = true;
 
-	private GameObject dirR;
-	private GameObject dirL;
-	private GameObject dirF;
-	private GameObject dirB;
+	public GameObject dirR;
+	public GameObject dirL;
+	public GameObject dirF;
+	public GameObject dirB;
 
-	private GameObject DiceB; 
-	public DiceButtonController DiceC;
-	private GameObject Arrowbox;
-	GameObject ArrowBtns;
-	public arrowButtonsController ArrowC;
-	private GameObject GuideM;
-	public guideController GuideC;
+	public GameObject DiceB; 
+	DiceButtonController DiceC;
+	public GameObject Arrowbox;
+	public GameObject ArrowBtns;
+	arrowButtonsController ArrowC;
+	public GameObject GuideM;
+	guideController GuideC;
 
 	public bool ArrivedNextPoint = false;
 
@@ -48,9 +48,9 @@ public class CharaMoveManager : MonoBehaviour {
 	UnityChanController Uscript; 
 	GameObject pchan; 
 	PchanController Pscript; 
-	GameObject turnmanager;
+	public GameObject turnmanager;
 	TurnManager TurnMscript;
-	GameObject blackpanel;
+	public GameObject blackpanel;
 	FadeScript FadeSC;
 	public GameObject CamerasControllerBox;
 	CamerasController CamerasControllerSC;
@@ -64,10 +64,10 @@ public class CharaMoveManager : MonoBehaviour {
 	public GameObject activeChara;
 	GameObject activeCharaScript;
 
-	GameObject wall_Left;
-	GameObject wall_Right;
-	GameObject wall_Bottom;
-	GameObject wall_Top;
+	public GameObject wall_Left;
+	public GameObject wall_Right;
+	public GameObject wall_Bottom;
+	public GameObject wall_Top;
 
 	public Vector3 LeftPos;
 	public Vector3 RightPos;
@@ -86,34 +86,34 @@ public class CharaMoveManager : MonoBehaviour {
 		Player_pos = GetComponent<Transform>().position; //最初の時点でのプレイヤーのポジションを取得
 		rbInfo = GetComponent<Rigidbody>();
 		myAnimator = GetComponent<Animator>();
-		this.stepTx = GameObject.Find("stepText");
+//		this.stepTx = GameObject.Find("stepText");
 //		this.myAnimator.SetBool ("isRunning", false);
 
-		DiceB = GameObject.Find ("DiceBox");
+//		DiceB = GameObject.Find ("DiceBox");
 		DiceC = DiceB.GetComponent<DiceButtonController>(); 
-		Arrowbox = GameObject.Find ("ArrowsBox");
-		ArrowBtns = GameObject.Find ("arrowButtons");
+//		Arrowbox = GameObject.Find ("ArrowsBox");
+//		ArrowBtns = GameObject.Find ("arrowButtons");
 		ArrowC = Arrowbox.GetComponent<arrowButtonsController>();
-		GuideM = GameObject.Find ("guideMaster");
+//		GuideM = GameObject.Find ("guideMaster");
 		GuideC = GuideM.GetComponent<guideController> ();
 
 		this.unitychan = GameObject.Find ("unitychan");
 		Uscript = unitychan.GetComponent<UnityChanController>();
 		pchan = GameObject.Find ("pchan"); 
 		Pscript = pchan.GetComponent<PchanController>(); 
-		turnmanager = GameObject.Find ("turnmanager");
+//		turnmanager = GameObject.Find ("turnmanager");
 		TurnMscript = turnmanager.GetComponent<TurnManager>(); 
-		blackpanel = GameObject.Find ("blackpanel");
+//		blackpanel = GameObject.Find ("blackpanel");
 		FadeSC = blackpanel.GetComponent<FadeScript> ();
 
 		CamerasControllerSC = CamerasControllerBox.GetComponent<CamerasController> ();
 
 		ArrivedNextPoint = true;
 
-		wall_Left = GameObject.Find ("Cube_W");
-		wall_Right = GameObject.Find ("Cube_E");
-		wall_Bottom = GameObject.Find ("Cube_S");
-		wall_Top = GameObject.Find ("Cube_N");
+//		wall_Left = GameObject.Find ("Cube_W");
+//		wall_Right = GameObject.Find ("Cube_E");
+//		wall_Bottom = GameObject.Find ("Cube_S");
+//		wall_Top = GameObject.Find ("Cube_N");
 
 		LeftPos = wall_Left.transform.position;
 		LeftPos.x += 3; 
@@ -148,7 +148,8 @@ public class CharaMoveManager : MonoBehaviour {
 			TicketInfo = Uscript.UDiceTicket;
 			rbInfo = unitychan.GetComponent<Rigidbody> ();
 //			RemainingStepsInfo = Uscript.RemainingSteps;
-			Uscript.RemainingSteps = RemainingStepsInfo;
+//★			Uscript.RemainingSteps = RemainingStepsInfo;
+//			RemainingStepsInfo = Uscript.RemainingSteps;
 			Player_pos = unitychan.GetComponent<Transform>().position; 
 			activeChara = unitychan;
 			Uscript.Player_pos = Player_pos;
@@ -164,7 +165,7 @@ public class CharaMoveManager : MonoBehaviour {
 			TicketInfo = Pscript.PDiceTicket;
 			rbInfo = pchan.GetComponent<Rigidbody> ();
 //			RemainingStepsInfo = Pscript.RemainingSteps;
-			Pscript.RemainingSteps = RemainingStepsInfo;
+//			Pscript.RemainingSteps = RemainingStepsInfo;
 			Player_pos = pchan.GetComponent<Transform>().position; 
 			activeChara = pchan;
 			Pscript.Player_pos = Player_pos;

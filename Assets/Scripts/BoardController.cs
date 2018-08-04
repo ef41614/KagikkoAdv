@@ -167,7 +167,8 @@ public class BoardController : MonoBehaviour {
 
 				parentObject = other.gameObject;
 				if (parentObject == CharaMoveMscript.activeChara) {
-
+					CharaMoveMscript.RemainingStepsInfo = 9;
+					CharaMoveMscript.stepsLeft ();
 					transform.position = new Vector3 (transform.position.x, 40, transform.position.z);
 					GMScript.GetKey ();
 //			GMScript.CreateTreasure ();
@@ -225,6 +226,7 @@ public class BoardController : MonoBehaviour {
 	}
 
 	public void GetOffBoard(){
+		CharaMoveMscript.RemainingStepsInfo = 0;
 		// プレーヤーとの親子関係解消（フリーになる）
 		transform.parent = null;
 //		rb.constraints = RigidbodyConstraints.None;
@@ -238,7 +240,7 @@ public class BoardController : MonoBehaviour {
 		CharaMoveMscript.RunningInfo = false;
 		CharaMoveMscript.ArrivedNextPoint = true;
 //		CharaMoveMscript.TicketInfo=0;
-		CharaMoveMscript.RemainingStepsInfo = 0;
+//		CharaMoveMscript.RemainingStepsInfo = 0;
 
 		var sequence = DOTween.Sequence();
 		sequence.InsertCallback(0.5f, () =>(DestroyBoard ()));

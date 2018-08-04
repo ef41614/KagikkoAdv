@@ -44,13 +44,13 @@ public class HightRController : MonoBehaviour {
 //			Board.gameObject.transform.rotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
 			if (BoardSC.BoardMode == 0) {
 				BoardSC.BoardMode = 2;
-				BoardSC.RotationBoard();
+				BoardSC.RotationBoard ();
 //			BoardSC.RotationBoardFlg = true;
 				Debug.Log ("★R接触★Board");
 //			}
-			}
-			if (BoardSC.BoardMode == 2) {
+			} else if (BoardSC.BoardMode == 2) {
 				BoardSC.BoardMode = 0;
+			} else {
 			}
 		}
 	}

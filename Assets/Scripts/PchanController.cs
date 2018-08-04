@@ -16,7 +16,6 @@ public class PchanController : MonoBehaviour {
 
 	public Rigidbody rb;
 	public Animator myAnimator;
-	private GameObject stepTx;  //残り歩数
 
 	public bool PIsRunning = false;
 	[SerializeField]
@@ -52,7 +51,6 @@ public class PchanController : MonoBehaviour {
 		Player_pos = GetComponent<Transform>().position; //最初の時点でのプレイヤーのポジションを取得
 		rb = GetComponent<Rigidbody>();
 		this.myAnimator = GetComponent<Animator>();
-		this.stepTx = GameObject.Find("stepText");
 		this.myAnimator.SetBool ("isRunning", false);
 
 		DiceB = GameObject.Find ("DiceBox");
@@ -85,19 +83,6 @@ public class PchanController : MonoBehaviour {
 				this.myAnimator.SetBool ("isRunning", false);  
 				PIsRunning = false;
 
-				if (RemainingSteps > 0) {
-					CharaMoveMscript.checkNextMove ();
-					ArrowC.canMove = true;
-
-				} else if (RemainingSteps <= 0) {
-					if (PDiceTicket <= 0) {
-						if (rb.IsSleeping ()) {
-							DiceC.canRoll = true;
-							ArrowC.canMove = false;
-						}
-					}
-				}
-
 			} else {
 				this.myAnimator.SetBool ("isRunning", true);
 				PIsRunning = true;
@@ -113,17 +98,10 @@ public class PchanController : MonoBehaviour {
 
 	//####################################  other  ####################################
 
-	public int reduceSteps(int stp){
-		stp -= 1;
-		return stp;
-	}
-
 	public void OnTriggerEnter(Collider other){
 		if (TurnMscript.canMove2P == true) {
 			if (other.gameObject.tag == "guideM") {
 				ArrivedNextPoint = true;
-//				RemainingSteps = reduceSteps (RemainingSteps);
-				Debug.Log ("PちゃんguideMに接触：ステップ＿" + RemainingSteps);
 			}
 		}
 	}
@@ -132,8 +110,6 @@ public class PchanController : MonoBehaviour {
 		if (TurnMscript.canMove2P == true) {
 			if (other.gameObject.tag == "guideM") {
 				ArrivedNextPoint = false;
-//				this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingSteps - 1) + "マス";
-				Debug.Log ("PちゃんguideMから離脱_RemainingSteps");
 			}
 		}
 	}

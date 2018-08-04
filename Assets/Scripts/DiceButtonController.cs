@@ -92,17 +92,17 @@ public class DiceButtonController : MonoBehaviour {
 		if (DiceB != null) {
 			int num = Random.Range (1, 6);
 			DiceResult = num;
-			if(TurnMscript.canMove1P == true){
+//			if((TurnMscript.canMove1P == true)&&(TurnMscript.canMove2P == false)){
+				if(TurnMscript.canMove1P == true){
 //				Uscript.RemainingSteps = DiceResult;
 				CharaMoveMscript.RemainingStepsInfo = DiceResult;
 //				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
-				Uscript.UDiceTicket--;
 			}
-			if(TurnMscript.canMove2P == true){
+//			if((TurnMscript.canMove2P == true)&&(TurnMscript.canMove1P == false)){
+				if(TurnMscript.canMove2P == true){
 //				Pscript.RemainingSteps = DiceResult;
 				CharaMoveMscript.RemainingStepsInfo = DiceResult;
 //				this.stepTx.GetComponent<Text> ().text = "あと " + (CharaMoveMscript.RemainingStepsInfo) + "マス";
-				Pscript.PDiceTicket--;
 			}
 			CharaMoveMscript.stepsLeft ();
 			Debug.Log("サイコロ投げた！");

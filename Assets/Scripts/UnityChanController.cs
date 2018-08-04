@@ -33,7 +33,6 @@ public class UnityChanController : MonoBehaviour {
 	GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
 
-	public int UDiceTicket = 1;
 	float timeleft =0;
 	GameObject _child;
 	public KeyController keySC;
@@ -64,7 +63,6 @@ public class UnityChanController : MonoBehaviour {
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 
 		ArrivedNextPoint = true;
-		Debug.Log("開始 UDiceTicket :"+UDiceTicket);
 		GMScript = gameManager.GetComponent<GameManager> ();
 	}
 
@@ -75,40 +73,25 @@ public class UnityChanController : MonoBehaviour {
 		timeleft -= Time.deltaTime;
 		if (timeleft <= 0.0) {
 			timeleft = 1.0f;
-
-			//			Debug.Log("UDiceTicket :"+UDiceTicket);
-		}
+	}
 
 
 		if (TurnMscript.canMove1P == true) {
 			if (ArrivedNextPoint == true) {
 				// 走行中状態がOFF（＝停止状態）の時
 				this.myAnimator.SetBool ("isRunning", false);  
-				UIsRunning = false;
-
-//				if (RemainingSteps > 0) {
-//					CharaMoveMscript.checkNextMove ();
-//					ArrowC.canMove = true;
-
-//				} else if (RemainingSteps <= 0) {
-//					if (UDiceTicket <= 0) {
-//						if (rb.IsSleeping ()) {
-//							DiceC.canRoll = true;
-//							ArrowC.canMove = false;
-//						}
-//					}
-//				}
+//★				UIsRunning = false;
 
 			} else {
 				this.myAnimator.SetBool ("isRunning", true);
-				UIsRunning = true;
+//★				UIsRunning = true;
 				ArrivedNextPoint = false;
 
 			}
 		} else {
 			// 走行中状態がOFF（＝停止状態）の時
 			this.myAnimator.SetBool ("isRunning", false);  
-			UIsRunning = false;
+//★			UIsRunning = false;
 		}
 	}
 

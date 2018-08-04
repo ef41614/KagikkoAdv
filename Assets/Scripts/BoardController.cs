@@ -167,7 +167,7 @@ public class BoardController : MonoBehaviour {
 
 				parentObject = other.gameObject;
 				if (parentObject == CharaMoveMscript.activeChara) {
-					CharaMoveMscript.RemainingStepsInfo = 9;
+					CharaMoveMscript.RemainingStepsInfo = 0;
 					CharaMoveMscript.stepsLeft ();
 					transform.position = new Vector3 (transform.position.x, 40, transform.position.z);
 					GMScript.GetKey ();

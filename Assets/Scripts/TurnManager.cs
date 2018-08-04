@@ -47,10 +47,10 @@ public class TurnManager : MonoBehaviour {
 
 	public void ChangePlayer(){
 		Debug.Log("★ターン切り替えスクリプト呼び出され");
-		if((Uscript.RemainingSteps <=0)&&(canMove1P==true)&&(Uscript.UIsRunning==false)){
+//		if((canMove1P==true)&&(Uscript.UIsRunning==false)){
+		if((canMove1P==true)&&(CharaMoveMscript.RunningInfo==false)){
+			Debug.Log ("★ターン切り替えスクリプト_1P:fase01");
 			if (CharaMoveMscript.RemainingStepsInfo <= 0) {
-				Debug.Log ("★ターン切り替えスクリプト_1P:fase01");
-				if ((Uscript.UDiceTicket <= 0) && (Pscript.PDiceTicket > 0)) {
 					Debug.Log ("★ターン切り替えスクリプト_1P:fase02");
 					if (CharaMoveMscript.OnBoard == false) {
 						Debug.Log ("★ターン切り替えスクリプト_1P:fase03");
@@ -58,12 +58,12 @@ public class TurnManager : MonoBehaviour {
 						canMove2P = true;
 						ChangePlayerProcess ();
 					}
-				}
 			}
-		}else if((Pscript.RemainingSteps <=0)&&(canMove2P==true)&&(Pscript.PIsRunning==false)){
+
+//		}else if((canMove2P==true)&&(Pscript.PIsRunning==false)){
+		}else if((canMove2P==true)&&(CharaMoveMscript.RunningInfo==false)){
 			Debug.Log("★ターン切り替えスクリプト_2P:fase01");
 			if (CharaMoveMscript.RemainingStepsInfo <= 0) {
-				if ((Pscript.PDiceTicket <= 0) && (Uscript.UDiceTicket > 0)) {
 					Debug.Log ("★ターン切り替えスクリプト_2P:fase02");
 					if (CharaMoveMscript.OnBoard == false) {
 						Debug.Log ("★ターン切り替えスクリプト_2P:fase03");
@@ -71,19 +71,17 @@ public class TurnManager : MonoBehaviour {
 						canMove2P = false;
 						ChangePlayerProcess ();
 					}
-				}
 			}
 		}
 	}
 
 	public void ChangePlayerProcess(){
-		Uscript.UDiceTicket = 1;
-		Pscript.PDiceTicket = 1;
 		ImageMscript.ChangeFaceImage ();
 		Debug.Log("TurnManager からToUnderGround へ！！＜現在抑止中じゃない＞ ");//★
 		GuideC.ToUnderGround ();	
 		GuideC.initializePosition ();
 		Debug.Log("★◎★◎★◎★◎★◎★◎★◎★◎★◎ ターン変更完了 ★◎★◎★◎★◎★◎★◎★◎★◎★◎");
+		CharaMoveMscript.RemainingStepsInfo = 100;
 	}
 
 

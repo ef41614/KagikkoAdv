@@ -11,7 +11,7 @@ public class CharaMoveManager : MonoBehaviour {
 	private float RunTime = 0.7f;
 
 	// あと何マス動けるか
-	public int RemainingStepsInfo = 0;
+	public int RemainingStepsInfo = 100;
 
 	public Vector3 Player_pos; 
 	public Vector3 NextPos;
@@ -55,12 +55,9 @@ public class CharaMoveManager : MonoBehaviour {
 	public GameObject CamerasControllerBox;
 	CamerasController CamerasControllerSC;
 
-	public int UDiceTicket = 1;
-	public int PDiceTicket = 1;
-
 	bool canMoveInfo;
 	public bool RunningInfo;
-	public int TicketInfo = 0;
+//	public int TicketInfo = 0;
 	public GameObject activeChara;
 	GameObject activeCharaScript;
 
@@ -144,8 +141,7 @@ public class CharaMoveManager : MonoBehaviour {
 
 		if (TurnMscript.canMove1P == true) {
 			canMoveInfo = TurnMscript.canMove1P;
-			RunningInfo = Uscript.UIsRunning;
-			TicketInfo = Uscript.UDiceTicket;
+//★			RunningInfo = Uscript.UIsRunning;
 			rbInfo = unitychan.GetComponent<Rigidbody> ();
 //			RemainingStepsInfo = Uscript.RemainingSteps;
 //★			Uscript.RemainingSteps = RemainingStepsInfo;
@@ -161,8 +157,7 @@ public class CharaMoveManager : MonoBehaviour {
 
 		if (TurnMscript.canMove2P == true) {
 			canMoveInfo = TurnMscript.canMove2P;
-			RunningInfo = Pscript.PIsRunning;
-			TicketInfo = Pscript.PDiceTicket;
+//★			RunningInfo = Pscript.PIsRunning;
 			rbInfo = pchan.GetComponent<Rigidbody> ();
 //			RemainingStepsInfo = Pscript.RemainingSteps;
 //			Pscript.RemainingSteps = RemainingStepsInfo;
@@ -217,7 +212,6 @@ public class CharaMoveManager : MonoBehaviour {
 //					Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前4");
 				} else if (RemainingStepsInfo <= 0) {
 //					Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前3");
-					if (TicketInfo <= 0) {
 //						Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前2");
 //						if (rbInfo.IsSleeping ()) {
 							DiceC.canRoll = true;
@@ -229,7 +223,6 @@ public class CharaMoveManager : MonoBehaviour {
 							StartCoroutine("WaitAndTurnChange");
 							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し後");
 						}
-					}
 				}
 
 			} else {
@@ -245,7 +238,6 @@ public class CharaMoveManager : MonoBehaviour {
 		}
 			
 		if (OnBoard == true) {
-			if (TicketInfo < 1) {
 //			rbInfo.MovePosition(transform.position + transform.forward * Time.deltaTime);
 //			Vector3 moveVector = transform.forward.normalized * 5000;
 				rbInfo.velocity = activeChara.transform.forward * BoardSpeed;
@@ -259,7 +251,6 @@ public class CharaMoveManager : MonoBehaviour {
 //				Mathf.Clamp (activeChara.transform.position.y, 0.5f, 0.51f),
 					Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
 				));
-			}
 		}
 		if (OnBoard == false) {
 			this.myAnimator.SetBool ("OnBoard", false);
@@ -392,10 +383,18 @@ public class CharaMoveManager : MonoBehaviour {
 		LangMScript = LangManager.GetComponent<LangManager> ();
 
 		if (LangMScript.LangMode == 1) {
-			this.stepTx.GetComponent<Text> ().text =  (RemainingStepsInfo) + " steps left";
+			if (RemainingStepsInfo > 90) {
+				this.stepTx.GetComponent<Text> ().text = "0 steps left";
+			} else if (RemainingStepsInfo <= 90) {
+				this.stepTx.GetComponent<Text> ().text = (RemainingStepsInfo) + " steps left";
+			}
 		}
 		if (LangMScript.LangMode == 2) {
-			this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo) + "マス";
+			if (RemainingStepsInfo > 90) {
+				this.stepTx.GetComponent<Text> ().text = "あと0マス";
+			} else if (RemainingStepsInfo <= 90) {
+				this.stepTx.GetComponent<Text> ().text = "あと " + (RemainingStepsInfo) + "マス";
+			}
 		}
 	}
 

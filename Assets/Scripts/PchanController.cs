@@ -33,7 +33,6 @@ public class PchanController : MonoBehaviour {
 	GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
 
-	public int PDiceTicket = 1;
 	float timeleft =0;
 	GameObject _child;
 	public KeyController keySC;
@@ -64,7 +63,6 @@ public class PchanController : MonoBehaviour {
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 
 		ArrivedNextPoint = true;
-		Debug.Log("開始 PDiceTicket :"+PDiceTicket);
 		GMScript = gameManager.GetComponent<GameManager> ();
 	}
 
@@ -74,25 +72,24 @@ public class PchanController : MonoBehaviour {
 		timeleft -= Time.deltaTime;
 		if (timeleft <= 0.0) {
 			timeleft = 1.0f;
-			//			Debug.Log("PDiceTicket :"+PDiceTicket);
 		}
 
 		if (TurnMscript.canMove2P == true) {
 			if (ArrivedNextPoint == true) {
 				// 走行中状態がOFF（＝停止状態）の時
 				this.myAnimator.SetBool ("isRunning", false);  
-				PIsRunning = false;
+//★				PIsRunning = false;
 
 			} else {
 				this.myAnimator.SetBool ("isRunning", true);
-				PIsRunning = true;
+//★				PIsRunning = true;
 				ArrivedNextPoint = false;
 
 			}
 		} else {
 			// 走行中状態がOFF（＝停止状態）の時
 			this.myAnimator.SetBool ("isRunning", false);  
-			PIsRunning = false;
+//★			PIsRunning = false;
 		}
 	}
 

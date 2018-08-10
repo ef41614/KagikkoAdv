@@ -76,6 +76,15 @@ public class CharaMoveManager : MonoBehaviour {
 	public bool OnBoard = false;
 	public float BoardSpeed = 8;
 
+	public bool isFButtonDown = false;
+	public bool isBButtonDown = false;
+	public bool isLButtonDown = false;
+	public bool isRButtonDown = false;
+
+	public bool ExistFuture = true;
+	float MoveForce = 2.0f;
+	Vector3 moveDirection;
+
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
 		Debug.Log ("CharaMoveManagerスクリプト出席確認");
@@ -142,7 +151,7 @@ public class CharaMoveManager : MonoBehaviour {
 		if (TurnMscript.canMove1P == true) {
 			canMoveInfo = TurnMscript.canMove1P;
 //★			RunningInfo = Uscript.UIsRunning;
-			rbInfo = unitychan.GetComponent<Rigidbody> ();
+			//★rbInfo = unitychan.GetComponent<Rigidbody> ();
 //			RemainingStepsInfo = Uscript.RemainingSteps;
 //★			Uscript.RemainingSteps = RemainingStepsInfo;
 //			RemainingStepsInfo = Uscript.RemainingSteps;
@@ -158,7 +167,7 @@ public class CharaMoveManager : MonoBehaviour {
 		if (TurnMscript.canMove2P == true) {
 			canMoveInfo = TurnMscript.canMove2P;
 //★			RunningInfo = Pscript.PIsRunning;
-			rbInfo = pchan.GetComponent<Rigidbody> ();
+			//★rbInfo = pchan.GetComponent<Rigidbody> ();
 //			RemainingStepsInfo = Pscript.RemainingSteps;
 //			Pscript.RemainingSteps = RemainingStepsInfo;
 			Player_pos = pchan.GetComponent<Transform>().position; 
@@ -174,37 +183,67 @@ public class CharaMoveManager : MonoBehaviour {
 
 		if (canMoveInfo == true) {
 
-			//---動けなくなった時の救済措置---
-			if(ArrowC.canMove == true){
-				GameObject[] directions = GameObject.FindGameObjectsWithTag("guideChild");
-				if (directions != null) {
-				}else{
-					if (Player_pos.x >= 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x-3, this.transform.position.y, this.transform.position.z);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：左に行ったよ");
-					} else if (Player_pos.x < 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x-3, this.transform.position.y, this.transform.position.z);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：右に行ったよ");
-					}
-					if (Player_pos.z >= 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z-3);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：後ろに行ったよ");
-					} else if (Player_pos.z < 0) {
-						Vector3 toLeft = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z+3);
-						transform.DOLocalMove (toLeft, 0.1f);
-						Debug.Log("救済：前に行ったよ");
-					}
-				}
-			}
-			//-----------------------------------
-
 //			Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前5");
 			if (ArrivedNextPoint == true) {
 				// 走行中状態がOFF（＝停止状態）の時
 //				this.myAnimator.SetBool ("isRunning", false);  
+
+				//●◎〇---動けなくなった時の救済措置---●◎〇
+				if(ArrowC.canMove == true){
+					//				GameObject[] directions = GameObject.FindGameObjectsWithTag("guideChild");
+					//				if (directions != null) {
+					if((dirR)||(dirL)||(dirF)||(dirB)){
+						Debug.Log("ターン中だよ。ガイドマスあるよ。");
+						ExistFuture = true;
+						//				}else{
+					}else if((dirR==false)&&(dirL==false)&&(dirF==false)&&(dirB==false)){
+						Debug.Log("ターン中だけど行き場がないよー");
+						ExistFuture = false;
+
+						if (isFButtonDown){
+							//奥に移動
+							//						rbInfo.AddForce (0,0,MoveForce);
+							moveDirection = new Vector3 (0, 0, MoveForce);
+							rbInfo.velocity = moveDirection;
+							//activeChara.transform.rotation = Quaternion.AngleAxis (0, new Vector3 (0, 1, 0));
+							activeChara.transform.rotation = Quaternion.Euler(0, 0f, 0);
+							//						rbInfo.velocity = activeChara.transform.forward * 0.1f;
+							HelperGuide();
+						}
+						if (isBButtonDown){
+							//手前に移動
+							//						rbInfo.AddForce (0,0,-MoveForce);
+							moveDirection = new Vector3 (0, 0, -MoveForce);
+							rbInfo.velocity = moveDirection;
+							//activeChara.transform.rotation = Quaternion.AngleAxis (0, new Vector3 (180, 1, 0));
+							activeChara.transform.rotation = Quaternion.Euler(0, 180f, 0);
+							//						rbInfo.velocity = activeChara.transform.forward * 0.1f;
+							HelperGuide();
+						}
+						if (isLButtonDown){
+							//左に移動
+							//						rbInfo.AddForce (-MoveForce, 0, 0);
+							moveDirection = new Vector3 (-MoveForce,0,0);
+							rbInfo.velocity = moveDirection;
+							//activeChara.transform.rotation = Quaternion.AngleAxis (0, new Vector3 (-90, 1, 0));
+							activeChara.transform.rotation = Quaternion.Euler(0, -90f, 0);
+							//						rbInfo.velocity = activeChara.transform.forward * 0.1f;
+							HelperGuide();
+						}
+						if (isRButtonDown){
+							//右に移動
+							//						rbInfo.AddForce (MoveForce, 0, 0);
+							moveDirection = new Vector3 (MoveForce,0,0);
+							rbInfo.velocity = moveDirection;
+							//activeChara.transform.rotation = Quaternion.AngleAxis (0, new Vector3 (90, 1, 0));
+							activeChara.transform.rotation = Quaternion.Euler(0, 90f, 0);
+							//						rbInfo.velocity = activeChara.transform.forward * 0.1f;
+							HelperGuide();
+						}
+					}
+				}
+				//●◎〇-----------------------------------●◎〇
+
 				RunningInfo = false;
 				if (RemainingStepsInfo > 0) {
 					checkNextMove ();
@@ -428,6 +467,51 @@ public class CharaMoveManager : MonoBehaviour {
 		RunningInfo = true;		
 	}
 
+
+	public void Get_F_ButtonDown() {
+		this.isFButtonDown = true;
+	}
+	public void Get_F_ButtonUp() {
+		this.isFButtonDown = false;
+	}
+		
+	public void Get_B_ButtonDown() {
+		this.isBButtonDown = true;
+	}
+	public void Get_B_ButtonUp() {
+		this.isBButtonDown = false;
+	}
+		
+	public void Get_L_ButtonDown() {
+		this.isLButtonDown = true;
+	}
+	public void Get_L_ButtonUp() {
+		this.isLButtonDown = false;
+	}
+		
+	public void Get_R_ButtonDown() {
+		this.isRButtonDown = true;
+	}
+	public void Get_R_ButtonUp() {
+		this.isRButtonDown = false;
+	}
+		
+	public void GuideToCharapos(){
+		GuideC.ToUnderGround ();
+		GuideC.initializePosition ();
+	}
+
+	public void HelperGuide(){
+		GuideToCharapos ();
+		var sequence = DOTween.Sequence();
+		if ((dirR == false) && (dirL == false) && (dirF == false) && (dirB == false)) {
+			sequence.InsertCallback (0.5f, () => (GuideToCharapos ()));
+		}
+		if ((dirR == false) && (dirL == false) && (dirF == false) && (dirB == false)) {
+			sequence.InsertCallback (1.0f, () => (GuideToCharapos ()));
+		}
+	}
+		
 	//#################################################################################
 
 }

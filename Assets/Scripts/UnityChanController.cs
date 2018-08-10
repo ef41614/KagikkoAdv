@@ -77,6 +77,7 @@ public class UnityChanController : MonoBehaviour {
 
 
 		if (TurnMscript.canMove1P == true) {
+			//rb = CharaMoveMscript.rbInfo;
 			if (ArrivedNextPoint == true) {
 				// 走行中状態がOFF（＝停止状態）の時
 				this.myAnimator.SetBool ("isRunning", false);  

@@ -28,6 +28,9 @@ public class arrowButtonsController : MonoBehaviour {
 
 	public bool ActiveArrowButton = true;
 
+	GameObject charamovemanager;
+	CharaMoveManager CharaMoveMscript;
+
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
@@ -36,6 +39,8 @@ public class arrowButtonsController : MonoBehaviour {
 		Debug.Log("Arrowスクリプト出席確認");
 		ArrowB = GameObject.Find ("arrowButtons");
 
+		charamovemanager = GameObject.Find ("charamovemanager");
+		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 	}
 
 	//####################################  Update  ###################################
@@ -89,6 +94,7 @@ public class arrowButtonsController : MonoBehaviour {
 
 	//矢印ボタン一時無効化
 	public void deactivateArrowButton(){
+		if(CharaMoveMscript.ExistFuture){
 		Debug.Log("矢印ボタン一時無効化");
 //		ArrowB.interactable = false;
 		ButtonF.interactable = false;
@@ -100,6 +106,7 @@ public class arrowButtonsController : MonoBehaviour {
 
 		var sequence = DOTween.Sequence();
 		sequence.InsertCallback(0.5f, () =>(activateArrowButton()));
+		}
 	}
 
 	//矢印ボタン有効化

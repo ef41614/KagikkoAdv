@@ -27,6 +27,8 @@ public class BoardController : MonoBehaviour {
 	public FadeBoardScript FadeBoSC;
 	public GameObject KeyPrefab;
 	Vector3 key_pos; 
+	public GameObject BoardPrefab;
+	Vector3 board_pos;
 
 	public float force=1000;
 	public float torque=1000;
@@ -54,27 +56,33 @@ public class BoardController : MonoBehaviour {
 	Quaternion angle = Quaternion.identity;
 
 	public int BoardMode =0;
+	float WaitTime = 5.0f;
 
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
+		BoardMode = 0;
+		BoardTicket = 1;
+		parentObject = null;
+		WaitTime = 5.0f;
 		rb = GetComponent<Rigidbody>();
 
 		gameManager = GameObject.Find ("GameManager");
 		GMScript = gameManager.GetComponent<GameManager> ();
-		GMScript.getPositionInfo();
-		transform.position = GMScript.appearPosition;
+		GMScript.getBoardPositionInfo();
+		transform.position = GMScript.appearBoardPosition;
 		rend = GetComponentInChildren<Renderer> ();
-		alpha = 0;
+//		alpha = 0;
 		//gameObject.transform.FindChild("子の名前").gameObject;
 //		polygon = gameObject.transform.FindChild("Polygon").gameObject;
 		polygon = GameObject.Find ("Polygon");
 		FadeSC = polygon.GetComponent<FadeScript>();
 		FadeBoSC = polygon.GetComponent<FadeBoardScript>();
 //		timerManager = GameObject.Find ("Timer");
-//		timerManager = GameObject.Find ("TimerManager");
+		timerManager = GameObject.Find ("TimerManager");
 		TimerSC = timerManager.GetComponent<TimerController> ();
-		key_pos = GetComponent<Transform>().position;
+//		key_pos = GetComponent<Transform>().position;
+		board_pos = GetComponent<Transform>().position;
 //		KeyParticleSC = KeyImage.GetComponent<KeyParticle> ();
 
 		charamovemanager = GameObject.Find ("charamovemanager");
@@ -94,17 +102,20 @@ public class BoardController : MonoBehaviour {
 //		Meshrender meshrenderer = GetComponent<MeshRenderer> ();
 //		Meshrender meshrender = GetComponent<MeshRenderer> ();
 		rend = GetComponent<Renderer> ();
-		alpha = 0;
+		alpha = 1;
 //		red = GetComponent<Image>().color.r;
 //		green = GetComponent<Image>().color.g;
 //		blue = GetComponent<Image>().color.b;
+		TimerSC.SetTime();
 	}
 
 
 	//####################################  Update  ###################################
 
 	void Update () {
-		if (CharaMoveMscript.OnBoard) {
+		Debug.Log ("BoardMode: "+BoardMode);
+
+//		if (CharaMoveMscript.OnBoard) {
 //		transform.position = (new Vector3 (
 //			Mathf.Clamp (transform.position.x, LeftPos.x, RightPos.x),
 //			Mathf.Clamp (transform.position.y, BoardHight, BoardHight+0.1f),
@@ -121,7 +132,7 @@ public class BoardController : MonoBehaviour {
 			//transform.position = BoardPos;
 
 //			rb.constraints = RigidbodyConstraints.FreezeRotation;
-			float angle = 1;
+//			float angle = 1;
 //			transform.Rotate(parentObject.transform.forward, angle);
 			//rb.velocity = Vector3.zero;
 //			gameObject.transform.rotation = Quaternion.Euler (parentObject.transform.forward);
@@ -129,19 +140,22 @@ public class BoardController : MonoBehaviour {
 
 //			transform.Translate(Quaternion.AngleAxis(angle, Vector3.up) * new Vector3(0, 0, 0));
 
-		}
+//		} else if (CharaMoveMscript.OnBoard == false) {
+//		}
 
-		if ((goFadeIn == true)&&(alfa>=0)) {
-			GetComponent<Image> ().color = new Color (red, green, blue, alfa);
-			alfa -= FadeSpeed;
-		}
+//		if ((goFadeIn == true)&&(alfa>=0)) {
+//			GetComponent<Image> ().color = new Color (red, green, blue, alfa);
+//			alfa -= FadeSpeed;
+//		}
 
-		if ((goFadeOut == true)&&(alfa<=1)) {
+		if ((goFadeOut == true)&&(alfa>=0.3f)) {
 //			GetComponent<Image> ().color = new Color (red, green, blue, alfa);
 //			GetComponent<Image> ().color = new Color (0,0,0, alfa);
 //			alfa += FadeSpeed;
 //			alpha = alpha + Time.deltaTime * 0.5f;
 //			rend.material.color = new Color(0f, 0f, 0f, alpha);
+			alpha = alpha - Time.deltaTime * 5f;
+			rend.material.color = new Color (255f/255f, 65f/255f, 28f/255f, alpha);
 		}
 
 		if (RotationBoardFlg) {
@@ -159,14 +173,16 @@ public class BoardController : MonoBehaviour {
 	//####################################  other  ####################################
 
 //	public void OnCollisionEnter(Collision other){
-		public void OnTriggerEnter(Collider other){
+		//public void OnTriggerEnter(Collider other){
+	public void touchBoard(Collider other){
 		Debug.Log ("BoardTicket (衝突時): "+BoardTicket);
 
-		if (other.gameObject.tag == "Player") {
+	//	if (other.gameObject.tag == "Player") {
 			if (BoardTicket == 1) {
-
+				Debug.Log ("BoardTicket を拝見します ");
 				parentObject = other.gameObject;
 				if (parentObject == CharaMoveMscript.activeChara) {
+					Debug.Log ("ボードにぶつかったあなた。今、あなたがプレイヤブルですね");
 					CharaMoveMscript.RemainingStepsInfo = 0;
 					CharaMoveMscript.stepsLeft ();
 					transform.position = new Vector3 (transform.position.x, 40, transform.position.z);
@@ -206,14 +222,14 @@ public class BoardController : MonoBehaviour {
 
 					BoardTicket -= 1;
 
-					float WaitTime = TimerSC.totalTime;
+					WaitTime = TimerSC.totalTime;
 					Debug.Log ("WaitTime は： "+ WaitTime);
 					var sequence = DOTween.Sequence();
 //					sequence.InsertCallback(0.5f, () =>(SceneManager.LoadScene ("GameScene")));
 					sequence.InsertCallback(WaitTime, () =>(CharaMoveMscript.OnBoard = false));
 					sequence.InsertCallback(WaitTime, () =>(GetOffBoard()));
 
-				}
+				//}
 			}
 		}
 	}
@@ -235,16 +251,17 @@ public class BoardController : MonoBehaviour {
 
 		goFadeOut = true;
 //		FadeSC.goFadeOut = true;
-		FadeBoSC.goFadeOut = true;
+		//FadeBoSC.goFadeOut = true;
 
-		CharaMoveMscript.RunningInfo = false;
-		CharaMoveMscript.ArrivedNextPoint = true;
+		//CharaMoveMscript.RunningInfo = false;
+		//CharaMoveMscript.ArrivedNextPoint = true;
 //		CharaMoveMscript.TicketInfo=0;
 //		CharaMoveMscript.RemainingStepsInfo = 0;
 
-		var sequence = DOTween.Sequence();
-		sequence.InsertCallback(0.5f, () =>(DestroyBoard ()));
-		sequence.InsertCallback(0.6f, () =>(TimerSC.deactivateTimerText()));
+		//var sequence = DOTween.Sequence();
+		//sequence.InsertCallback(0.5f, () =>(DestroyBoard ()));
+		//sequence.InsertCallback(0.6f, () =>(TimerSC.deactivateTimerText()));
+		GMScript.DestroyBoardPart();
 	}
 
 	public void DestroyBoard (){
@@ -253,14 +270,15 @@ public class BoardController : MonoBehaviour {
 	}
 
 	public void RotationBoard(){
-		if (BoardMode == 0) {
-		}
-		if (BoardMode == 1) {
-		}
-		if (BoardMode == 2) {
+		Debug.Log ("スケートボードを回転させます");
+		//if (BoardMode == 0) {  //デフォルト
+		//}
+		//if (BoardMode == 1) {  //まっすぐ乗った時（回転無し）
+		//}
+		//if (BoardMode == 2) {  //横から乗った時（90度回転）
 //		transform.rotation = Quaternion.AngleAxis (90, new Vector3 (0, 1, 0));
 			gameObject.transform.rotation = Quaternion.Euler (0, 90, 0);
-		}
+		//}
 	}
 	//#################################################################################
 

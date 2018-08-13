@@ -502,8 +502,10 @@ public class CharaMoveManager : MonoBehaviour {
 	}
 
 	public void HelperGuide(){
-		GuideToCharapos ();
 		var sequence = DOTween.Sequence();
+		if ((dirR == false) && (dirL == false) && (dirF == false) && (dirB == false)) {
+			sequence.InsertCallback (0.0f, () => (GuideToCharapos ()));
+		}
 		if ((dirR == false) && (dirL == false) && (dirF == false) && (dirB == false)) {
 			sequence.InsertCallback (0.5f, () => (GuideToCharapos ()));
 		}

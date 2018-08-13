@@ -14,6 +14,7 @@ public class HightController : MonoBehaviour {
 	void Start () {
 		charamovemanager = GameObject.Find ("charamovemanager");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
+		Board = GameObject.Find("BoardPrefab(Clone)");
 		BoardSC = Board.GetComponent<BoardController> ();
 	}
 
@@ -37,13 +38,16 @@ public class HightController : MonoBehaviour {
 		//		Debug.Log ("BoardTicket (衝突時): " + BoardTicket);
 
 		if (other.gameObject.tag == "Player") {
+			Board = GameObject.Find("BoardPrefab(Clone)");
+			BoardSC = Board.GetComponent<BoardController> ();
 
+			BoardSC.touchBoard (other);
 			if (BoardSC.BoardMode == 0) {
 				BoardSC.BoardMode = 1;
+				Debug.Log ("まっすぐBoardに乗った！");
 			}
 //			BoardSC.RotationBoard();
 			//			BoardSC.RotationBoardFlg = true;
-			Debug.Log ("まっすぐBoardに乗った！");
 			//			}
 		}
 	}

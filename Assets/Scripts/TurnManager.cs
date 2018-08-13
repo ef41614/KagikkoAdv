@@ -16,6 +16,8 @@ public class TurnManager : MonoBehaviour {
 	guideController GuideC;
 	GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
+	public GameObject gameManager;
+	GameManager GMScript;
 
 	public bool canMove1P = true; 
 	public bool canMove2P = false; 
@@ -35,6 +37,8 @@ public class TurnManager : MonoBehaviour {
 		GuideC = GuideM.GetComponent<guideController> ();
 		charamovemanager = GameObject.Find ("charamovemanager");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
+		gameManager = GameObject.Find ("GameManager");
+		GMScript = gameManager.GetComponent<GameManager> ();
 	}
 
 	//####################################  Update  ###################################
@@ -81,6 +85,7 @@ public class TurnManager : MonoBehaviour {
 		GuideC.ToUnderGround ();	
 		GuideC.initializePosition ();
 		Debug.Log("★◎★◎★◎★◎★◎★◎★◎★◎★◎ ターン変更完了 ★◎★◎★◎★◎★◎★◎★◎★◎★◎");
+		GMScript.CreateBoard ();
 		CharaMoveMscript.RemainingStepsInfo = 100;
 	}
 

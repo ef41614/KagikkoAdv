@@ -18,30 +18,12 @@ public class TimerController : MonoBehaviour {
 
 	void Awake(){
 		TimeMode = Random.Range(0, 100);
+		totalTime = 5.0f;
 	}
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
-		
-		if (0<=TimeMode && TimeMode <= 40) {
-			totalTime = 5.0f;
-		} else if (41<=TimeMode && TimeMode  <= 70) {
-			totalTime = 7.0f;
-		} else if (71<=TimeMode && TimeMode  <= 85) {
-			totalTime = 9.0f;
-		} else if (86<=TimeMode && TimeMode  <= 95) {
-			totalTime = 11.0f;
-		} else if (96<=TimeMode && TimeMode  <= 100) {
-			totalTime = 15.0f;
-		} else {
-			totalTime = 5.0f;
-		}
-//		bonus = Random.Range(0.0f, 3.0f);
-//		totalTime = totalTime + bonus;
-		totalTime = Mathf.Round(totalTime);
-
-		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
-		deactivateTimerText ();
+		SetTime ();
 	}
 
 	//####################################  Update  ###################################
@@ -77,6 +59,31 @@ public class TimerController : MonoBehaviour {
 		//		ArrowB.interactable = false;
 		//		timerText.interactable = false;
 		TimerBox.SetActive (true);
+	}
+
+	public void SetTime(){
+		TimeMode = Random.Range(0, 100);
+		totalTime = 5.0f;
+
+		if (0<=TimeMode && TimeMode <= 40) {
+			totalTime = 5.0f;
+		} else if (41<=TimeMode && TimeMode  <= 70) {
+			totalTime = 7.0f;
+		} else if (71<=TimeMode && TimeMode  <= 85) {
+			totalTime = 9.0f;
+		} else if (86<=TimeMode && TimeMode  <= 95) {
+			totalTime = 11.0f;
+		} else if (96<=TimeMode && TimeMode  <= 100) {
+			totalTime = 15.0f;
+		} else {
+			totalTime = 5.0f;
+		}
+		//		bonus = Random.Range(0.0f, 3.0f);
+		//		totalTime = totalTime + bonus;
+		totalTime = Mathf.Round(totalTime);
+
+		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
+		deactivateTimerText ();
 	}
 
 	//#################################################################################

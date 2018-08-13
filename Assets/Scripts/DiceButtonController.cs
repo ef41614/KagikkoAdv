@@ -90,7 +90,7 @@ public class DiceButtonController : MonoBehaviour {
 	public void DiceRoll() {
 		this.DiceB = GameObject.Find ("DiceRollButton");
 		if (DiceB != null) {
-			int num = Random.Range (1, 6);
+			int num = Random.Range (1, 7);
 			DiceResult = num;
 //			if((TurnMscript.canMove1P == true)&&(TurnMscript.canMove2P == false)){
 				if(TurnMscript.canMove1P == true){

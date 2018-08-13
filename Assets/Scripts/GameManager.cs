@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour {
 
@@ -17,9 +18,12 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject TreasurePrefab;
 	public GameObject KeyPrefab;
+	public GameObject BoardPrefab;
 	public Vector3 appearPosition;
+	public Vector3 appearBoardPosition;
 	private int rndNum = 0;
 	private int lastTimeNum = 0;
+	private int lastBoardNum = 0;
 
 	GameObject Mewindow;
 	public Text targetText; 
@@ -32,6 +36,13 @@ public class GameManager : MonoBehaviour {
 	FadeScript FadeSC;
 	GameObject CanvasGoal;
 	GoalManager GoalM;
+	public GameObject timerManager;
+	TimerController TimerSC;
+	GameObject charamovemanager;
+	CharaMoveManager CharaMoveMscript;
+	FadeBoardScript FadeBoSC;
+	GameObject polygon;
+
 
 	public GameObject titleM;
 	public GameObject titleMSC;
@@ -64,6 +75,7 @@ public class GameManager : MonoBehaviour {
 //		StartMainScene ();
 		audioSource = this.gameObject.GetComponent<AudioSource> ();
 		CreateKey ();
+		CreateBoard ();
 
 		Mewindow = GameObject.Find ("MeWindow");
 		Mewindow.gameObject.SetActive (false);
@@ -71,7 +83,12 @@ public class GameManager : MonoBehaviour {
 //		FadeGoalSC = graypanel.GetComponent<FadeGoalScript> ();
 		CanvasGoal = GameObject.Find ("CanvasGoal");
 		GoalM = CanvasGoal.GetComponent<GoalManager> ();
-
+		timerManager = GameObject.Find ("TimerManager");
+		TimerSC = timerManager.GetComponent<TimerController> ();
+		charamovemanager = GameObject.Find ("charamovemanager");
+		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
+		polygon = GameObject.Find ("Polygon");
+		FadeBoSC = polygon.GetComponent<FadeBoardScript>();
 	}
 
 
@@ -158,6 +175,13 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public void CreateBoard(){
+		Debug.Log ("CreateBoard します");
+		if (GameObject.Find ("BoardPrefab(Clone)") == null) {
+			GameObject board = (GameObject)Instantiate (BoardPrefab);	
+		}
+	}
+
 	public void GetKey(){
 		audioSource.PlayOneShot (getKeySE);
 	}
@@ -175,6 +199,17 @@ public class GameManager : MonoBehaviour {
 		audioSource.PlayOneShot (ArriveTreasureSE);
 	}
 
+	public void DestroyBoardPart(){
+		GameObject board = GameObject.Find("BoardPrefab(Clone)");
+//		FadeBoSC.goFadeOut = true;
+		CharaMoveMscript.RunningInfo = false;
+		CharaMoveMscript.ArrivedNextPoint = true;
+
+		var sequence = DOTween.Sequence();
+		sequence.InsertCallback(1.5f, () =>(Destroy (board)));
+		sequence.InsertCallback(0.6f, () =>(TimerSC.deactivateTimerText()));
+	}
+
 	public void CrashOtherPlayer_weak(){
 		audioSource.PlayOneShot (CrashPlayerSE_small);
 	}
@@ -185,7 +220,7 @@ public class GameManager : MonoBehaviour {
 
 	public void getPositionInfo(){
 		do {
-			rndNum = Random.Range (1, 9);
+			rndNum = Random.Range (1, 10);
 
 			if (lastTimeNum != rndNum) {
 				Debug.Log ("rndNum      :"+rndNum);
@@ -236,11 +271,66 @@ public class GameManager : MonoBehaviour {
 					appearPosition = new Vector3 (21, 0, -18);
 					Debug.Log ("目指す場所はSOUTH_R");
 					break;
+
+				case 10:
+					appearPosition = new Vector3 (21, 0, -18);
+					Debug.Log ("目指す場所はSOUTH_R");
+					break;
 				}
 			}
 		} while(lastTimeNum == rndNum);
 		lastTimeNum = rndNum;
 		Debug.Log ("lastTimeNum が " + lastTimeNum +"に上書きされます。");
+	}
+
+	public void getBoardPositionInfo(){
+		do {
+			rndNum = Random.Range (1, 7);
+
+			if (lastBoardNum != rndNum) {
+				Debug.Log ("rndNum      :"+rndNum);
+				Debug.Log ("lastBoardNum : " + lastBoardNum);
+
+				switch (rndNum) {
+				case 1:
+					appearBoardPosition = new Vector3 (-18, 0, 21);
+					Debug.Log ("ボードが左上に生成");
+					break;
+
+				case 2:
+					appearBoardPosition = new Vector3 (18, 0, 24);
+					Debug.Log ("ボードが右上に生成");
+					break;
+
+				case 3:
+					appearBoardPosition = new Vector3 (-18, 0, 0);
+					Debug.Log ("ボードが左中央に生成");
+					break;
+
+				case 4:
+					appearBoardPosition = new Vector3 (18, 0, 0);
+					Debug.Log ("ボードが右中央に生成");
+					break;
+
+				case 5:
+					appearBoardPosition = new Vector3 (-18, 0, -18);
+					Debug.Log ("ボードが左下に生成");
+					break;
+
+				case 6:
+					appearBoardPosition = new Vector3 (15, 0, -18);
+					Debug.Log ("ボードが右下に生成");
+					break;
+
+				case 7:
+					appearBoardPosition = new Vector3 (15, 0, -18);
+					Debug.Log ("ボードが右下に生成");
+					break;
+				}
+			}
+		} while(lastBoardNum == rndNum);
+		lastBoardNum = rndNum;
+		Debug.Log ("lastBoardNum が " + lastBoardNum +"に上書きされます。");
 	}
 
 	//#################################################################################

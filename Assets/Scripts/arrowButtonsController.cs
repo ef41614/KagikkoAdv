@@ -30,6 +30,7 @@ public class arrowButtonsController : MonoBehaviour {
 
 	GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
+	int checkArrow = 0;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -46,6 +47,14 @@ public class arrowButtonsController : MonoBehaviour {
 	//####################################  Update  ###################################
 
 	void Update () {
+		if (CharaMoveMscript.RemainingStepsInfo > 70) {
+			ArrowB.SetActive (false);	
+			ActiveArrowButton = false;
+			checkArrow = 1;
+		} else if(checkArrow ==1) {
+			ActiveArrowButton = true;
+			checkArrow = 0;
+		}
 
 		// 勧めるマスが0より大きい時、移動矢印ボタンを有効（再表示）にする
 		if(canMove == true){

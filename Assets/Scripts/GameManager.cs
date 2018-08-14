@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject TreasurePrefab;
 	public GameObject KeyPrefab;
 	public GameObject BoardPrefab;
+	GameObject[] tagBoards;
+
 	public Vector3 appearPosition;
 	public Vector3 appearBoardPosition;
 	private int rndNum = 0;
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour {
 		audioSource = this.gameObject.GetComponent<AudioSource> ();
 		CreateKey ();
 		CreateBoard ();
+//		CreateBoard ();
 
 		Mewindow = GameObject.Find ("MeWindow");
 		Mewindow.gameObject.SetActive (false);
@@ -176,10 +179,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void CreateBoard(){
-		Debug.Log ("CreateBoard します");
-		if (GameObject.Find ("BoardPrefab(Clone)") == null) {
-			GameObject board = (GameObject)Instantiate (BoardPrefab);	
-		}
+		//Debug.Log ("CreateBoard します");
+//		if (GameObject.Find ("BoardPrefab(Clone)") == null) {
+		//	GameObject board = (GameObject)Instantiate (BoardPrefab);	
+//		}
+		CheckBoardCount();
 	}
 
 	public void GetKey(){
@@ -332,6 +336,38 @@ public class GameManager : MonoBehaviour {
 		lastBoardNum = rndNum;
 		Debug.Log ("lastBoardNum が " + lastBoardNum +"に上書きされます。");
 	}
+
+
+	//Boardタグが付いたオブジェクトを数える
+	public void CheckBoardCount(){
+		tagBoards = GameObject.FindGameObjectsWithTag("Board");
+		Debug.Log(tagBoards.Length); //tagObjects.Lengthはオブジェクトの数
+		//Destroy(tagBoards);
+
+		for (int i = 0; i < 2; i++) {
+			GameObject BoardP = GameObject.Find ("BoardPrefab(Clone)");
+			if (BoardP != null) {
+				Destroy (BoardP);
+				Debug.Log ("Board はすべて消します");
+			}
+		}
+
+//		for (int i = 0; i < 2; i++) {
+			if (tagBoards.Length < 2) {
+				Debug.Log ("タグがついたオブジェクトは2個以下です。不足分を生成します");
+				Debug.Log ("CreateBoard します");
+				GameObject board = (GameObject)Instantiate (BoardPrefab);	
+				GameObject board2 = (GameObject)Instantiate (BoardPrefab);	
+			}
+//		}
+	}
+
+//	public void DestroyB(){
+//	var clones = GameObject.FindGameObjectsWithTag ("Board");
+//	for (var clone in clones){
+//		Destroy(clone);
+//	}
+//	}
 
 	//#################################################################################
 

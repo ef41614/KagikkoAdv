@@ -6,7 +6,7 @@ public class HightRController : MonoBehaviour {
 
 	GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
-	public GameObject Board;
+	GameObject Board;
 	BoardController BoardSC;
 
 	//☆################☆################  Start  ################☆################☆
@@ -43,18 +43,23 @@ public class HightRController : MonoBehaviour {
 //			gameObject.transform.rotation = Quaternion.Euler (-45, 0, 0);
 //			Board.gameObject.transform.rotation = Quaternion.Euler (90, 0, 0);
 //			Board.gameObject.transform.rotation = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
-			Board = GameObject.Find("BoardPrefab(Clone)");
+			charamovemanager = GameObject.Find ("charamovemanager");
+			CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
+			Board = GameObject.Find ("BoardPrefab(Clone)");
 			BoardSC = Board.GetComponent<BoardController> ();
-			BoardSC.touchBoard (other);
-			if (BoardSC.BoardMode == 0) {
-				BoardSC.BoardMode = 2;
-				BoardSC.RotationBoard ();
+
+			if (other.gameObject == CharaMoveMscript.activeChara) {
+				BoardSC.touchBoard (other);
+				if (BoardSC.BoardMode == 0) {
+					BoardSC.BoardMode = 2;
+					BoardSC.RotationBoard ();
 //			BoardSC.RotationBoardFlg = true;
-				Debug.Log ("横から乗った ★R接触★Board");
+					Debug.Log ("横から乗った ★R接触★Board");
 //			}
-			//} else if (BoardSC.BoardMode == 2) {
-			//	BoardSC.BoardMode = 0;
-			} else {
+					//} else if (BoardSC.BoardMode == 2) {
+					//	BoardSC.BoardMode = 0;
+				} else {
+				}
 			}
 		}
 	}

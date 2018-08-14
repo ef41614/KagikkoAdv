@@ -9,6 +9,8 @@ public class CamerasController : MonoBehaviour {
 
 	public GameObject turnmanager;
 	TurnManager TurnMscript;
+	public GameObject timerManager;
+	TimerController TimerSC;
 
 	[SerializeField]
 	private GameObject MainCamera;   // インスペクターで主観カメラを紐づける
@@ -39,6 +41,9 @@ public class CamerasController : MonoBehaviour {
 		UchanMapCamera.SetActive (false);
 		PchanThirdPersonCamera.SetActive (false);
 		PchanMapCamera.SetActive (false);
+
+		CharaViewActive = false;
+		TimerSC = timerManager.GetComponent<TimerController> ();
 	}
 
 
@@ -52,6 +57,22 @@ public class CamerasController : MonoBehaviour {
 
 		if (turningLeft == true) {
 			turnLeftCamera ();
+		}
+
+		if ((UchanThirdPersonCamera.activeSelf) || (PchanThirdPersonCamera.activeSelf)) {
+			CharaViewActive = true;
+		}else {
+//		if((UchanThirdPersonCamera==null) && (PchanThirdPersonCamera==null))  {
+			CharaViewActive = false;
+		}
+
+		if (TimerSC.totalTime < 0.1f) {
+			if(turningRight){
+				pushUpTurnRightButton();
+			}
+			if(turningLeft){
+				pushUpTurnLeftButton();
+			}
 		}
 	}
 
@@ -84,11 +105,7 @@ public class CamerasController : MonoBehaviour {
 			PchanMapCamera.SetActive (!PchanMapCamera.activeInHierarchy);
 			inactiveCharaCamera ();
 		}
-		if ((UchanThirdPersonCamera) || (PchanThirdPersonCamera)) {
-			CharaViewActive = true;
-		} else {
-			CharaViewActive = false;
-		}
+
 	}
 
 	public void inactiveCharaCamera(){

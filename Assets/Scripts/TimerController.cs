@@ -15,6 +15,10 @@ public class TimerController : MonoBehaviour {
 	public GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
 
+	public GameObject CamerasControllerBox;
+	CamerasController CamerasControllerSC;
+//	public GameObject Board;
+	public FadeBoardScript FadeBoSC;
 
 	void Awake(){
 		TimeMode = Random.Range(0, 100);
@@ -24,6 +28,8 @@ public class TimerController : MonoBehaviour {
 
 	void Start () {
 		SetTime ();
+		CamerasControllerSC = CamerasControllerBox.GetComponent<CamerasController> ();
+
 	}
 
 	//####################################  Update  ###################################
@@ -35,8 +41,19 @@ public class TimerController : MonoBehaviour {
 				if (CharaMoveMscript.RunningInfo) {
 					activateTimerText ();
 				}
+//					CamerasControllerBox = GameObject.Find ("CamerasControllerBox"); 
+//					CamerasControllerSC = CamerasControllerBox.GetComponent<CamerasController> ();
+				if (totalTime < 0.5f) {
+//					FadeBoSC.goFadeOut = true;
+					if (totalTime < 0.15f) {
+						if (CamerasControllerSC.CharaViewActive) {
+							Debug.Log ("カメラ上からに戻るよ");
+							CamerasControllerSC.ChangeCharaCamera ();
+						}
+					}
+				}
 			}
-			if (totalTime <= 0) {
+			if (totalTime <= 0.02f) {
 				totalTime = 0.00f;
 			}
 			timerText.text = totalTime.ToString ("F2"); //小数2桁にして表示
@@ -62,19 +79,22 @@ public class TimerController : MonoBehaviour {
 	}
 
 	public void SetTime(){
+//		Board = GameObject.Find ("BoardPrefab(Clone)");
+//		FadeBoSC = Board.GetComponent<FadeBoardScript>();
+
 		TimeMode = Random.Range(0, 100);
 		totalTime = 5.0f;
 
-		if (0<=TimeMode && TimeMode <= 40) {
+		if (0<=TimeMode && TimeMode <= 10) {
+			totalTime = 3.0f;
+		} else if (11<=TimeMode && TimeMode  <= 60) {
 			totalTime = 5.0f;
-		} else if (41<=TimeMode && TimeMode  <= 70) {
+		} else if (61<=TimeMode && TimeMode  <= 80) {
 			totalTime = 7.0f;
-		} else if (71<=TimeMode && TimeMode  <= 85) {
-			totalTime = 9.0f;
-		} else if (86<=TimeMode && TimeMode  <= 95) {
-			totalTime = 11.0f;
+		} else if (81<=TimeMode && TimeMode  <= 95) {
+			totalTime = 8.0f;
 		} else if (96<=TimeMode && TimeMode  <= 100) {
-			totalTime = 15.0f;
+			totalTime = 10.0f;
 		} else {
 			totalTime = 5.0f;
 		}

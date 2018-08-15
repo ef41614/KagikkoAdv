@@ -31,6 +31,8 @@ public class arrowButtonsController : MonoBehaviour {
 	GameObject charamovemanager;
 	CharaMoveManager CharaMoveMscript;
 	int checkArrow = 0;
+	float mini = 0.5f;
+	float original = 1;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -128,6 +130,31 @@ public class arrowButtonsController : MonoBehaviour {
 		ActiveArrowButton = true;
 	}
 
+	public void smallButtonF(){
+		ButtonF.transform.localScale = new Vector3(mini,mini,mini);
+	}
+	public void smallButtonB(){
+		ButtonB.transform.localScale = new Vector3(mini,mini,mini);
+	}
+	public void smallButtonL(){
+		ButtonL.transform.localScale = new Vector3(mini,mini,mini);
+	}
+	public void smallButtonR(){
+		ButtonR.transform.localScale = new Vector3(mini,mini,mini);
+	}
+
+	public void normalSizeButtonF(){
+		ButtonF.transform.localScale = new Vector3(original,original,original);
+	}
+	public void normalSizeButtonB(){
+		ButtonB.transform.localScale = new Vector3(original,original,original);
+	}
+	public void normalSizeButtonL(){
+		ButtonL.transform.localScale = new Vector3(original,original,original);
+	}
+	public void normalSizeButtonR(){
+		ButtonR.transform.localScale = new Vector3(original,original,original);
+	}
 
 	//#################################################################################
 

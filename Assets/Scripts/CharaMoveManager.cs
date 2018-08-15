@@ -84,6 +84,7 @@ public class CharaMoveManager : MonoBehaviour {
 	public bool ExistFuture = true;
 	float MoveForce = 2.0f;
 	Vector3 moveDirection;
+	float timeleft =1.0f;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -199,6 +200,15 @@ public class CharaMoveManager : MonoBehaviour {
 					}else if((dirR==false)&&(dirL==false)&&(dirF==false)&&(dirB==false)){
 						Debug.Log("ターン中だけど行き場がないよー");
 						ExistFuture = false;
+
+						//だいたい1秒ごとに処理を行う
+						timeleft -= Time.deltaTime;
+						if (timeleft <= 0.0) {
+							timeleft = 1.0f;
+							//ここに処理
+							checkNextMove();
+							Debug.Log("行けるかチェックします");
+						}
 
 						if (isFButtonDown){
 							//奥に移動
@@ -337,26 +347,51 @@ public class CharaMoveManager : MonoBehaviour {
 
 		if (dirR != null) {
 			canGoR = true;
+			ArrowC.normalSizeButtonR ();
 		} else {
 			canGoR = false;
+			//ExistFuture = false;//ターン中だけど行き場がない
+			if (ExistFuture == true) { //ターン中で他に有効なガイドマスが有る時
+				ArrowC.smallButtonR ();
+			} else {
+				ArrowC.normalSizeButtonR ();
+			}
 		}
 
 		if (dirL != null) {
 			canGoL = true;
+			ArrowC.normalSizeButtonL ();
 		} else {
 			canGoL = false;
+			if (ExistFuture == true) { //ターン中で他に有効なガイドマスが有る時
+				ArrowC.smallButtonL ();
+			}else {
+				ArrowC.normalSizeButtonL ();
+			}
 		}
 
 		if (dirF != null) {
 			canGoF = true;
+			ArrowC.normalSizeButtonF ();
 		} else {
 			canGoF = false;
+			if (ExistFuture == true) { //ターン中で他に有効なガイドマスが有る時
+				ArrowC.smallButtonF ();
+			}else {
+				ArrowC.normalSizeButtonF ();
+			}
 		}
 
 		if (dirB != null) {
 			canGoB = true;
+			ArrowC.normalSizeButtonB ();
 		} else {
 			canGoB = false;
+			if (ExistFuture == true) { //ターン中で他に有効なガイドマスが有る時
+				ArrowC.smallButtonB ();
+			}else {
+				ArrowC.normalSizeButtonB ();
+			}
 		}
 
 

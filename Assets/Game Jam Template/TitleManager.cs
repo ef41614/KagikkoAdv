@@ -27,11 +27,16 @@ public class TitleManager : MonoBehaviour {
 	AudioSource audioSource;
 
 	string url = "https://00kagikko.hatenablog.com/";
+//	int targetCount = 1;
 
 	[SerializeField]
 	RectTransform rectTran;
 
 	void Awake(){
+//		targetCount = GameObject.FindGameObjectsWithTag ("TitleMenu").Length;
+//		if (targetCount >= 2) {
+//			Destroy(this.gameObject);
+//		}
 		DontDestroyOnLoad(transform.gameObject);
 	}
 
@@ -113,7 +118,17 @@ public class TitleManager : MonoBehaviour {
 		#endif
 	}
 
-
+		public void RestartGame(){
+		menuPanel.SetActive (true);
+		loading.SetActive (false);
+		titleLogo.SetActive (true);
+		menuButtons.SetActive (true);
+		startButton.SetActive(true);
+		quit.SetActive (true);
+		optionsButton.SetActive (true);
+		CreditButton.SetActive (true);
+		HowToPlayButton.SetActive (true);
+		}
 
 	//#################################################################################
 }

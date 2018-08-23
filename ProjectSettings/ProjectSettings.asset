@@ -42,19 +42,18 @@ PlayerSettings:
   m_SplashScreenLogos: []
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
-  defaultScreenWidth: 1024
-  defaultScreenHeight: 768
-  defaultScreenWidthWeb: 960
-  defaultScreenHeightWeb: 600
+  defaultScreenWidth: 800
+  defaultScreenHeight: 450
+  defaultScreenWidthWeb: 800
+  defaultScreenHeightWeb: 450
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
-  tizenShowActivityIndicatorOnLoading: -1
   iosAppInBackgroundBehavior: 0
-  displayResolutionDialog: 1
+  displayResolutionDialog: 0
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 0
   allowedAutorotateToPortraitUpsideDown: 0
@@ -67,7 +66,7 @@ PlayerSettings:
   androidBlitType: 0
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 0
+  runInBackground: 1
   captureSingleScreen: 0
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
@@ -75,7 +74,7 @@ PlayerSettings:
   deferSystemGesturesMode: 0
   hideHomeButton: 0
   submitAnalytics: 1
-  usePlayerLog: 1
+  usePlayerLog: 0
   bakeCollisionMeshes: 0
   forceSingleInstance: 0
   resizableWindow: 0
@@ -91,7 +90,7 @@ PlayerSettings:
   visibleInBackground: 1
   allowFullscreenSwitch: 1
   graphicsJobMode: 0
-  fullscreenMode: 1
+  fullscreenMode: 3
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -111,6 +110,8 @@ PlayerSettings:
   videoMemoryForVertexBuffers: 0
   psp2PowerMode: 0
   psp2AcquireBGM: 1
+  vulkanEnableSetSRGBWrite: 0
+  vulkanUseSWCommandBuffers: 0
   m_SupportedAspectRatios:
     4:3: 1
     5:4: 1
@@ -138,10 +139,10 @@ PlayerSettings:
     hololens:
       depthFormat: 1
       depthBufferSharingEnabled: 0
-    enable360StereoCapture: 0
     oculus:
       sharedDepthBuffer: 0
       dashSupport: 0
+    enable360StereoCapture: 0
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   m_ColorGamuts: 00000000
@@ -153,7 +154,7 @@ PlayerSettings:
     Android: jp.pronama.KagikkoAdventure
     iOS: jp.pronama.KagikkoAdv
   buildNumber:
-    iOS: 1
+    iOS: 2
   AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
@@ -236,6 +237,7 @@ PlayerSettings:
   appleEnableAutomaticSigning: 0
   iOSRequireARKit: 0
   appleEnableProMotion: 0
+  vulkanEditorSupport: 0
   clonedFromGUID: 00000000000000000000000000000000
   templatePackageId: 
   templateDefaultScene: 
@@ -244,6 +246,7 @@ PlayerSettings:
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: C:/Users/accho/Desktop/Unity/TechAcademy/Lesson9_keyAdv/user.keystore
   AndroidKeyaliasName: kagikko adventure
+  AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
@@ -317,6 +320,26 @@ PlayerSettings:
       m_Height: 1024
       m_Kind: 4
       m_SubKind: App Store
+    - m_Textures: []
+      m_Width: 120
+      m_Height: 120
+      m_Kind: 3
+      m_SubKind: iPhone
+    - m_Textures: []
+      m_Width: 80
+      m_Height: 80
+      m_Kind: 3
+      m_SubKind: iPhone
+    - m_Textures: []
+      m_Width: 80
+      m_Height: 80
+      m_Kind: 3
+      m_SubKind: iPad
+    - m_Textures: []
+      m_Width: 40
+      m_Height: 40
+      m_Kind: 3
+      m_SubKind: iPad
     - m_Textures:
       - {fileID: 2800000, guid: 9a40a8aa811896949940517626b7fe05, type: 3}
       m_Width: 180
@@ -346,26 +369,6 @@ PlayerSettings:
       m_Width: 76
       m_Height: 76
       m_Kind: 0
-      m_SubKind: iPad
-    - m_Textures: []
-      m_Width: 120
-      m_Height: 120
-      m_Kind: 3
-      m_SubKind: iPhone
-    - m_Textures: []
-      m_Width: 80
-      m_Height: 80
-      m_Kind: 3
-      m_SubKind: iPhone
-    - m_Textures: []
-      m_Width: 80
-      m_Height: 80
-      m_Kind: 3
-      m_SubKind: iPad
-    - m_Textures: []
-      m_Width: 40
-      m_Height: 40
-      m_Kind: 3
       m_SubKind: iPad
   - m_BuildTarget: Android
     m_Icons:
@@ -485,6 +488,7 @@ PlayerSettings:
     iPhone: 1
     tvOS: 1
   m_BuildTargetGroupLightmapEncodingQuality: []
+  m_BuildTargetGroupLightmapSettings: []
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -608,6 +612,8 @@ PlayerSettings:
   switchDataLossConfirmation: 0
   switchSupportedNpadStyles: 3
   switchNativeFsCacheSize: 32
+  switchIsHoldTypeHorizontal: 0
+  switchSupportedNpadCount: 8
   switchSocketConfigEnabled: 0
   switchTcpInitialSendBufferSize: 32
   switchTcpInitialReceiveBufferSize: 64
@@ -748,7 +754,7 @@ PlayerSettings:
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 1
-  webGLLinkerTarget: 0
+  webGLLinkerTarget: 1
   scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -770,7 +776,6 @@ PlayerSettings:
   metroApplicationDescription: YukaTest
   wsaImages: {}
   metroTileShortName: 
-  metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -786,14 +791,6 @@ PlayerSettings:
   metroFTAFileTypes: []
   metroProtocolName: 
   metroCompilationOverrides: 1
-  tizenProductDescription: 
-  tizenProductURL: 
-  tizenSigningProfileName: 
-  tizenGPSPermissions: 0
-  tizenMicrophonePermissions: 0
-  tizenDeploymentTarget: 
-  tizenDeploymentTargetType: -1
-  tizenMinOSVersion: 1
   n3dsUseExtSaveData: 0
   n3dsCompressStaticMem: 1
   n3dsExtSaveDataNumber: 0x12345
@@ -814,6 +811,7 @@ PlayerSettings:
   XboxOneGameOsOverridePath: 
   XboxOnePackagingOverridePath: 
   XboxOneAppManifestOverridePath: 
+  XboxOneVersion: 1.0.0.0
   XboxOnePackageEncryption: 0
   XboxOnePackageUpdateGranularity: 2
   XboxOneDescription: 

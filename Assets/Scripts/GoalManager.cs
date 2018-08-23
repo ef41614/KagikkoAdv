@@ -39,7 +39,8 @@ public class GoalManager : MonoBehaviour {
 
 	GameManager GMScript;
 	GameObject GameMgr;
-
+	TitleManager TitleMgSC;
+	GameObject titleMgr;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -52,7 +53,8 @@ public class GoalManager : MonoBehaviour {
 
 		GameMgr = GameObject.Find ("GameManager");
 		GMScript = GameMgr.GetComponent<GameManager> ();
-
+		titleMgr = GameObject.Find ("titleManager");
+		TitleMgSC = titleMgr.GetComponent<TitleManager> ();
 	}
 
 
@@ -168,6 +170,7 @@ public class GoalManager : MonoBehaviour {
 	public void GoBackTitle(){
 		Debug.Log ("TitleScene に戻ります");
 		SceneManager.LoadScene ("TitleScene");
+		TitleMgSC.RestartGame ();
 	}
 
 	//#################################################################################

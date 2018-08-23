@@ -12,6 +12,7 @@ TagManager:
   - guideChild
   - Key
   - Board
+  - TitleMenu
   layers:
   - Default
   - TransparentFX

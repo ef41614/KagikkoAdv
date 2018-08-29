@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class DiceButtonController : MonoBehaviour {
 
@@ -25,8 +26,9 @@ public class DiceButtonController : MonoBehaviour {
 	private float timeleft;
 	public AudioClip DiceRollSE;
 	private AudioSource audioSource;
-
-
+	GameObject RollPart;
+	public bool RollPartActive = false;
+	public AudioClip RouletteSE;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -40,6 +42,7 @@ public class DiceButtonController : MonoBehaviour {
 		Debug.Log("Diceスクリプト出席確認");
 		this.stepTx = GameObject.Find("stepText");
 		this.DiceB = GameObject.Find ("DiceRollButton");
+		RollPart = GameObject.Find ("RollingPart");
 		GuideM = GameObject.Find ("guideMaster");
 		GuideC = GuideM.GetComponent<guideController> ();
 		fadeScript = GameObject.Find ("blackpanel");
@@ -73,6 +76,12 @@ public class DiceButtonController : MonoBehaviour {
 			DiceB.SetActive (false);	
 		}
 
+		RollPart.transform.Rotate(new Vector3(0, 0, -15));
+		if (RollPartActive) {
+			RollPart.SetActive (true);
+		} else if (RollPartActive == false) {
+			RollPart.SetActive (false);
+		}
 	}
 
 	//####################################  other  ####################################
@@ -88,9 +97,11 @@ public class DiceButtonController : MonoBehaviour {
 
 	//サイコロをふる処理
 	public void DiceRoll() {
+		Debug.Log("ルーレットを回せ！");
 		this.DiceB = GameObject.Find ("DiceRollButton");
 		if (DiceB != null) {
-			int num = Random.Range (1, 7);
+			int num = Random.Range (1, 11);
+			Debug.Log("num :" +num);
 			DiceResult = num;
 //			if((TurnMscript.canMove1P == true)&&(TurnMscript.canMove2P == false)){
 				if(TurnMscript.canMove1P == true){
@@ -107,14 +118,19 @@ public class DiceButtonController : MonoBehaviour {
 			CharaMoveMscript.stepsLeft ();
 			Debug.Log("サイコロ投げた！");
 			Debug.Log("サイコロが止まった！ あと"+DiceResult+"マス動けます");
-			audioSource.PlayOneShot (DiceRollSE);
+//			audioSource.PlayOneShot (DiceRollSE);
+			audioSource.PlayOneShot (RouletteSE);
 //			DiceB.transform.Translate (0,0,10);
 			DiceB.transform.Rotate(new Vector3(0, 270, 0));
 			Debug.Log("DiceButtonController からToUnderGround へ！！");//★＜現在抑止中＞
 			GuideC.ToUnderGround ();	
 			GuideC.initializePosition ();
 
-			canRoll = false;
+			RollPartActive = true;
+			var sequence = DOTween.Sequence();
+			sequence.InsertCallback(0.8f, () =>(RollPartActive = false));
+			sequence.InsertCallback(0.8f, () =>(canRoll = false));
+//			canRoll = false;
 		} else {
 		}
 

@@ -16,7 +16,7 @@ public class MapCameraMove : MonoBehaviour {
 	bool MovingWest = false;
 
 	Vector3 pos;  // MapCameraの位置
-	float range = 0.2f;
+	float range = 0.4f;
 	public float MaxRange = 3;
 	float limit = 35;
 	float LocalLimit = 5;
@@ -78,10 +78,8 @@ public class MapCameraMove : MonoBehaviour {
 //		float T = TopPos.z;
 		if (CharaMapCamera !=null) {
 			CharaMapCamera.transform.position = (new Vector3 (
-//				Mathf.Clamp (CharaMapCamera.transform.position.x, -limit, limit),
 				Mathf.Clamp (CharaMapCamera.transform.position.x, LeftPos.x,RightPos.x),
 				Mathf.Clamp (CharaMapCamera.transform.position.y, -1, 10),
-//				Mathf.Clamp (CharaMapCamera.transform.position.z, -limit, limit)
 				Mathf.Clamp (CharaMapCamera.transform.position.z, BottomPos.z,TopPos.z)
 			));
 

@@ -137,17 +137,17 @@ public class CharaMoveManager : MonoBehaviour {
 	//####################################  Update  ###################################
 
 	void Update () {
-			unitychan.transform.position = (new Vector3 (
-			Mathf.Clamp (unitychan.transform.position.x, LeftPos.x, RightPos.x),
-			Mathf.Clamp (unitychan.transform.position.y, -1, 3),
-			Mathf.Clamp (unitychan.transform.position.z, BottomPos.z, TopPos.z)
-		));
+//			unitychan.transform.position = (new Vector3 (
+//			Mathf.Clamp (unitychan.transform.position.x, LeftPos.x, RightPos.x),
+//			Mathf.Clamp (unitychan.transform.position.y, -1, 3),
+//			Mathf.Clamp (unitychan.transform.position.z, BottomPos.z, TopPos.z)
+//		));
 			
-			pchan.transform.position = (new Vector3 (
-			Mathf.Clamp (pchan.transform.position.x, LeftPos.x, RightPos.x),
-			Mathf.Clamp (pchan.transform.position.y, -1, 3),
-			Mathf.Clamp (pchan.transform.position.z, BottomPos.z, TopPos.z) 
-		));
+//			pchan.transform.position = (new Vector3 (
+//			Mathf.Clamp (pchan.transform.position.x, LeftPos.x, RightPos.x),
+//			Mathf.Clamp (pchan.transform.position.y, -1, 3),
+//			Mathf.Clamp (pchan.transform.position.z, BottomPos.z, TopPos.z) 
+//		));
 
 		if (TurnMscript.canMove1P == true) {
 			canMoveInfo = TurnMscript.canMove1P;

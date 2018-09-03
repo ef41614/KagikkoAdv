@@ -5056,8 +5056,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: " <color=#00ff00ff>\u4F7F\u7528BGM\u30FB\u52B9\u679C\u97F3</color>\r\n\u25CF\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\r\n\u25CFMusMus\u69D8\r\n
-    \ \u266A\u77F3\u7573\u306E\u4E0B\u3067\r\n\u25CF\u9B54\u738B\u9B42\u69D8\r\n  \u266A\u30D5\u30A3\u30FC\u30EB\u30C94\r\n\r\n
+  m_Text: " <color=#00ff00ff>\u4F7F\u7528BGM\u30FB\u52B9\u679C\u97F3</color>\r\n\u25CFMusMus\u69D8\r\n
+    \ \u266A\u77F3\u7573\u306E\u4E0B\u3067\r\n\u25CF\u9B54\u738B\u9B42\u69D8\r\n  \u266A\u30D5\u30A3\u30FC\u30EB\u30C94\r\n\u25CF\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\r\n\u25CFDOVA-SYNDROME\u69D8\r\n\r\n
     <color=#00ff00ff>\u4F7F\u7528\u7D20\u6750</color>\r\n <color=#ffa500>[\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC]</color>\r\n\u25CFUnity
     Technologies Japan/UCL\u69D8\r\n\u25CF\u5408\u540C\u4F1A\u793E\u30D7\u30ED\u751F\u69D8\r\n\u25CFAMUSEDART\u69D8\r\n\r\n
     <color=#ffa500>[UI\u30FB\u80CC\u666F]</color>\r\n\u25CFUNITY TECHNOLOGIES\u69D8\r\n\u25CFKVAZI\u69D8\r\n\u25CFMGSVEVO\u69D8\r\n\u25CF\u30D5\u30A9\u30F3\u30C8\u306A\u69D8\r\n\r\n
@@ -5066,8 +5066,8 @@ MonoBehaviour:
     FACTORY\u69D8\r\n\u25CFGAMEMAG CREATION STUDIO\u69D8\r\n\u25CFTERRA NOVA CREATIONS\u69D8\r\n\u25CFPOLYGON
     LAND\u69D8\r\n\u25CFSYNTY STUDIOS\u69D8\r\n\u25CFSKYTHIANCAT\u69D8\r\n\u25CFPOLY
     UNIT\u69D8\r\n\u25CFChia-Hsien, Chu\u69D8\n\r\n <color=#ffa500>[\u30A2\u30A4\u30C6\u30E0]</color>\r\n\u25CFROBOCG\u69D8\r\n\u25CF\u30A4\u30E9\u30B9\u30C8AC\u69D8\r\n
-    \ \u30FB\u30BC\u30A4\u30EB\u30F3\u3055\u3093\r\n\u25CFFAIRY SHOP\u69D8\r\n\r\n
-    <color=#00ff00ff>\u5236\u4F5C\u5354\u529B\u30FB\u30A2\u30C9\u30D0\u30A4\u30B9</color>\r\n\u25CFTechAcademy\u69D8\r\n\u25CF\u5408\u540C\u4F1A\u793E\u30D7\u30ED\u751F\u69D8\r\n\u25CFjz5\u69D8\r\n\u25CFnknk\u69D8\r\n\r\n\u5236\u4F5C
+    \ \u30FB\u30BC\u30A4\u30EB\u30F3\u3055\u3093\r\n  \u30FB\u304F\u3058\u3089\u96F2\u3055\u3093\r\n\u25CFFAIRY
+    SHOP\u69D8\r\n\r\n <color=#00ff00ff>\u5236\u4F5C\u5354\u529B\u30FB\u30A2\u30C9\u30D0\u30A4\u30B9</color>\r\n\u25CFTechAcademy\u69D8\r\n\u25CF\u5408\u540C\u4F1A\u793E\u30D7\u30ED\u751F\u69D8\r\n\u25CFjz5\u69D8\r\n\u25CFnknk\u69D8\r\n\r\n\u5236\u4F5C
     accho\r\n\r\n\r\n <color=#00ff00ff>\u3053\u306E\u5834\u3092\u501F\u308A\u3066\u304A\u793C\u7533\u3057\u4E0A\u3052\u307E\u3059\u3002</color>"
 --- !u!222 &386981137
 CanvasRenderer:

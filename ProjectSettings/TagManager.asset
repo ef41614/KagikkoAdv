@@ -13,6 +13,7 @@ TagManager:
   - Key
   - Board
   - TitleMenu
+  - WarpPoint
   layers:
   - Default
   - TransparentFX

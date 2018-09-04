@@ -86,6 +86,12 @@ public class CharaMoveManager : MonoBehaviour {
 	Vector3 moveDirection;
 	float timeleft =1.0f;
 
+	float span = 1f;
+	float currentTime = 0f;
+	public GameObject FountainPort_S;
+	public GameObject BirdPort_N;
+	public int AddressInfo =0;
+
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
 		Debug.Log ("CharaMoveManagerスクリプト出席確認");
@@ -188,7 +194,7 @@ public class CharaMoveManager : MonoBehaviour {
 			if (ArrivedNextPoint == true) {
 				// 走行中状態がOFF（＝停止状態）の時
 //				this.myAnimator.SetBool ("isRunning", false);  
-
+				currentTime = 0;
 				//●◎〇---動けなくなった時の救済措置---●◎〇
 				if(ArrowC.canMove == true){
 					//				GameObject[] directions = GameObject.FindGameObjectsWithTag("guideChild");
@@ -278,7 +284,12 @@ public class CharaMoveManager : MonoBehaviour {
 //				this.myAnimator.SetBool ("isRunning", true);
 				RunningInfo = true;
 				ArrivedNextPoint = false;
-
+				currentTime += Time.deltaTime;
+				if(currentTime > span){
+					Debug.LogFormat ("キャラ位置チェックや！ {0}秒経過", span);
+					currentTime = 0f;
+					GuideToCharapos ();
+				}
 			}
 		} else {
 			// 走行中状態がOFF（＝停止状態）の時
@@ -294,20 +305,11 @@ public class CharaMoveManager : MonoBehaviour {
 				RunningInfo = true;
 				Debug.Log ("ボードに乗っているよ");
 
-				activeChara.transform.position = (new Vector3 (
-					Mathf.Clamp (activeChara.transform.position.x, LeftPos.x, RightPos.x),
-					Mathf.Clamp (activeChara.transform.position.y, 0.20f, 0.21f),
-//				Mathf.Clamp (activeChara.transform.position.y, 0.5f, 0.51f),
-					Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
-				));
+
 		}
 		if (OnBoard == false) {
 			this.myAnimator.SetBool ("OnBoard", false);
-			activeChara.transform.position = (new Vector3 (
-				Mathf.Clamp (activeChara.transform.position.x, LeftPos.x, RightPos.x),
-				Mathf.Clamp (activeChara.transform.position.y, 0.0f, 0.05f),
-				Mathf.Clamp (activeChara.transform.position.z, BottomPos.z, TopPos.z)
-			));
+
 		}
 	}
 
@@ -548,7 +550,43 @@ public class CharaMoveManager : MonoBehaviour {
 			sequence.InsertCallback (1.0f, () => (GuideToCharapos ()));
 		}
 	}
+
+	public void TeleportChara(){
+		Debug.Log ("テレポート準備OK");
+		Vector3 pos = activeChara.transform.position;
+		Debug.Log ("Player_pos.x:"+Player_pos.x);
+		Debug.Log ("Player_pos.y:"+Player_pos.y);
+		Debug.Log ("Player_pos.z:"+Player_pos.z);
+		Debug.Log ("activeChara.transform.position.x:"+activeChara.transform.position.x);
+		Debug.Log ("activeChara.transform.position.y:"+activeChara.transform.position.y);
+		Debug.Log ("activeChara.transform.position.z:"+activeChara.transform.position.z);
+		Debug.Log ("FountainPort_S.transform.position.x:"+FountainPort_S.transform.position.x);
+		Debug.Log ("FountainPort_S.transform.position.y:"+FountainPort_S.transform.position.y);
+		Debug.Log ("FountainPort_S.transform.position.z:"+FountainPort_S.transform.position.z);
+		activeChara.transform.position = FountainPort_S.transform.position;
+		var sequence = DOTween.Sequence();
+		sequence.InsertCallback(0.8f, () =>(WarpPart()));
+
+//		activeChara.transform.position = new Vector3 (pos.x, pos.y, pos.z + 1000);
+//		activeChara.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z + 1000);
+//		activeChara.transform.Translate (transform.position.x, transform.position.y, transform.position.z + 1000);
+		Debug.Log ("後 activeChara.transform.position.x:"+activeChara.transform.position.x);
+		Debug.Log ("後 activeChara.transform.position.y:"+activeChara.transform.position.y);
+		Debug.Log ("後 activeChara.transform.position.z:"+activeChara.transform.position.z);
+		Debug.Log ("Player_pos.x:"+Player_pos.x);
+		Debug.Log ("Player_pos.y:"+Player_pos.y);
+		Debug.Log ("Player_pos.z:"+Player_pos.z);
+	}
 		
+	public void WarpPart(){
+		if (AddressInfo == 0020003) {
+			activeChara.transform.position = FountainPort_S.transform.position;
+		}else if (AddressInfo == 0010001) {
+			activeChara.transform.position = BirdPort_N.transform.position;
+		}
+		AddressInfo = 0;
+	}
+
 	//#################################################################################
 
 }

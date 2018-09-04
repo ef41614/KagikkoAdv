@@ -19,7 +19,7 @@ public class MapCameraMove : MonoBehaviour {
 	float range = 0.4f;
 	public float MaxRange = 3;
 	float limit = 35;
-	float LocalLimit = 5;
+	float LocalLimit = 15;
 
 	public GameObject Uchan;
 	public GameObject Pchan;
@@ -77,11 +77,11 @@ public class MapCameraMove : MonoBehaviour {
 //		float B = BottomPos.z;
 //		float T = TopPos.z;
 		if (CharaMapCamera !=null) {
-			CharaMapCamera.transform.position = (new Vector3 (
-				Mathf.Clamp (CharaMapCamera.transform.position.x, LeftPos.x,RightPos.x),
-				Mathf.Clamp (CharaMapCamera.transform.position.y, -1, 10),
-				Mathf.Clamp (CharaMapCamera.transform.position.z, BottomPos.z,TopPos.z)
-			));
+//			CharaMapCamera.transform.position = (new Vector3 (
+//				Mathf.Clamp (CharaMapCamera.transform.position.x, LeftPos.x,RightPos.x),
+//				Mathf.Clamp (CharaMapCamera.transform.position.y, -1, 10),
+//				Mathf.Clamp (CharaMapCamera.transform.position.z, BottomPos.z,TopPos.z)
+//			));
 
 			CharaMapCamera.transform.localPosition = (new Vector3 (
 				Mathf.Clamp (CharaMapCamera.transform.localPosition.x, -LocalLimit, LocalLimit),

@@ -1,0 +1,377 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 10.04.2017 09:10:18
+
+newmtl Material__229
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Andrey\Downloads\3d_house\scenes\textures\grass_plane.jpg
+	map_Kd C:\Users\Andrey\Downloads\3d_house\scenes\textures\grass_plane.jpg
+
+newmtl wire_224086086
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8784 0.3373 0.3373
+	Kd 0.8784 0.3373 0.3373
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_006135113
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.0235 0.5294 0.4431
+	Kd 0.0235 0.5294 0.4431
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_022022022
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.0863 0.0863 0.0863
+	Kd 0.0863 0.0863 0.0863
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_229154215
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8980 0.6039 0.8431
+	Kd 0.8980 0.6039 0.8431
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_086086086
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3373 0.3373 0.3373
+	Kd 0.3373 0.3373 0.3373
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_176026026
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6902 0.1020 0.1020
+	Kd 0.6902 0.1020 0.1020
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_225198087
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8824 0.7765 0.3412
+	Kd 0.8824 0.7765 0.3412
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_006135006
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.0235 0.5294 0.0235
+	Kd 0.0235 0.5294 0.0235
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_087225198
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3412 0.8824 0.7765
+	Kd 0.3412 0.8824 0.7765
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_214228153
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8392 0.8941 0.6000
+	Kd 0.8392 0.8941 0.6000
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_143225087
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.5608 0.8824 0.3412
+	Kd 0.5608 0.8824 0.3412
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_177148027
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6941 0.5804 0.1059
+	Kd 0.6941 0.5804 0.1059
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_057008136
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.2235 0.0314 0.5333
+	Kd 0.2235 0.0314 0.5333
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_196088225
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.7686 0.3451 0.8824
+	Kd 0.7686 0.3451 0.8824
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_154215229
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6039 0.8431 0.8980
+	Kd 0.6039 0.8431 0.8980
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_027177027
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.1059 0.6941 0.1059
+	Kd 0.1059 0.6941 0.1059
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_214229166
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8392 0.8980 0.6510
+	Kd 0.8392 0.8980 0.6510
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_225087143
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8824 0.3412 0.5608
+	Kd 0.8824 0.3412 0.5608
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_135006006
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.5294 0.0235 0.0235
+	Kd 0.5294 0.0235 0.0235
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_008008136
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.0314 0.0314 0.5333
+	Kd 0.0314 0.0314 0.5333
+	Ks 0.3500 0.3500 0.3500
+
+newmtl Leaf
+	Ns 25.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5000 0.5000 0.5000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0450 0.0450 0.0450
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\Leaf.tga
+	map_Kd C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\Leaf.tga
+	map_Ks C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\Leaf_Spec.tga
+	map_d C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\Leaf_Alpha.tga
+	map_bump Leaf_Normal_Normal_Bump.tga
+
+newmtl SunflowerPetals
+	Ns 25.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5000 0.5000 0.5000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0450 0.0450 0.0450
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Andrey\Downloads\3d_house\scenes\sunflower\SunflowerPetals.tga
+	map_Kd C:\Users\Andrey\Downloads\3d_house\scenes\sunflower\SunflowerPetals.tga
+	map_Ks C:\Users\Andrey\Downloads\3d_house\scenes\sunflower\SunflowerPetals_Spec.tga
+	map_d C:\Users\Andrey\Downloads\3d_house\scenes\sunflower\SunflowerPetals_Alpha.tga
+	map_bump SunflowerPetals_Normal_Normal_Bump.tga
+
+newmtl wire_225143087
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8824 0.5608 0.3412
+	Kd 0.8824 0.5608 0.3412
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_184155229
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.7216 0.6078 0.8980
+	Kd 0.7216 0.6078 0.8980
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_166229229
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6510 0.8980 0.8980
+	Kd 0.6510 0.8980 0.8980
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_153228184
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.6000 0.8941 0.7216
+	Kd 0.6000 0.8941 0.7216
+	Ks 0.3500 0.3500 0.3500
+
+newmtl ShingleOakLeaf1
+	Ns 25.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5000 0.5000 0.5000
+	Kd 0.5000 0.5000 0.5000
+	Ks 0.0450 0.0450 0.0450
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\ShingleOakLeaf1.tga
+	map_Kd C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\ShingleOakLeaf1.tga
+	map_Ks C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\ShingleOakLeaf1_Spec.tga
+	map_d C:\Users\Andrey\Downloads\3d_house\scenes\Tree_and_grass\ShingleOakLeaf1_Alpha.tga
+	map_bump ShingleOakLeaf1_Normal_Normal_Bump.tga
+
+newmtl wire_028089177
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.1098 0.3490 0.6941
+	Kd 0.1098 0.3490 0.6941
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_135059008
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.5294 0.2314 0.0314
+	Kd 0.5294 0.2314 0.0314
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_228184153
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8941 0.7216 0.6000
+	Kd 0.8941 0.7216 0.6000
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_087225087
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3412 0.8824 0.3412
+	Kd 0.3412 0.8824 0.3412
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_027177088
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.1059 0.6941 0.3451
+	Kd 0.1059 0.6941 0.3451
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_088199225
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3451 0.7804 0.8824
+	Kd 0.3451 0.7804 0.8824
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_184228153
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.7216 0.8941 0.6000
+	Kd 0.7216 0.8941 0.6000
+	Ks 0.3500 0.3500 0.3500

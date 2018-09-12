@@ -113,7 +113,7 @@ public class BoardController : MonoBehaviour {
 	//####################################  Update  ###################################
 
 	void Update () {
-		Debug.Log ("BoardMode: "+BoardMode);
+//		Debug.Log ("BoardMode: "+BoardMode);
 
 //		if (CharaMoveMscript.OnBoard) {
 //		transform.position = (new Vector3 (

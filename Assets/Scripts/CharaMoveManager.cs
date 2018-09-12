@@ -91,6 +91,7 @@ public class CharaMoveManager : MonoBehaviour {
 	public GameObject FountainPort_S;
 	public GameObject BirdPort_N;
 	public int AddressInfo =0;
+//	public int CurrentArea =0;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -169,6 +170,7 @@ public class CharaMoveManager : MonoBehaviour {
 			rbInfo = Uscript.rb;
 //			activeCharaScript = Uscript;
 //			Uscript.NextPos = NextPos;
+//			Uscript.CurrentArea = CurrentArea;
 		}
 
 		if (TurnMscript.canMove2P == true) {
@@ -184,6 +186,7 @@ public class CharaMoveManager : MonoBehaviour {
 			rbInfo = Pscript.rb;
 //			activeCharaScript = Pscript;
 //			Pscript.NextPos = NextPos;
+//			Pscript.CurrentArea = CurrentArea;
 		}
 
 
@@ -200,7 +203,7 @@ public class CharaMoveManager : MonoBehaviour {
 					//				GameObject[] directions = GameObject.FindGameObjectsWithTag("guideChild");
 					//				if (directions != null) {
 					if((dirR)||(dirL)||(dirF)||(dirB)){
-						Debug.Log("ターン中だよ。ガイドマスあるよ。");
+//						Debug.Log("ターン中だよ。ガイドマスあるよ。");
 						ExistFuture = true;
 						//				}else{
 					}else if((dirR==false)&&(dirL==false)&&(dirF==false)&&(dirB==false)){

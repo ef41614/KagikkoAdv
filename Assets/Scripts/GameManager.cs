@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject startButton;
 	public GameObject quit;
 	public GameObject optionsButton;
+	public GameObject fountain;
+	Vector3 ftPos;
 
 //	public GameObject CreditPanel;
 //	public GameObject HowToPlayPanel;
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour {
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 		polygon = GameObject.Find ("Polygon");
 		FadeBoSC = polygon.GetComponent<FadeBoardScript>();
+		ftPos = fountain.transform.position;
 	}
 
 
@@ -224,7 +227,7 @@ public class GameManager : MonoBehaviour {
 
 	public void getPositionInfo(){
 		do {
-			rndNum = Random.Range (1, 10);
+			rndNum = Random.Range (1, 16);
 
 			if (lastTimeNum != rndNum) {
 				Debug.Log ("rndNum      :"+rndNum);
@@ -272,13 +275,43 @@ public class GameManager : MonoBehaviour {
 					break;
 
 				case 9:
-					appearPosition = new Vector3 (21, 0, -18);
+					appearPosition = new Vector3 (9, 0, -18);
 					Debug.Log ("目指す場所はSOUTH_R");
 					break;
 
 				case 10:
-					appearPosition = new Vector3 (21, 0, -18);
-					Debug.Log ("目指す場所はSOUTH_R");
+					appearPosition = new Vector3 (ftPos.x-28.5f, ftPos.y+0, ftPos.z+19.5f);
+					Debug.Log ("目指す場所はFountain_北西");
+					break;
+
+				case 11:
+					appearPosition = new Vector3 (ftPos.x+28f, ftPos.y+0, ftPos.z+19.5f);
+					Debug.Log ("目指す場所はFountain_北東");
+					break;
+
+				case 12:
+					appearPosition = new Vector3 (ftPos.x-28.5f, ftPos.y+0, ftPos.z-19.5f);
+					Debug.Log ("目指す場所はFountain_南西");
+					break;
+
+				case 13:
+					appearPosition = new Vector3 (ftPos.x+28, ftPos.y+0, ftPos.z-7.5f);
+					Debug.Log ("目指す場所はFountain_南東");
+					break;
+
+				case 14:
+					appearPosition = new Vector3 (ftPos.x-11f, ftPos.y+0, ftPos.z+10.5f);
+					Debug.Log ("目指す場所はFountain_中央西");
+					break;
+
+				case 15:
+					appearPosition = new Vector3 (ftPos.x+10, ftPos.y+0, ftPos.z-10.5f);
+					Debug.Log ("目指す場所はFountain_中央東");
+					break;
+
+				case 16:
+					appearPosition = new Vector3 (ftPos.x+10, ftPos.y+0, ftPos.z-10.5f);
+					Debug.Log ("目指す場所はFountain_中央東");
 					break;
 				}
 			}
@@ -289,7 +322,7 @@ public class GameManager : MonoBehaviour {
 
 	public void getBoardPositionInfo(){
 		do {
-			rndNum = Random.Range (1, 7);
+			rndNum = Random.Range (7, 13);
 
 			if (lastBoardNum != rndNum) {
 				Debug.Log ("rndNum      :"+rndNum);
@@ -327,8 +360,38 @@ public class GameManager : MonoBehaviour {
 					break;
 
 				case 7:
-					appearBoardPosition = new Vector3 (15, 0, -18);
-					Debug.Log ("ボードが右下に生成");
+					appearBoardPosition = new Vector3 (ftPos.x-20f, ftPos.y+0, ftPos.z+19.5f);
+					Debug.Log ("ボードがFountain_左上");
+					break;
+
+				case 8:
+					appearBoardPosition = new Vector3 (ftPos.x+19f, ftPos.y+0, ftPos.z+20f);
+					Debug.Log ("ボードがFountain_右上");
+					break;
+
+				case 9:
+					appearBoardPosition = new Vector3 (ftPos.x-20f, ftPos.y+0, ftPos.z-19f);
+					Debug.Log ("ボードがFountain_左下");
+					break;
+
+				case 10:
+					appearBoardPosition = new Vector3 (ftPos.x+19f, ftPos.y+0, ftPos.z-19f);
+					Debug.Log ("ボードがFountain_右下");
+					break;
+
+				case 11:
+					appearBoardPosition = new Vector3 (ftPos.x-23f, ftPos.y+0, ftPos.z-1.0f);
+					Debug.Log ("ボードがFountain_左中央");
+					break;
+
+				case 12:
+					appearBoardPosition = new Vector3 (ftPos.x+22f, ftPos.y+0, ftPos.z+1.8f);
+					Debug.Log ("ボードがFountain_右中央");
+					break;
+
+				case 13:
+					appearBoardPosition = new Vector3 (ftPos.x+22f, ftPos.y+0, ftPos.z+1.8f);
+					Debug.Log ("ボードがFountain_右中央");
 					break;
 				}
 			}

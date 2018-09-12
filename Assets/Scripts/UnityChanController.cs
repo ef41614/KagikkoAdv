@@ -41,6 +41,8 @@ public class UnityChanController : MonoBehaviour {
 	public GameObject gameManager;
 	GameManager GMScript;
 
+	public int AddressInfo =0;
+	public int CurrentArea =0;
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
 		m_charCtrl = GetComponent<CharacterController>();
@@ -110,7 +112,6 @@ public class UnityChanController : MonoBehaviour {
 				ArrivedNextPoint = true;
 				Debug.Log ("UちゃんguideMに接触：ステップ＿");
 			}
-
 		}
 
 	}

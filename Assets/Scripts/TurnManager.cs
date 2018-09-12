@@ -18,6 +18,7 @@ public class TurnManager : MonoBehaviour {
 	CharaMoveManager CharaMoveMscript;
 	public GameObject gameManager;
 	GameManager GMScript;
+	GameObject WMap; 
 
 	public bool canMove1P = true; 
 	public bool canMove2P = false; 
@@ -39,6 +40,7 @@ public class TurnManager : MonoBehaviour {
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 		gameManager = GameObject.Find ("GameManager");
 		GMScript = gameManager.GetComponent<GameManager> ();
+		WMap = GameObject.Find ("WorldMap");
 	}
 
 	//####################################  Update  ###################################
@@ -72,6 +74,8 @@ public class TurnManager : MonoBehaviour {
 					if (CharaMoveMscript.OnBoard == false) {
 						Debug.Log ("★ターン切り替えスクリプト_2P:fase03");
 						canMove1P = true;
+					    WMap.SetActive (true);
+						GuideC.ShowIconPos_InWMap ();
 						canMove2P = false;
 						ChangePlayerProcess ();
 					}
@@ -89,6 +93,9 @@ public class TurnManager : MonoBehaviour {
 		CharaMoveMscript.RemainingStepsInfo = 100;
 	}
 
+	public void CloseWMap(){
+		WMap.SetActive (false);
+	}
 
 	//#################################################################################
 

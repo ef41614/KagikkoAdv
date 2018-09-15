@@ -8,6 +8,8 @@ public class AreaChecker_Fountain : MonoBehaviour {
 	UnityChanController Uscript; 
 	GameObject pchan; 
 	PchanController Pscript; 
+	GameObject key;
+	KeyController keySC;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -17,6 +19,7 @@ public class AreaChecker_Fountain : MonoBehaviour {
 		Uscript = unitychan.GetComponent<UnityChanController>();
 		pchan = GameObject.Find ("pchan"); 
 		Pscript = pchan.GetComponent<PchanController>(); 
+
 	}
 
 
@@ -27,15 +30,22 @@ public class AreaChecker_Fountain : MonoBehaviour {
 	}
 
 	//####################################  other  ####################################
-	public void OnTriggerEnter(Collider other){
+	public void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
 			Debug.Log ("噴水に居ます ");
 			if (other.gameObject == unitychan) {
-				Uscript.CurrentArea =1;
+				Uscript.CurrentArea = 1;
 			}
 			if (other.gameObject == pchan) {
-				Pscript.CurrentArea =1;
+				Pscript.CurrentArea = 1;
 			}
+		}
+
+		if (other.gameObject.tag == "Key") {
+				key = GameObject.Find("KeyPrefab(Clone)");
+				keySC = key.GetComponent<KeyController>();
+				Debug.Log ("カギは噴水にあります ");
+				keySC.CurrentArea = 1;
 		}
 	}
 

@@ -9,6 +9,7 @@ public class ParticleSystemScript : MonoBehaviour {
 //	public bool CharaIsHere = false;
 	public GameObject hunsuiPa;
 	public FountainParticleSC FountainPaSC;
+	public GameObject HunsuiBody;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -16,6 +17,9 @@ public class ParticleSystemScript : MonoBehaviour {
 		charamovemanager = GameObject.Find ("charamovemanager");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 		FountainPaSC = hunsuiPa.GetComponent<FountainParticleSC> ();
+		if (HunsuiBody.activeSelf) {
+			HunsuiBody.SetActive (false);
+		}
 	}
 
 
@@ -26,7 +30,7 @@ public class ParticleSystemScript : MonoBehaviour {
 	}
 
 	//####################################  other  ####################################
-	public void OnTriggerEnter(Collider other){
+	public void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
 			Debug.Log ("噴水の近くにキャラがいます: ");
 			charamovemanager = GameObject.Find ("charamovemanager");
@@ -34,7 +38,15 @@ public class ParticleSystemScript : MonoBehaviour {
 
 			if (other.gameObject == CharaMoveMscript.activeChara) {
 				Debug.Log ("アクティブなキャラなので、噴水ONにします ");
-				FountainPaSC.CharaIsHere = true;
+//				FountainPaSC.CharaIsHere = true;
+				if (HunsuiBody.activeSelf == false) {
+					HunsuiBody.SetActive (true);
+				}	
+			} else {
+//				FountainPaSC.CharaIsHere = false;
+				if (HunsuiBody.activeSelf) {
+					HunsuiBody.SetActive (false);
+				}
 			}
 		}
 	}
@@ -47,7 +59,10 @@ public class ParticleSystemScript : MonoBehaviour {
 
 			if (other.gameObject == CharaMoveMscript.activeChara) {
 				Debug.Log ("アクティブなキャラは居ないので、噴水OFFにします ");
-				FountainPaSC.CharaIsHere = false;
+//				FountainPaSC.CharaIsHere = false;
+				if (HunsuiBody.activeSelf) {
+					HunsuiBody.SetActive (false);
+				}
 			}
 		}
 	}

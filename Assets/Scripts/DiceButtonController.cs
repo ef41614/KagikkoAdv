@@ -29,6 +29,7 @@ public class DiceButtonController : MonoBehaviour {
 	GameObject RollPart;
 	public bool RollPartActive = false;
 	public AudioClip RouletteSE;
+	float RollAngle = 0.05f;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -64,9 +65,9 @@ public class DiceButtonController : MonoBehaviour {
 		// 進めるマスが0 && サイコロふる準備ができたら、サイコロボタンを有効（再表示）にする
 		if (canRoll == true) {
 //			Debug.Log("DiceB.transform.rotation.y！"+DiceB.transform.rotation.y);
-			if((DiceB.transform.rotation.y>0.01)||(DiceB.transform.rotation.y<-0.01)){
-			DiceB.transform.Rotate(new Vector3(0, 30, 0) * Time.deltaTime);
-			}else if ((DiceB.transform.rotation.y <=0.01)||(DiceB.transform.rotation.y>=-0.01)) {
+			if((DiceB.transform.rotation.y>RollAngle)||(DiceB.transform.rotation.y<-1*RollAngle)){
+			DiceB.transform.Rotate(new Vector3(0, 45, 0) * Time.deltaTime);
+			}else if ((DiceB.transform.rotation.y <=RollAngle)||(DiceB.transform.rotation.y>=-1*RollAngle)) {
 				DiceB.transform.Rotate(new Vector3(0, 0, 0));
 			}
 

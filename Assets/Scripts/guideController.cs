@@ -9,6 +9,8 @@ public class guideController : MonoBehaviour {
 	private UnityChanController Uscript;
 	GameObject pchan; 
 	PchanController Pscript; 
+	GameObject key;
+	KeyController keySC;
 	GameObject turnmanager;
 	TurnManager TurnMscript;
 	GameObject charamovemanager;
@@ -21,10 +23,10 @@ public class guideController : MonoBehaviour {
 	public GameObject P2;
 	public GameObject P3;
 	public GameObject P4;
-	public GameObject Key;
+	public GameObject KeyIcon;
 	public GameObject Peke;
 	public Vector3 IconPos;
-	public Vector3 IconPos2;
+//	public Vector3 IconPos;
 	public GameObject WMap;
 	WMapController WMapC;
 	public GameObject BirdB;
@@ -38,6 +40,7 @@ public class guideController : MonoBehaviour {
 		Uscript = unitychan.GetComponent<UnityChanController>();
 		pchan = GameObject.Find ("pchan"); 
 		Pscript = pchan.GetComponent<PchanController>(); 
+
 		turnmanager = GameObject.Find ("turnmanager");
 		TurnMscript = turnmanager.GetComponent<TurnManager>(); 
 		charamovemanager = GameObject.Find ("charamovemanager");
@@ -129,6 +132,7 @@ public class guideController : MonoBehaviour {
 		Debug.Log ("WMapにプレーヤー位置を反映させます");
 		ShowPlayer1_InWMap ();
 		ShowPlayer2_InWMap ();
+		ShowKeyIcon_InWMap ();
 	}
 
 	public void ShowPlayer1_InWMap(){
@@ -141,10 +145,7 @@ public class guideController : MonoBehaviour {
 		//WMapC.IconPos = IconPos;
 		//WMapC.ShowIconPos_InWMap ();
 
-		Debug.Log ("プレーヤーIconPos："+IconPos);
-		Debug.Log ("プレーヤーIconPos.x："+IconPos.x);
-		Debug.Log ("プレーヤーIconPos.y："+IconPos.y);
-		Debug.Log ("プレーヤーIconPos.z："+IconPos.z);
+
 
 		if (Uscript.CurrentArea == 0) {
 			Debug.Log ("プレーヤー１：いまバード");
@@ -159,29 +160,51 @@ public class guideController : MonoBehaviour {
 		}
 
 		P1.transform.position = IconPos;
-		Debug.Log ("プレーヤーIconPos："+IconPos);
-		Debug.Log ("プレーヤーIconPos.x："+IconPos.x);
-		Debug.Log ("プレーヤーIconPos.y："+IconPos.y);
-		Debug.Log ("プレーヤーIconPos.z："+IconPos.z);
 	}
 
 
 	public void ShowPlayer2_InWMap(){
 		pchan = GameObject.Find ("pchan"); 
-		Debug.Log ("プレーヤー2IconPos："+IconPos2);
+		Debug.Log ("プレーヤー2IconPos："+IconPos);
 		if (Pscript.CurrentArea == 0) {
 			Debug.Log ("プレーヤー2：いまバード");
-			IconPos2 = BirdB.transform.position;
-			IconPos2.x = IconPos2.x + Pscript.Player_pos.x/2.5f;
-			IconPos2.y = IconPos2.y + Pscript.Player_pos.z/2.5f + 7;
+			IconPos = BirdB.transform.position;
+			IconPos.x = IconPos.x + Pscript.Player_pos.x/2.5f;
+			IconPos.y = IconPos.y + Pscript.Player_pos.z/2.5f + 7;
 		} else if (Pscript.CurrentArea == 1) {
 			Debug.Log ("プレーヤー2：いま噴水");
-			IconPos2 = FountainB.transform.position;
-			IconPos2.x = IconPos2.x + (Pscript.Player_pos.x - FountainStage.transform.position.x)/2.5f;
-			IconPos2.y = IconPos2.y + (Pscript.Player_pos.z - FountainStage.transform.position.z)/2.5f + 7;
+			IconPos = FountainB.transform.position;
+			IconPos.x = IconPos.x + (Pscript.Player_pos.x - FountainStage.transform.position.x)/2.5f;
+			IconPos.y = IconPos.y + (Pscript.Player_pos.z - FountainStage.transform.position.z)/2.5f + 7;
 		}
-		Debug.Log ("プレーヤー2IconPos2："+IconPos2);
-		P2.transform.position = IconPos2;
+		Debug.Log ("プレーヤー2IconPos："+IconPos);
+		P2.transform.position = IconPos;
+	}
+
+
+	public void ShowKeyIcon_InWMap(){
+		key = GameObject.Find("KeyPrefab(Clone)");
+		keySC = key.GetComponent<KeyController> ();
+		Debug.Log ("カギIconPos："+IconPos);
+		Debug.Log ("カギIconPos.x："+IconPos.x);
+		Debug.Log ("カギIconPos.y："+IconPos.y);
+		Debug.Log ("カギIconPos.z："+IconPos.z);
+		if (keySC.CurrentArea == 0) {
+			Debug.Log ("カギ：いまバード");
+			IconPos = BirdB.transform.position;
+			IconPos.x = IconPos.x + keySC.key_pos.x/2.5f;
+			IconPos.y = IconPos.y + keySC.key_pos.z/2.5f + 7;
+		} else if (keySC.CurrentArea == 1) {
+			Debug.Log ("カギ：いま噴水");
+			IconPos = FountainB.transform.position;
+			IconPos.x = IconPos.x + (keySC.key_pos.x - FountainStage.transform.position.x)/2.5f;
+			IconPos.y = IconPos.y + (keySC.key_pos.z - FountainStage.transform.position.z)/2.5f + 7;
+		}
+		KeyIcon.transform.position = IconPos;
+		Debug.Log ("カギIconPos："+IconPos);
+		Debug.Log ("カギIconPos.x："+IconPos.x);
+		Debug.Log ("カギIconPos.y："+IconPos.y);
+		Debug.Log ("カギIconPos.z："+IconPos.z);
 	}
 
 	//#################################################################################

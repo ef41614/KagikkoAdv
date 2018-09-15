@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour {
 					break;
 
 				case 9:
-					appearPosition = new Vector3 (9, 0, -18);
+					appearPosition = new Vector3 (21, 0, -18);
 					Debug.Log ("目指す場所はSOUTH_R");
 					break;
 

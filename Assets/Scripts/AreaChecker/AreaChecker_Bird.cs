@@ -8,6 +8,9 @@ public class AreaChecker_Bird : MonoBehaviour {
 	UnityChanController Uscript; 
 	GameObject pchan; 
 	PchanController Pscript; 
+	GameObject key;
+	KeyController keySC;
+
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -17,6 +20,7 @@ public class AreaChecker_Bird : MonoBehaviour {
 		Uscript = unitychan.GetComponent<UnityChanController>();
 		pchan = GameObject.Find ("pchan"); 
 		Pscript = pchan.GetComponent<PchanController>(); 
+
 	}
 
 
@@ -27,17 +31,23 @@ public class AreaChecker_Bird : MonoBehaviour {
 	}
 
 	//####################################  other  ####################################
-	public void OnTriggerEnter(Collider other){
+	public void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
 			Debug.Log ("バードタウンに居ます ");
 
 			if (other.gameObject == unitychan) {
-				Uscript.CurrentArea =0;
+				Uscript.CurrentArea = 0;
 			}
 			if (other.gameObject == pchan) {
-				Pscript.CurrentArea =0;
+				Pscript.CurrentArea = 0;
 			}
-
+		}
+			
+		if (other.gameObject.tag == "Key") {
+				key = GameObject.Find("KeyPrefab(Clone)");
+				keySC = key.GetComponent<KeyController> ();
+				Debug.Log ("カギはバードタウンにあります ");
+				keySC.CurrentArea = 0;
 		}
 	}
 

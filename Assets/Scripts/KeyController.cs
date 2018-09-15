@@ -14,7 +14,7 @@ public class KeyController : MonoBehaviour {
 	GameObject CanvasGoal;
 	GoalManager GoalM;
 	Rigidbody rb;
-	Vector3 key_pos; 
+	public Vector3 key_pos; 
 
 	public float force=1000;
 	public float torque=1000;
@@ -22,6 +22,8 @@ public class KeyController : MonoBehaviour {
 
 	public GameObject KeyImage;
 	public KeyParticle KeyParticleSC;
+
+	public int CurrentArea =0;
 
 	//☆################☆################  Start  ################☆################☆
 

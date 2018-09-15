@@ -9,6 +9,8 @@ public class TreasureController : MonoBehaviour {
 
 	private GameObject gameManager;
 	public GameManager GMScript;
+	public GameObject GuideM;
+	guideController GuideC;
 	GameObject Mewindow;
 	public Text targetText; 
 	public float difference = 10;
@@ -16,16 +18,21 @@ public class TreasureController : MonoBehaviour {
 
 	public GameObject LangManager;
 	LangManager LangMScript;
+	public Vector3 Treasure_pos; 
 
+	public int CurrentArea =0;
 	//☆################☆################  Start  ################☆################☆
 
 	void Start () {
 		gameManager = GameObject.Find ("GameManager");
 		GMScript = gameManager.GetComponent<GameManager> ();
 		GMScript.getPositionInfo();
+		GuideM = GameObject.Find ("guideMaster");
+		GuideC = GuideM.GetComponent<guideController> ();
 		transform.position = GMScript.appearPosition;
 		MainCamera = GameObject.Find ("MainCamera");
-
+		Treasure_pos = GetComponent<Transform>().position;
+		GuideC.chestExist = true;
 	}
 
 	//####################################  Update  ###################################
@@ -39,6 +46,7 @@ public class TreasureController : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Key") {
 //			inFrontOfCamera ();
+			GuideC.chestExist = false;
 			GMScript.GetTreasure ();
 			GMScript.CreateKey ();
 //			GMScript.sentence = "たからばこが あいたよ！";

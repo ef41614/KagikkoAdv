@@ -10,7 +10,8 @@ public class AreaChecker_Bird : MonoBehaviour {
 	PchanController Pscript; 
 	GameObject key;
 	KeyController keySC;
-
+	GameObject Treasure;
+	TreasureController TreasureSC;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -48,6 +49,24 @@ public class AreaChecker_Bird : MonoBehaviour {
 				keySC = key.GetComponent<KeyController> ();
 				Debug.Log ("カギはバードタウンにあります ");
 				keySC.CurrentArea = 0;
+		}
+
+//		if (other.gameObject.tag == "Treasure") {
+//			Treasure = GameObject.Find ("TreasurePrefab(Clone)");
+//			TreasureSC = Treasure.GetComponent<TreasureController>(); 
+//			Debug.Log ("宝箱はバードタウンにあります ");
+//			TreasureSC.CurrentArea = 0;
+//		}
+	}
+
+	public void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Treasure") {
+			Treasure = GameObject.Find ("TreasurePrefab(Clone)");
+			if (Treasure != null) {
+				TreasureSC = Treasure.GetComponent<TreasureController> (); 
+				Debug.Log ("宝箱はバードタウンにあります ");
+				TreasureSC.CurrentArea = 0;
+			}
 		}
 	}
 

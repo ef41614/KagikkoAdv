@@ -11,6 +11,8 @@ public class guideController : MonoBehaviour {
 	PchanController Pscript; 
 	GameObject key;
 	KeyController keySC;
+	GameObject Treasure;
+	TreasureController TreasureSC;
 	GameObject turnmanager;
 	TurnManager TurnMscript;
 	GameObject charamovemanager;
@@ -33,6 +35,7 @@ public class guideController : MonoBehaviour {
 	public GameObject FountainB;
 
 	public GameObject FountainStage;
+	public bool chestExist = false;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -46,6 +49,11 @@ public class guideController : MonoBehaviour {
 		charamovemanager = GameObject.Find ("charamovemanager");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 		WMapC = WMap.GetComponent<WMapController>(); 
+//		WMap.SetActive (false);
+
+		var sequence = DOTween.Sequence();
+		sequence.InsertCallback(0.1f, () =>(ShowIconPos_InWMap ()));
+//		ShowIconPos_InWMap ();
 	}
 		
 	//####################################  Update  ###################################
@@ -133,6 +141,16 @@ public class guideController : MonoBehaviour {
 		ShowPlayer1_InWMap ();
 		ShowPlayer2_InWMap ();
 		ShowKeyIcon_InWMap ();
+		if (chestExist) {
+			if (Peke.activeSelf == false) {
+				Peke.SetActive (true);
+			}
+			ShowTreasureIcon_InWMap ();
+		} else {
+			if (Peke.activeSelf) {
+				Peke.SetActive (false);
+			}
+		}
 	}
 
 	public void ShowPlayer1_InWMap(){
@@ -207,6 +225,24 @@ public class guideController : MonoBehaviour {
 		Debug.Log ("カギIconPos.z："+IconPos.z);
 	}
 
+
+	public void ShowTreasureIcon_InWMap(){
+		Treasure = GameObject.Find ("TreasurePrefab(Clone)");
+		TreasureSC = Treasure.GetComponent<TreasureController>(); 
+		if (TreasureSC.CurrentArea == 0) {
+			Debug.Log ("宝箱：いまバード");
+			IconPos = BirdB.transform.position;
+			IconPos.x = IconPos.x + TreasureSC.Treasure_pos.x/2.5f + 4;
+			IconPos.y = IconPos.y + TreasureSC.Treasure_pos.z/2.5f + 2;
+		} else if (TreasureSC.CurrentArea == 1) {
+			Debug.Log ("宝箱：いま噴水");
+			IconPos = FountainB.transform.position;
+			IconPos.x = IconPos.x + (TreasureSC.Treasure_pos.x - FountainStage.transform.position.x)/2.5f + 4;
+			IconPos.y = IconPos.y + (TreasureSC.Treasure_pos.z - FountainStage.transform.position.z)/2.5f + 2;
+		}
+		Peke.transform.position = IconPos;
+	}
+		
 	//#################################################################################
 
 }

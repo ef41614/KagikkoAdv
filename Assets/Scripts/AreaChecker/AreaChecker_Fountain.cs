@@ -10,6 +10,8 @@ public class AreaChecker_Fountain : MonoBehaviour {
 	PchanController Pscript; 
 	GameObject key;
 	KeyController keySC;
+	GameObject Treasure;
+	TreasureController TreasureSC;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -46,6 +48,24 @@ public class AreaChecker_Fountain : MonoBehaviour {
 				keySC = key.GetComponent<KeyController>();
 				Debug.Log ("カギは噴水にあります ");
 				keySC.CurrentArea = 1;
+		}
+
+//		if (other.gameObject.tag == "Treasure") {
+//			Treasure = GameObject.Find ("TreasurePrefab(Clone)");
+//			TreasureSC = Treasure.GetComponent<TreasureController>(); 
+//			Debug.Log ("宝箱は噴水にあります ");
+//			TreasureSC.CurrentArea = 1;
+//		}
+	}
+
+	public void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Treasure") {
+			Treasure = GameObject.Find ("TreasurePrefab(Clone)");
+			if (Treasure != null) {
+				TreasureSC = Treasure.GetComponent<TreasureController> (); 
+				Debug.Log ("宝箱は噴水にあります ");
+				TreasureSC.CurrentArea = 1;
+			}
 		}
 	}
 

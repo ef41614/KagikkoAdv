@@ -36,6 +36,7 @@ public class guideController : MonoBehaviour {
 
 	public GameObject FountainStage;
 	public bool chestExist = false;
+	public bool KeyIsFree = true;
 
 	//☆################☆################  Start  ################☆################☆
 	void Start () {
@@ -140,7 +141,18 @@ public class guideController : MonoBehaviour {
 		Debug.Log ("WMapにプレーヤー位置を反映させます");
 		ShowPlayer1_InWMap ();
 		ShowPlayer2_InWMap ();
-		ShowKeyIcon_InWMap ();
+
+		if (KeyIsFree) {
+			if (KeyIcon.activeSelf == false) {
+				KeyIcon.SetActive (true);
+			}
+			ShowKeyIcon_InWMap ();
+		} else {
+			if (KeyIcon.activeSelf) {
+				KeyIcon.SetActive (false);
+			}
+		}
+
 		if (chestExist) {
 			if (Peke.activeSelf == false) {
 				Peke.SetActive (true);

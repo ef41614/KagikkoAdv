@@ -6,6 +6,8 @@ public class KeyController : MonoBehaviour {
 
 	private GameObject gameManager;
 	public GameManager GMScript;
+	GameObject GuideM;
+	guideController GuideC;
 	public GameObject parentObject = null;
 	Renderer rend;
 	Color color;
@@ -24,6 +26,7 @@ public class KeyController : MonoBehaviour {
 	public KeyParticle KeyParticleSC;
 
 	public int CurrentArea =0;
+	public bool KeyIsFree = true;
 
 	//☆################☆################  Start  ################☆################☆
 
@@ -40,6 +43,8 @@ public class KeyController : MonoBehaviour {
 		key_pos = GetComponent<Transform>().position;
 
 		KeyParticleSC = KeyImage.GetComponent<KeyParticle> ();
+		GuideM = GameObject.Find ("guideMaster");
+		GuideC = GuideM.GetComponent<guideController> ();
 	}
 
 	//####################################  Update  ###################################
@@ -84,6 +89,8 @@ public class KeyController : MonoBehaviour {
 			rb.constraints = RigidbodyConstraints.FreezePosition;
 //			transform.Translate (0, 0, 0);
 //			Destroy (this.gameObject);
+			KeyIsFree = false;
+			GuideC.KeyIsFree = false;
 		}
 
 	}
@@ -112,6 +119,8 @@ public class KeyController : MonoBehaviour {
 		rb.useGravity = true;
 //		GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.None;
 		FixPosition();
+		KeyIsFree = true;
+		GuideC.KeyIsFree = true;
 	}
 
 	void FixPosition(){

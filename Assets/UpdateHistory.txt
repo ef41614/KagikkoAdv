@@ -331,3 +331,7 @@ KagikkoAdv 2-53回目のコミット
 KagikkoAdv 2-54回目のコミット
 
 マップの宝箱位置修正。噴水はパーティクル演出のみON-OFF切リ変え。
+---
+KagikkoAdv 2-55回目のコミット
+
+水面のプレハブをWater(Prp)からWater(Basic)に切り替え。赤エラー消えた。

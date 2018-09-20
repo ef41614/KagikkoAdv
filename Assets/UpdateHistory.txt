@@ -339,3 +339,7 @@ KagikkoAdv 2-55回目のコミット
 KagikkoAdv 2-56回目のコミット
 
 monodevelopサポート終了に伴い、VisualStudioに切り替え。Goalメッセージを表示。
+---
+KagikkoAdv 2-57回目のコミット
+
+エラーの主要因となっているHolyShiftをプロジェクト外に移動。

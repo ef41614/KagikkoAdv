@@ -45,7 +45,8 @@ public class KeyController : MonoBehaviour {
 		KeyParticleSC = KeyImage.GetComponent<KeyParticle> ();
 		GuideM = GameObject.Find ("guideMaster");
 		GuideC = GuideM.GetComponent<guideController> ();
-	}
+        GuideC.KeyIsFree = true;
+    }
 
 	//####################################  Update  ###################################
 
@@ -121,9 +122,10 @@ public class KeyController : MonoBehaviour {
 		FixPosition();
 		KeyIsFree = true;
 		GuideC.KeyIsFree = true;
-	}
+        key_pos = GetComponent<Transform>().position;
+    }
 
-	void FixPosition(){
+    void FixPosition(){
 		Debug.Log ("カギ位置修正中");
 		key_pos.x = Mathf.RoundToInt ( ((key_pos.x)/3)*3);
 		Debug.Log ("key_pos.x % 3 は"+ key_pos.x % 3);

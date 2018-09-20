@@ -222,16 +222,21 @@ public class guideController : MonoBehaviour {
 		if (keySC.CurrentArea == 0) {
 			Debug.Log ("カギ：いまバード");
 			IconPos = BirdB.transform.position;
-			IconPos.x = IconPos.x + keySC.key_pos.x/2.5f;
-			IconPos.y = IconPos.y + keySC.key_pos.z/2.5f + 7;
-		} else if (keySC.CurrentArea == 1) {
+//			IconPos.x = IconPos.x + (keySC.key_pos.x - BirdB.transform.position.x) /2.5f;
+            IconPos.x = IconPos.x + keySC.key_pos.x / 2.5f+2;
+//            IconPos.y = IconPos.y + (keySC.key_pos.z - BirdB.transform.position.z) / 2.5f + 7;
+            IconPos.y = IconPos.y + keySC.key_pos.z / 2.5f + 4;
+        } else if (keySC.CurrentArea == 1) {
 			Debug.Log ("カギ：いま噴水");
 			IconPos = FountainB.transform.position;
-			IconPos.x = IconPos.x + (keySC.key_pos.x - FountainStage.transform.position.x)/2.5f;
-			IconPos.y = IconPos.y + (keySC.key_pos.z - FountainStage.transform.position.z)/2.5f + 7;
+			IconPos.x = IconPos.x + (keySC.key_pos.x - FountainStage.transform.position.x)/2.5f+2;
+			IconPos.y = IconPos.y + (keySC.key_pos.z - FountainStage.transform.position.z)/2.5f + 4;
 		}
 		KeyIcon.transform.position = IconPos;
-		Debug.Log ("カギIconPos："+IconPos);
+        Debug.Log("カギkeySC.key_pos.x：" + keySC.key_pos.x);
+        Debug.Log("カギkeySC.key_pos.z：" + keySC.key_pos.z);
+
+        Debug.Log ("カギIconPos："+IconPos);
 		Debug.Log ("カギIconPos.x："+IconPos.x);
 		Debug.Log ("カギIconPos.y："+IconPos.y);
 		Debug.Log ("カギIconPos.z："+IconPos.z);

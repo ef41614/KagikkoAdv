@@ -181,56 +181,74 @@ public class BoardController : MonoBehaviour {
 			if (BoardTicket == 1) {
 				Debug.Log ("BoardTicket を拝見します ");
 				parentObject = other.gameObject;
-				if (parentObject == CharaMoveMscript.activeChara) {
-					Debug.Log ("ボードにぶつかったあなた。今、あなたがプレイヤブルですね");
-					CharaMoveMscript.RemainingStepsInfo = 0;
-					CharaMoveMscript.stepsLeft ();
-					transform.position = new Vector3 (transform.position.x, 40, transform.position.z);
-					GMScript.GetKey ();
-//			GMScript.CreateTreasure ();
-					rb.velocity = Vector3.zero;
-					// ゲットしたプレーヤーの子オブジェクトになる
-//			KeyParticleSC.GetKeyParticle();
-					this.gameObject.transform.parent = parentObject.transform;
-					GetParentName ();
-					//			transform.position = new Vector3( 0.0f, 1.0f, 0.0f);
-//			float Size = 0.05f;
-//			this.transform.localScale = new Vector3(Size, Size, Size);
-					//transform.localPosition = new Vector3 (0.0f, -0.4f, -1.146f);
-					transform.localPosition = new Vector3 (0.0f, -0.5f, 0.0f);
-//			rend.material.color = new Color(0, 0, 0, 150);
-					//transform.rotation = Quaternion.identity;
+            if (GMScript.RouletteExist == false)
+            {
+                if (parentObject == CharaMoveMscript.activeChara)
+                {
+                    Debug.Log("ボードにぶつかったあなた。今、あなたがプレイヤブルですね");
+                    CharaMoveMscript.RemainingStepsInfo = 0;
+                    CharaMoveMscript.stepsLeft();
+                    transform.position = new Vector3(transform.position.x, 40, transform.position.z);
+                    GMScript.GetKey();
+                    //			GMScript.CreateTreasure ();
+                    rb.velocity = Vector3.zero;
+                    // ゲットしたプレーヤーの子オブジェクトになる
+                    //			KeyParticleSC.GetKeyParticle();
+                    this.gameObject.transform.parent = parentObject.transform;
+                    GetParentName();
+                    //			transform.position = new Vector3( 0.0f, 1.0f, 0.0f);
+                    //			float Size = 0.05f;
+                    //			this.transform.localScale = new Vector3(Size, Size, Size);
+                    //transform.localPosition = new Vector3 (0.0f, -0.4f, -1.146f);
+                    transform.localPosition = new Vector3(0.0f, -0.5f, 0.0f);
+                    //			rend.material.color = new Color(0, 0, 0, 150);
+                    //transform.rotation = Quaternion.identity;
 
-					//Vector3 localAngle = parentObject.localEulerAngles;
-					//transform.localEulerAngles = localAngle;
+                    //Vector3 localAngle = parentObject.localEulerAngles;
+                    //transform.localEulerAngles = localAngle;
 
-//					float angle = 1;
-//					transform.Rotate (parentObject.transform.forward, angle);
+                    //					float angle = 1;
+                    //					transform.Rotate (parentObject.transform.forward, angle);
 
-					rb.velocity = Vector3.zero;
+                    rb.velocity = Vector3.zero;
 
-					rb.constraints = RigidbodyConstraints.FreezeRotation;
-					rb.useGravity = false;
-//					rb.constraints = RigidbodyConstraints.FreezePositionY;
-					rb.constraints = RigidbodyConstraints.FreezePosition;
-					//rb.constraints = RigidbodyConstraints.FreezeRotationX;
-					//rb.constraints = RigidbodyConstraints.FreezeRotationY;
-					//rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-					Debug.Log ("スケートボードがゲットしたプレーヤーの子オブジェクトになる");
-					Debug.Log (CharaMoveMscript.activeChara.name+" Boardに接触：");
-					CharaMoveMscript.OnBoard = true;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.useGravity = false;
+                    //					rb.constraints = RigidbodyConstraints.FreezePositionY;
+                    rb.constraints = RigidbodyConstraints.FreezePosition;
+                    //rb.constraints = RigidbodyConstraints.FreezeRotationX;
+                    //rb.constraints = RigidbodyConstraints.FreezeRotationY;
+                    //rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+                    Debug.Log("スケートボードがゲットしたプレーヤーの子オブジェクトになる");
+                    Debug.Log(CharaMoveMscript.activeChara.name + " Boardに接触：");
+                    CharaMoveMscript.OnBoard = true;
 
-					BoardTicket -= 1;
+                    BoardTicket -= 1;
+                    this.gameObject.tag = "MovingBoard";
 
-					WaitTime = TimerSC.totalTime;
-					Debug.Log ("WaitTime は： "+ WaitTime);
-					var sequence = DOTween.Sequence();
-//					sequence.InsertCallback(0.5f, () =>(SceneManager.LoadScene ("GameScene")));
-					sequence.InsertCallback(WaitTime, () =>(CharaMoveMscript.OnBoard = false));
-					sequence.InsertCallback(WaitTime, () =>(GetOffBoard()));
+                    WaitTime = TimerSC.totalTime;
+                    Debug.Log("WaitTime は： " + WaitTime);
+                    var sequence = DOTween.Sequence();
+                    //					sequence.InsertCallback(0.5f, () =>(SceneManager.LoadScene ("GameScene")));
+                    sequence.InsertCallback(WaitTime, () => (CharaMoveMscript.OnBoard = false));
+                    sequence.InsertCallback(WaitTime, () => (GetOffBoard()));
 
-				//}
-			}
+
+                    // GameObject型の配列cubesに、"Board"タグのついたオブジェクトをすべて格納
+                    GameObject[] cubes = GameObject.FindGameObjectsWithTag("Board");
+
+                    // GameObject型の変数cubeに、cubesの中身を順番に取り出す。
+                    // foreachは配列の要素の数だけループします。
+                    foreach (GameObject cube in cubes)
+                    {
+                        // 消す！
+                        Debug.Log("Board はすべて消します");
+                        Destroy(cube);
+                    }
+
+                    //}
+                }
+            }
 		}
 	}
 
@@ -243,13 +261,13 @@ public class BoardController : MonoBehaviour {
 
 	public void GetOffBoard(){
 		CharaMoveMscript.RemainingStepsInfo = 0;
-		// プレーヤーとの親子関係解消（フリーになる）
-		transform.parent = null;
-//		rb.constraints = RigidbodyConstraints.None;
-		rb.constraints = RigidbodyConstraints.FreezeRotation;
-		rb.constraints = RigidbodyConstraints.FreezePosition;
+        // プレーヤーとの親子関係解消（フリーになる）
+        //★		transform.parent = null;
+        //		rb.constraints = RigidbodyConstraints.None;
+        //★		rb.constraints = RigidbodyConstraints.FreezeRotation;
+        //★        rb.constraints = RigidbodyConstraints.FreezePosition;
 
-		goFadeOut = true;
+        goFadeOut = true;
 //		FadeSC.goFadeOut = true;
 		//FadeBoSC.goFadeOut = true;
 

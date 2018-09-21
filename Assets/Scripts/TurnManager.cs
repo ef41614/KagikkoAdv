@@ -18,9 +18,14 @@ public class TurnManager : MonoBehaviour {
 	CharaMoveManager CharaMoveMscript;
 	public GameObject gameManager;
 	GameManager GMScript;
-	GameObject WMap; 
+    GameObject FieldBGMTuner;
+    FBGMController FBGMsc;
+    GameObject WMap;
+    public AudioClip WorldMapBGM;
+    public AudioClip fieldBGM;
+    AudioSource audioSource;
 
-	public bool canMove1P = true; 
+    public bool canMove1P = true; 
 	public bool canMove2P = false; 
 
 	//☆################☆################  Start  ################☆################☆
@@ -40,8 +45,13 @@ public class TurnManager : MonoBehaviour {
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 		gameManager = GameObject.Find ("GameManager");
 		GMScript = gameManager.GetComponent<GameManager> ();
-		WMap = GameObject.Find ("WorldMap");
-	}
+        FieldBGMTuner = GameObject.Find("FieldBGMTuner");
+        FBGMsc = FieldBGMTuner.GetComponent<FBGMController>();
+
+        WMap = GameObject.Find ("WorldMap");
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(WorldMapBGM);
+    }
 
 	//####################################  Update  ###################################
 
@@ -52,14 +62,14 @@ public class TurnManager : MonoBehaviour {
 	//####################################  other  ####################################
 
 	public void ChangePlayer(){
-		Debug.Log("★ターン切り替えスクリプト呼び出され");
+//		Debug.Log("★ターン切り替えスクリプト呼び出され");
 //		if((canMove1P==true)&&(Uscript.UIsRunning==false)){
 		if((canMove1P==true)&&(CharaMoveMscript.RunningInfo==false)){
-			Debug.Log ("★ターン切り替えスクリプト_1P:fase01");
+//			Debug.Log ("★ターン切り替えスクリプト_1P:fase01");
 			if (CharaMoveMscript.RemainingStepsInfo <= 0) {
-					Debug.Log ("★ターン切り替えスクリプト_1P:fase02");
+//					Debug.Log ("★ターン切り替えスクリプト_1P:fase02");
 					if (CharaMoveMscript.OnBoard == false) {
-						Debug.Log ("★ターン切り替えスクリプト_1P:fase03");
+//						Debug.Log ("★ターン切り替えスクリプト_1P:fase03");
 						canMove1P = false;
 						canMove2P = true;
 						ChangePlayerProcess ();
@@ -68,15 +78,18 @@ public class TurnManager : MonoBehaviour {
 
 //		}else if((canMove2P==true)&&(Pscript.PIsRunning==false)){
 		}else if((canMove2P==true)&&(CharaMoveMscript.RunningInfo==false)){
-			Debug.Log("★ターン切り替えスクリプト_2P:fase01");
+//			Debug.Log("★ターン切り替えスクリプト_2P:fase01");
 			if (CharaMoveMscript.RemainingStepsInfo <= 0) {
-					Debug.Log ("★ターン切り替えスクリプト_2P:fase02");
+//					Debug.Log ("★ターン切り替えスクリプト_2P:fase02");
 					if (CharaMoveMscript.OnBoard == false) {
-						Debug.Log ("★ターン切り替えスクリプト_2P:fase03");
+//						Debug.Log ("★ターン切り替えスクリプト_2P:fase03");
 						canMove1P = true;
 					    WMap.SetActive (true);
 						GuideC.ShowIconPos_InWMap ();
-						canMove2P = false;
+                        audioSource = gameObject.GetComponent<AudioSource>();
+                        FBGMsc.FBGMStop();
+                        audioSource.PlayOneShot(WorldMapBGM);
+                        canMove2P = false;
 						ChangePlayerProcess ();
 					}
 			}
@@ -95,7 +108,10 @@ public class TurnManager : MonoBehaviour {
 
 	public void CloseWMap(){
 		WMap.SetActive (false);
-	}
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.Stop();
+        FBGMsc.FBGMStart();
+    }
 
 	//#################################################################################
 

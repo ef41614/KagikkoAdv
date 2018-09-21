@@ -347,3 +347,7 @@ KagikkoAdv 2-57回目のコミット
 KagikkoAdv 2-58回目のコミット
 
 Mapカギ位置細部調整までOK。
+---
+KagikkoAdv 2-59回目のコミット
+
+WMap前、ガイダンス表示。MapBGM追加。開始時ボードON対策済。

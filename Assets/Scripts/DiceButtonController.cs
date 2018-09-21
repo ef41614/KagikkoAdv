@@ -23,7 +23,10 @@ public class DiceButtonController : MonoBehaviour {
 	GameObject fadeScript;
 	FadeScript FadeSC;
 	GameObject ArrowB;
-	private float timeleft;
+    GameObject gameManager;
+    GameManager GMScript;
+
+    private float timeleft;
 	public AudioClip DiceRollSE;
 	private AudioSource audioSource;
 	GameObject RollPart;
@@ -51,7 +54,9 @@ public class DiceButtonController : MonoBehaviour {
 		ArrowB = GameObject.Find ("arrowButtons");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 		audioSource = this.gameObject.GetComponent<AudioSource> ();
-	}
+        gameManager = GameObject.Find("GameManager");
+        GMScript = gameManager.GetComponent<GameManager>();
+    }
 
 	//####################################  Update  ###################################
 
@@ -70,19 +75,21 @@ public class DiceButtonController : MonoBehaviour {
 			}else if ((DiceB.transform.rotation.y <=RollAngle)||(DiceB.transform.rotation.y>=-1*RollAngle)) {
 				DiceB.transform.Rotate(new Vector3(0, 0, 0));
 			}
-
 			DiceB.SetActive (true);
+//            GMScript.RouletteExist = true;
+            var sequence = DOTween.Sequence();
+            sequence.InsertCallback(0.5f, () => (GMScript.RouletteExist = true));
+        } else if(canRoll == false){
+			DiceB.SetActive (false);
+            GMScript.RouletteExist = false;
+        }
 
-		} else if(canRoll == false){
-			DiceB.SetActive (false);	
-		}
-
-		RollPart.transform.Rotate(new Vector3(0, 0, -15));
+        RollPart.transform.Rotate(new Vector3(0, 0, -15));
 		if (RollPartActive) {
-			RollPart.SetActive (true);
-		} else if (RollPartActive == false) {
+            RollPart.SetActive (true);
+        } else if (RollPartActive == false) {
 			RollPart.SetActive (false);
-		}
+        }
 	}
 
 	//####################################  other  ####################################
@@ -101,7 +108,8 @@ public class DiceButtonController : MonoBehaviour {
 		Debug.Log("ルーレットを回せ！");
 		this.DiceB = GameObject.Find ("DiceRollButton");
 		if (DiceB != null) {
-			int num = Random.Range (1, 11);
+            GMScript.RouletteExist = true;
+            int num = Random.Range (1, 11);
 			Debug.Log("num :" +num);
 			DiceResult = num;
 //			if((TurnMscript.canMove1P == true)&&(TurnMscript.canMove2P == false)){

@@ -26,8 +26,14 @@ public class GameManager : MonoBehaviour {
 	private int rndNum = 0;
 	private int lastTimeNum = 0;
 	private int lastBoardNum = 0;
+    int last2BoardNum = 0;
+    int last3BoardNum = 0;
+    int last4BoardNum = 0;
+    int last5BoardNum = 0;
+    int last6BoardNum = 0;
+    int last7BoardNum = 0;
 
-	GameObject Mewindow;
+    GameObject Mewindow;
 	public Text targetText; 
 	public bool messageOrder = false;
 	public string sentence = "";
@@ -44,9 +50,11 @@ public class GameManager : MonoBehaviour {
 	CharaMoveManager CharaMoveMscript;
 	FadeBoardScript FadeBoSC;
 	GameObject polygon;
+    GameObject FieldBGMTuner;
+    FBGMController FBGMsc;
 
 
-	public GameObject titleM;
+    public GameObject titleM;
 	public GameObject titleMSC;
 
 	public GameObject menu_UI;
@@ -62,11 +70,13 @@ public class GameManager : MonoBehaviour {
 	public GameObject fountain;
 	Vector3 ftPos;
 
+    public bool RouletteExist = false;
+
 //	public GameObject CreditPanel;
 //	public GameObject HowToPlayPanel;
 
 
-	void Awake(){
+    void Awake(){
 
 	}
 
@@ -95,7 +105,9 @@ public class GameManager : MonoBehaviour {
 		polygon = GameObject.Find ("Polygon");
 		FadeBoSC = polygon.GetComponent<FadeBoardScript>();
 		ftPos = fountain.transform.position;
-	}
+        FieldBGMTuner = GameObject.Find("FieldBGMTuner");
+        FBGMsc = FieldBGMTuner.GetComponent<FBGMController>();
+    }
 
 
 	//####################################  Update  ###################################
@@ -149,23 +161,26 @@ public class GameManager : MonoBehaviour {
 	// -------------------------------------------------
 
 	public void HaltBGM(){
-		AudioSource AudioSourceComponent = GameObject.Find("FieldBGM").GetComponent<AudioSource>();
+		//AudioSource AudioSourceComponent = GameObject.Find("FieldBGMTuner").GetComponent<AudioSource>();
 
 		// 一時停止
-		AudioSourceComponent.Pause();
+		//AudioSourceComponent.Pause();
+        //audioSource = gameObject.GetComponent<AudioSource>();
+        FBGMsc.FBGMStop();
 
-//		audioSource = fieldBGM;
-//		audioSource.Pause ();
-//		this.AudioSource.Pause();
-//		FieldBGM.Pause();
-	}
+        //		audioSource = fieldBGM;
+        //		audioSource.Pause ();
+        //		this.AudioSource.Pause();
+        //		FieldBGM.Pause();
+    }
 
 	public void RestartBGM(){
-		AudioSource AudioSourceComponent = GameObject.Find("FieldBGM").GetComponent<AudioSource>();
+		//AudioSource AudioSourceComponent = GameObject.Find("FieldBGMTuner").GetComponent<AudioSource>();
 
 		// 再生
-		AudioSourceComponent.Play();
-	}
+		//AudioSourceComponent.Play();
+        FBGMsc.FBGMStart();
+    }
 
 
 	public void CreateKey(){
@@ -322,13 +337,14 @@ public class GameManager : MonoBehaviour {
 
 	public void getBoardPositionInfo(){
 		do {
-			rndNum = Random.Range (7, 13);
+            rndNum = Random.Range(1, 13);
 
-			if (lastBoardNum != rndNum) {
-				Debug.Log ("rndNum      :"+rndNum);
-				Debug.Log ("lastBoardNum : " + lastBoardNum);
+            if ((lastBoardNum != rndNum) && (last2BoardNum != rndNum) && (last3BoardNum != rndNum) && (last4BoardNum != rndNum) && (last5BoardNum != rndNum) && (last6BoardNum != rndNum) && (last7BoardNum != rndNum))
+            {
+                Debug.Log("rndNum      :" + rndNum);
+                Debug.Log("lastBoardNum : " + lastBoardNum);
 
-				switch (rndNum) {
+                switch (rndNum) {
 				case 1:
 					appearBoardPosition = new Vector3 (-18, 0, 21);
 					Debug.Log ("ボードが左上に生成");
@@ -395,33 +411,57 @@ public class GameManager : MonoBehaviour {
 					break;
 				}
 			}
-		} while(lastBoardNum == rndNum);
-		lastBoardNum = rndNum;
-		Debug.Log ("lastBoardNum が " + lastBoardNum +"に上書きされます。");
-	}
+        } while ((lastBoardNum == rndNum) || (last2BoardNum == rndNum) || (last3BoardNum == rndNum) || (last4BoardNum == rndNum) || (last5BoardNum == rndNum) || (last6BoardNum == rndNum) || (last7BoardNum == rndNum));
+        // 繰り返し ここまで
+
+        last7BoardNum = last6BoardNum;
+        last6BoardNum = last5BoardNum;
+        last5BoardNum = last4BoardNum;
+        last4BoardNum = last3BoardNum;
+        last3BoardNum = last2BoardNum;
+        last2BoardNum = lastBoardNum;
+        lastBoardNum = rndNum;
+        Debug.Log("lastBoardNum が " + lastBoardNum + "に上書きされます。");
+    }
 
 
-	//Boardタグが付いたオブジェクトを数える
-	public void CheckBoardCount(){
+    //Boardタグが付いたオブジェクトを数える
+    public void CheckBoardCount(){
 		tagBoards = GameObject.FindGameObjectsWithTag("Board");
-		Debug.Log(tagBoards.Length); //tagObjects.Lengthはオブジェクトの数
+		Debug.Log("Board の数は "+tagBoards.Length); //tagObjects.Lengthはオブジェクトの数
 		//Destroy(tagBoards);
 
-		for (int i = 0; i < 2; i++) {
-			GameObject BoardP = GameObject.Find ("BoardPrefab(Clone)");
-			if (BoardP != null) {
-				Destroy (BoardP);
-				Debug.Log ("Board はすべて消します");
-			}
-		}
+//		for (int i = 0; i < 12; i++) {
+//		GameObject BoardP = GameObject.Find ("BoardPrefab(Clone)");
+//  	if (BoardP != null) {
+//				Destroy (BoardP);
+//				Debug.Log ("Board はすべて消します");
+//			}
+//		}
 
-//		for (int i = 0; i < 2; i++) {
-			if (tagBoards.Length < 2) {
-				Debug.Log ("タグがついたオブジェクトは2個以下です。不足分を生成します");
+        // GameObject型の配列cubesに、"Board"タグのついたオブジェクトをすべて格納
+        GameObject[] cubes = GameObject.FindGameObjectsWithTag("Board");
+
+        // GameObject型の変数cubeに、cubesの中身を順番に取り出す。
+        // foreachは配列の要素の数だけループします。
+        foreach (GameObject cube in cubes)
+        {
+            // 消す！
+            Debug.Log("Board はすべて消します");
+            Destroy(cube);
+        }
+
+        //		for (int i = 0; i < 6; i++) {
+        if (tagBoards.Length < 7) {
+				Debug.Log ("タグがついたオブジェクトは6個以下です。不足分を生成します");
 				Debug.Log ("CreateBoard します");
 				GameObject board = (GameObject)Instantiate (BoardPrefab);	
-				GameObject board2 = (GameObject)Instantiate (BoardPrefab);	
-			}
+				GameObject board2 = (GameObject)Instantiate (BoardPrefab);
+                GameObject board3 = (GameObject)Instantiate(BoardPrefab);
+                GameObject board4 = (GameObject)Instantiate(BoardPrefab);
+                GameObject board5 = (GameObject)Instantiate(BoardPrefab);
+                GameObject board6 = (GameObject)Instantiate(BoardPrefab);
+            }
 //		}
 	}
 

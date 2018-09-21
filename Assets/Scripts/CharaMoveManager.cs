@@ -274,12 +274,12 @@ public class CharaMoveManager : MonoBehaviour {
 //						if (rbInfo.IsSleeping ()) {
 							DiceC.canRoll = true;
 							ArrowC.canMove = false;
-							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前");
+//							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し前");
 //						Invoke ("TurnMscript.ChangePlayer", 1.0f);
 //					TurnMscript.ChangePlayer ();
 						if(OnBoard==false){
 							StartCoroutine("WaitAndTurnChange");
-							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し後");
+//							Debug.Log ("CharaMoveManagerからターン切り替えスクリプト呼び出し後");
 						}
 				}
 
@@ -320,9 +320,9 @@ public class CharaMoveManager : MonoBehaviour {
 
 	IEnumerator WaitAndTurnChange(){
 		yield return new WaitForSeconds(0.8f);
-		Debug.Log ("WaitAndTurnChange 呼び出され中");
+//		Debug.Log ("WaitAndTurnChange 呼び出され中");
 		if (OnBoard == false) {
-			Debug.Log ("WaitAndTurnChange の中で OnBoard == false");
+//			Debug.Log ("WaitAndTurnChange の中で OnBoard == false");
 			FadeSC.goFadeOut = true;
 			FadeSC.goFadeIn = false;
 //		GuideC.initializePosition ();

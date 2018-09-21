@@ -34,7 +34,7 @@ public class AreaChecker_Bird : MonoBehaviour {
 	//####################################  other  ####################################
 	public void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
-			Debug.Log ("バードタウンに居ます ");
+//			Debug.Log ("バードタウンに居ます ");
 
 			if (other.gameObject == unitychan) {
 				Uscript.CurrentArea = 0;
@@ -47,7 +47,7 @@ public class AreaChecker_Bird : MonoBehaviour {
 		if (other.gameObject.tag == "Key") {
 				key = GameObject.Find("KeyPrefab(Clone)");
 				keySC = key.GetComponent<KeyController> ();
-				Debug.Log ("カギはバードタウンにあります ");
+//				Debug.Log ("カギはバードタウンにあります ");
 				keySC.CurrentArea = 0;
 		}
 

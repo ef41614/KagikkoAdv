@@ -14,6 +14,7 @@ TagManager:
   - Board
   - TitleMenu
   - WarpPoint
+  - MovingBoard
   layers:
   - Default
   - TransparentFX

@@ -34,7 +34,7 @@ public class AreaChecker_Fountain : MonoBehaviour {
 	//####################################  other  ####################################
 	public void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
-			Debug.Log ("噴水に居ます ");
+//			Debug.Log ("噴水に居ます ");
 			if (other.gameObject == unitychan) {
 				Uscript.CurrentArea = 1;
 			}
@@ -46,7 +46,7 @@ public class AreaChecker_Fountain : MonoBehaviour {
 		if (other.gameObject.tag == "Key") {
 				key = GameObject.Find("KeyPrefab(Clone)");
 				keySC = key.GetComponent<KeyController>();
-				Debug.Log ("カギは噴水にあります ");
+//				Debug.Log ("カギは噴水にあります ");
 				keySC.CurrentArea = 1;
 		}
 

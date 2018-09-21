@@ -67,7 +67,7 @@ public class guideController : MonoBehaviour {
 	public void ToUnderGround(){
 		Vector3 underGround = new Vector3 (this.transform.position.x, this.transform.position.y - 50, this.transform.position.z);
 		transform.DOLocalMove (underGround, 0.1f);
-		Debug.Log("地面の下に行ったよ");
+//		Debug.Log("地面の下に行ったよ");
 	}
 
 	public void adjustNextGuidePos(){
@@ -95,7 +95,7 @@ public class guideController : MonoBehaviour {
 			unitychan = GameObject.Find ("unitychan");
 			Uscript = unitychan.GetComponent<UnityChanController>();
 			CharaPos = Uscript.Player_pos;
-			Debug.Log("見つけろ！unitychan （initializePosition）");
+//			Debug.Log("見つけろ！unitychan （initializePosition）");
 //			Debug.Log("Uscript.Player_pos :"+Uscript.Player_pos);
 //			CharaPos = GameObject.Find ("unitychan").transform;
 //			CharaPos = unitychan.GetComponent<Transform>();
@@ -108,7 +108,7 @@ public class guideController : MonoBehaviour {
 			Pscript = pchan.GetComponent<PchanController>(); 
 			CharaPos = Pscript.Player_pos;
 //			CharaPos = new Vector3( GameObject.Find ("pchan").transform);
-			Debug.Log("見つけろ！ｐchan （initializePosition）");
+//			Debug.Log("見つけろ！ｐchan （initializePosition）");
 			transform.DOLocalMove (CharaPos, 0.1f);
 		}
 	}
@@ -117,9 +117,9 @@ public class guideController : MonoBehaviour {
 	//	public void OnCollisionEnter(Collision other){
 	public void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "Player") {
-			Debug.Log ("プレーヤーの誰かが guideMに接触：");
+//			Debug.Log ("プレーヤーの誰かが guideMに接触：");
 			if (other.gameObject == CharaMoveMscript.activeChara) {
-				Debug.Log (CharaMoveMscript.activeChara.name+" guideMに接触：");
+//				Debug.Log (CharaMoveMscript.activeChara.name+" guideMに接触：");
 				CharaMoveMscript.ArrivedNextPoint = true;
 			}
 		}
@@ -128,9 +128,9 @@ public class guideController : MonoBehaviour {
 
 	void OnTriggerExit(Collider other){
 		if (other.gameObject.tag == "Player") {
-			Debug.Log ("プレーヤーの誰かが guideMから離脱：");
+//			Debug.Log ("プレーヤーの誰かが guideMから離脱：");
 			if (other.gameObject == CharaMoveMscript.activeChara) {
-				Debug.Log (CharaMoveMscript.activeChara.name+" guideMから離脱：");
+//				Debug.Log (CharaMoveMscript.activeChara.name+" guideMから離脱：");
 				CharaMoveMscript.ArrivedNextPoint = false;
 			}
 		}
@@ -138,7 +138,7 @@ public class guideController : MonoBehaviour {
 
 
 	public void ShowIconPos_InWMap(){
-		Debug.Log ("WMapにプレーヤー位置を反映させます");
+//		Debug.Log ("WMapにプレーヤー位置を反映させます");
 		ShowPlayer1_InWMap ();
 		ShowPlayer2_InWMap ();
 
@@ -178,12 +178,12 @@ public class guideController : MonoBehaviour {
 
 
 		if (Uscript.CurrentArea == 0) {
-			Debug.Log ("プレーヤー１：いまバード");
+//			Debug.Log ("プレーヤー１：いまバード");
 			IconPos = BirdB.transform.position;
 			IconPos.x = IconPos.x + Uscript.Player_pos.x/2.5f;
 			IconPos.y = IconPos.y + Uscript.Player_pos.z/2.5f + 7;
 		} else if (Uscript.CurrentArea == 1) {
-			Debug.Log ("プレーヤー1：いま噴水");
+//			Debug.Log ("プレーヤー1：いま噴水");
 			IconPos = FountainB.transform.position;
 			IconPos.x = IconPos.x + (Uscript.Player_pos.x - FountainStage.transform.position.x)/2.5f;
 			IconPos.y = IconPos.y + (Uscript.Player_pos.z - FountainStage.transform.position.z)/2.5f + 7;
@@ -195,19 +195,19 @@ public class guideController : MonoBehaviour {
 
 	public void ShowPlayer2_InWMap(){
 		pchan = GameObject.Find ("pchan"); 
-		Debug.Log ("プレーヤー2IconPos："+IconPos);
+//		Debug.Log ("プレーヤー2IconPos："+IconPos);
 		if (Pscript.CurrentArea == 0) {
-			Debug.Log ("プレーヤー2：いまバード");
+//			Debug.Log ("プレーヤー2：いまバード");
 			IconPos = BirdB.transform.position;
 			IconPos.x = IconPos.x + Pscript.Player_pos.x/2.5f;
 			IconPos.y = IconPos.y + Pscript.Player_pos.z/2.5f + 7;
 		} else if (Pscript.CurrentArea == 1) {
-			Debug.Log ("プレーヤー2：いま噴水");
+//			Debug.Log ("プレーヤー2：いま噴水");
 			IconPos = FountainB.transform.position;
 			IconPos.x = IconPos.x + (Pscript.Player_pos.x - FountainStage.transform.position.x)/2.5f;
 			IconPos.y = IconPos.y + (Pscript.Player_pos.z - FountainStage.transform.position.z)/2.5f + 7;
 		}
-		Debug.Log ("プレーヤー2IconPos："+IconPos);
+//		Debug.Log ("プレーヤー2IconPos："+IconPos);
 		P2.transform.position = IconPos;
 	}
 
@@ -215,10 +215,10 @@ public class guideController : MonoBehaviour {
 	public void ShowKeyIcon_InWMap(){
 		key = GameObject.Find("KeyPrefab(Clone)");
 		keySC = key.GetComponent<KeyController> ();
-		Debug.Log ("カギIconPos："+IconPos);
-		Debug.Log ("カギIconPos.x："+IconPos.x);
-		Debug.Log ("カギIconPos.y："+IconPos.y);
-		Debug.Log ("カギIconPos.z："+IconPos.z);
+//		Debug.Log ("カギIconPos："+IconPos);
+//		Debug.Log ("カギIconPos.x："+IconPos.x);
+//		Debug.Log ("カギIconPos.y："+IconPos.y);
+//		Debug.Log ("カギIconPos.z："+IconPos.z);
 		if (keySC.CurrentArea == 0) {
 			Debug.Log ("カギ：いまバード");
 			IconPos = BirdB.transform.position;
@@ -233,13 +233,13 @@ public class guideController : MonoBehaviour {
 			IconPos.y = IconPos.y + (keySC.key_pos.z - FountainStage.transform.position.z)/2.5f + 4;
 		}
 		KeyIcon.transform.position = IconPos;
-        Debug.Log("カギkeySC.key_pos.x：" + keySC.key_pos.x);
-        Debug.Log("カギkeySC.key_pos.z：" + keySC.key_pos.z);
+//        Debug.Log("カギkeySC.key_pos.x：" + keySC.key_pos.x);
+//        Debug.Log("カギkeySC.key_pos.z：" + keySC.key_pos.z);
 
-        Debug.Log ("カギIconPos："+IconPos);
-		Debug.Log ("カギIconPos.x："+IconPos.x);
-		Debug.Log ("カギIconPos.y："+IconPos.y);
-		Debug.Log ("カギIconPos.z："+IconPos.z);
+//        Debug.Log ("カギIconPos："+IconPos);
+//		Debug.Log ("カギIconPos.x："+IconPos.x);
+//		Debug.Log ("カギIconPos.y："+IconPos.y);
+//		Debug.Log ("カギIconPos.z："+IconPos.z);
 	}
 
 
@@ -247,12 +247,12 @@ public class guideController : MonoBehaviour {
 		Treasure = GameObject.Find ("TreasurePrefab(Clone)");
 		TreasureSC = Treasure.GetComponent<TreasureController>(); 
 		if (TreasureSC.CurrentArea == 0) {
-			Debug.Log ("宝箱：いまバード");
+//			Debug.Log ("宝箱：いまバード");
 			IconPos = BirdB.transform.position;
 			IconPos.x = IconPos.x + TreasureSC.Treasure_pos.x/2.5f + 4;
 			IconPos.y = IconPos.y + TreasureSC.Treasure_pos.z/2.5f + 2;
 		} else if (TreasureSC.CurrentArea == 1) {
-			Debug.Log ("宝箱：いま噴水");
+//			Debug.Log ("宝箱：いま噴水");
 			IconPos = FountainB.transform.position;
 			IconPos.x = IconPos.x + (TreasureSC.Treasure_pos.x - FountainStage.transform.position.x)/2.5f + 4;
 			IconPos.y = IconPos.y + (TreasureSC.Treasure_pos.z - FountainStage.transform.position.z)/2.5f + 2;

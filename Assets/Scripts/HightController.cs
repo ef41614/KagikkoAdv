@@ -55,7 +55,22 @@ public class HightController : MonoBehaviour {
 			//			}
 		}
 	}
-	//#################################################################################
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            charamovemanager = GameObject.Find("charamovemanager");
+            CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager>();
+            Board = GameObject.Find("BoardPrefab(Clone)");
+            BoardSC = Board.GetComponent<BoardController>();
+            if (other.gameObject == CharaMoveMscript.activeChara)
+            {
+                BoardSC.BoardMode = 0;
+            }
+        }
+    }
+    //#################################################################################
 
 }
 // End

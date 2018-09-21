@@ -32,12 +32,12 @@ public class ParticleSystemScript : MonoBehaviour {
 	//####################################  other  ####################################
 	public void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Player") {
-			Debug.Log ("噴水の近くにキャラがいます: ");
+//			Debug.Log ("噴水の近くにキャラがいます: ");
 			charamovemanager = GameObject.Find ("charamovemanager");
 			CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
 
 			if (other.gameObject == CharaMoveMscript.activeChara) {
-				Debug.Log ("アクティブなキャラなので、噴水ONにします ");
+//				Debug.Log ("アクティブなキャラなので、噴水ONにします ");
 				FountainPaSC.CharaIsHere = true;
 //				if (HunsuiBody.activeSelf == false) {
 //					HunsuiBody.SetActive (true);

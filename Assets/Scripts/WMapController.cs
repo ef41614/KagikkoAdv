@@ -24,15 +24,17 @@ public class WMapController : MonoBehaviour {
 	public GameObject Peke;
 	public Vector3 IconPos;
 
-//	RectTransform rectTransform = null;
-//	[SerializeField] Transform target = null;
+    GameObject guidanceBack;
 
-//	void Awake(){
-//		rectTransform = GetComponent<RectTransform> ();
-//	}
+    //	RectTransform rectTransform = null;
+    //	[SerializeField] Transform target = null;
 
-	//☆################☆################  Start  ################☆################☆
-	void Start () {
+    //	void Awake(){
+    //		rectTransform = GetComponent<RectTransform> ();
+    //	}
+
+    //☆################☆################  Start  ################☆################☆
+    void Start () {
 		this.unitychan = GameObject.Find ("unitychan");
 		Uscript = unitychan.GetComponent<UnityChanController>();
 		pchan = GameObject.Find ("pchan"); 
@@ -41,7 +43,9 @@ public class WMapController : MonoBehaviour {
 		TurnMscript = turnmanager.GetComponent<TurnManager>(); 
 		charamovemanager = GameObject.Find ("charamovemanager");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
-	}
+        guidanceBack = GameObject.Find("guidanceBack");
+
+    }
 
 	//####################################  Update  ###################################
 	void Update () {
@@ -75,7 +79,13 @@ public class WMapController : MonoBehaviour {
 		Debug.Log ("プレーヤーIconPos.z："+IconPos.z);
 	}
 
-	//#################################################################################
+    public void CloseGuidance()
+    {
+        Destroy(guidanceBack);
+    }
+
+
+    //#################################################################################
 
 }
 // End

@@ -34,7 +34,8 @@ public class FBGMController : MonoBehaviour {
     public void FBGMStart()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.PlayOneShot(fieldBGM);
+//        audioSource.PlayOneShot(fieldBGM);
+        audioSource.Play();
     }
 
 

@@ -351,3 +351,7 @@ Mapカギ位置細部調整までOK。
 KagikkoAdv 2-59回目のコミット
 
 WMap前、ガイダンス表示。MapBGM追加。開始時ボードON対策済。
+---
+KagikkoAdv 2-60回目のコミット
+
+噴水北にコーン設置。FBGMのループOK。街遠風景正面のみON。Ver1.0.3に。

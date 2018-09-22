@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0.2
+  bundleVersion: 1.0.3
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -152,10 +152,12 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: jp.pronama.KagikkoAdventure
+    Standalone: jp.pronama.KagikkoAdv
     iOS: jp.pronama.KagikkoAdv
   buildNumber:
-    iOS: 2
-  AndroidBundleVersionCode: 2
+    Standalone: 3
+    iOS: 3
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

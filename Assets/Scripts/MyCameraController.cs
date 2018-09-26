@@ -42,7 +42,17 @@ public class MyCameraController : MonoBehaviour {
 		}
 	}
 
-	//#################################################################################
+    public void AdjustCameraSize()
+    {
+        Camera mainCamera = Camera.main;
+        if (mainCamera.orthographicSize > 10)
+        { 
+        mainCamera.orthographicSize = 5;
+        }
+    }
+    
+
+    //#################################################################################
 
 }
 // End

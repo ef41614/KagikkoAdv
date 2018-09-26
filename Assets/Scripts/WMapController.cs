@@ -25,6 +25,7 @@ public class WMapController : MonoBehaviour {
 	public Vector3 IconPos;
 
     GameObject guidanceBack;
+    public GameObject ContinueButton;
 
     //	RectTransform rectTransform = null;
     //	[SerializeField] Transform target = null;
@@ -44,7 +45,7 @@ public class WMapController : MonoBehaviour {
 		charamovemanager = GameObject.Find ("charamovemanager");
 		CharaMoveMscript = charamovemanager.GetComponent<CharaMoveManager> ();
         guidanceBack = GameObject.Find("guidanceBack");
-
+        ContinueButton.SetActive(false);
     }
 
 	//####################################  Update  ###################################
@@ -81,6 +82,7 @@ public class WMapController : MonoBehaviour {
 
     public void CloseGuidance()
     {
+        ContinueButton.SetActive(true);
         Destroy(guidanceBack);
     }
 
